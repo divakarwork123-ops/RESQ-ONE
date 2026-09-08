@@ -1,23 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#080b12">
-<title>RESQ ONE — Personal Safety</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071019">
+<title>RESQ ONE — Personal Safety & Health</title>
 
 <style>
 :root{
-  --bg:#070a10;
-  --panel:#101620;
-  --panel2:#151d29;
-  --border:#263141;
-  --text:#f5f7fb;
-  --muted:#8e9aaa;
-  --green:#55e6bd;
-  --red:#ff4964;
-  --yellow:#ffc857;
-  --blue:#62a8ff;
+  --bg:#071019;
+  --panel:#0d1823;
+  --panel2:#111f2d;
+  --line:#203342;
+  --text:#eef7fb;
+  --muted:#8ea4b2;
+  --good:#55e39b;
+  --warn:#ffd166;
+  --danger:#ff5f6d;
+  --accent:#63c7ff;
+  --radius:20px;
 }
 
 *{box-sizing:border-box}
@@ -25,439 +26,398 @@
 body{
   margin:0;
   background:
-    radial-gradient(circle at 50% -10%,#142332 0%,transparent 42%),
-    var(--bg);
+    radial-gradient(circle at 50% -10%,#15354a 0,#071019 42%);
   color:var(--text);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
 }
 
-button,input,textarea,select{
-  font:inherit;
-}
+button,input,select{font:inherit}
 
 button{
+  border:0;
+  color:var(--text);
   cursor:pointer;
 }
 
 .app{
-  max-width:900px;
+  max-width:560px;
   margin:auto;
-  padding:0 16px 100px;
+  min-height:100vh;
+  padding-bottom:88px;
 }
-
-/* HEADER */
 
 header{
+  padding:22px 18px 10px;
   position:sticky;
   top:0;
-  z-index:50;
+  background:rgba(7,16,25,.9);
+  backdrop-filter:blur(15px);
+  z-index:5;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+
+.brand{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:16px 0;
-  background:rgba(7,10,16,.9);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
 }
 
-.logo{
-  font-weight:900;
-  letter-spacing:.12em;
+.brand b{
+  font-size:21px;
+  letter-spacing:.5px;
 }
 
-.logo small{
-  display:block;
-  font-size:9px;
-  letter-spacing:.04em;
-  color:var(--muted);
-  margin-top:3px;
-}
-
-.system{
-  display:flex;
-  align-items:center;
-  gap:7px;
+.pill{
   font-size:11px;
-  color:var(--green);
+  padding:7px 10px;
+  border-radius:20px;
+  background:#102431;
+  color:var(--good);
+  border:1px solid #1c4050;
 }
 
-.system-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 12px var(--green);
-}
+main{padding:14px 16px}
 
-/* PAGES */
-
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
-
-/* HERO */
+.page{display:none}
+.page.active{display:block}
 
 .hero{
-  padding:32px 0 18px;
+  padding:19px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#102330,#0b151e);
+  border-radius:var(--radius);
+  margin-bottom:13px;
 }
 
-.hero h1{
-  font-size:38px;
-  line-height:1.02;
-  margin:0 0 12px;
+h1{
+  font-size:27px;
+  margin:4px 0 7px;
 }
 
-.hero p{
+.sub{
   color:var(--muted);
-  line-height:1.6;
-  margin:0;
+  font-size:14px;
+  line-height:1.45;
 }
 
-/* CARDS */
-
-.card{
-  background:linear-gradient(145deg,var(--panel2),var(--panel));
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:18px;
-  margin:12px 0;
-  box-shadow:0 18px 50px rgba(0,0,0,.22);
+.ai{
+  margin-top:16px;
+  padding:15px;
+  border-radius:18px;
+  background:#0b141d;
+  border:1px solid #203a4b;
 }
 
-.eyebrow{
-  color:var(--green);
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-}
-
-.muted{
-  color:var(--muted);
-}
-
-/* AI */
-
-.ai-header{
+.aiTop{
   display:flex;
-  justify-content:space-between;
+  gap:11px;
   align-items:center;
-  gap:15px;
 }
 
-.ai-title{
-  margin:5px 0;
-  font-size:21px;
-}
-
-.mic{
-  flex:none;
-  width:72px;
-  height:72px;
+.orb{
+  width:42px;
+  height:42px;
   border-radius:50%;
-  border:1px solid #55e6bd55;
-  background:#08120f;
-  color:var(--green);
-  font-size:28px;
+  display:grid;
+  place-items:center;
+  background:#15374b;
+  box-shadow:0 0 25px rgba(99,199,255,.18);
 }
 
-.mic.listening{
-  animation:pulse 1s infinite;
+.ai b{font-size:15px}
+
+.ai small{
+  display:block;
+  color:var(--muted);
+  margin-top:2px;
 }
 
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 #55e6bd55}
-  70%{box-shadow:0 0 0 15px transparent}
-  100%{box-shadow:0 0 0 0 transparent}
-}
-
-.chat{
-  margin-top:15px;
-  padding:14px;
-  min-height:58px;
-  border-radius:15px;
-  background:#080c12;
-  border:1px solid var(--border);
-  line-height:1.5;
-}
-
-.command{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-}
-
-.command input{
-  flex:1;
-  min-width:0;
-  background:#080c12;
-  color:var(--text);
-  border:1px solid var(--border);
-  border-radius:13px;
-  padding:13px;
-  outline:none;
-}
-
-.primary{
-  border:0;
-  background:var(--green);
-  color:#06110d;
-  font-weight:900;
-  border-radius:13px;
-  padding:12px 16px;
-}
-
-.secondary{
-  background:#1b2330;
-  border:1px solid var(--border);
-  color:var(--text);
-  border-radius:13px;
-  padding:11px 15px;
-  font-weight:700;
-}
-
-/* SOS */
-
-.sos-card{
-  text-align:center;
-}
-
-.sos{
-  width:155px;
-  height:155px;
-  border-radius:50%;
-  border:9px solid #ff496425;
-  background:var(--red);
-  color:white;
-  font-size:26px;
-  font-weight:900;
-  box-shadow:0 0 45px #ff496440;
-  margin:12px 0;
-}
-
-.countdown{
-  font-size:45px;
-  font-weight:900;
-}
-
-.sos-state{
-  margin-top:15px;
+.aiMsg{
+  margin-top:13px;
   padding:12px;
   border-radius:13px;
-  background:#55e6bd0d;
-  border:1px solid #55e6bd33;
-  color:var(--green);
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* STATS */
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.stat{
-  font-size:27px;
-  font-weight:900;
-  margin-top:7px;
-}
-
-.stat small{
-  color:var(--muted);
-  font-size:11px;
-  font-weight:500;
-}
-
-/* GENERAL */
-
-.section-title{
-  margin:26px 0 12px;
+  background:#101e29;
+  font-size:14px;
+  line-height:1.4;
 }
 
 .row{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
+  gap:9px;
+  margin-top:10px;
 }
 
-.event{
-  padding:12px 0;
-  border-bottom:1px solid var(--border);
-}
-
-.event:last-child{
-  border-bottom:0;
-}
-
-.event b{
-  display:block;
-}
-
-.event span{
-  color:var(--muted);
-  font-size:11px;
-}
-
-.actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-
-.form{
-  display:grid;
-  gap:12px;
-}
-
-.field label{
-  display:block;
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:6px;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  background:#080c12;
-  border:1px solid var(--border);
+.input{
+  flex:1;
+  background:#0a131b;
+  border:1px solid var(--line);
   color:var(--text);
-  border-radius:13px;
   padding:12px;
+  border-radius:13px;
   outline:none;
 }
 
-.location-box{
-  min-height:170px;
+.btn{
+  background:#163447;
+  padding:11px 14px;
+  border-radius:13px;
+}
+
+.btn.primary{background:#1c7da7}
+.btn.danger{background:#7e2630}
+
+.btn.ghost{
+  background:transparent;
+  border:1px solid var(--line);
+}
+
+.grid{
   display:grid;
-  place-items:center;
-  text-align:center;
-  border-radius:16px;
-  border:1px solid var(--border);
-  background:
-    repeating-linear-gradient(
-      45deg,
-      #0b1119,
-      #0b1119 12px,
-      #0e151f 12px,
-      #0e151f 24px
-    );
-  margin-top:15px;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
-.toggle{
-  appearance:none;
-  width:48px;
-  height:27px;
-  border-radius:20px;
-  background:#27303c;
-  position:relative;
-  margin:0;
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:15px;
+  margin-bottom:10px;
 }
 
-.toggle:before{
-  content:"";
-  position:absolute;
-  width:21px;
-  height:21px;
-  top:3px;
-  left:3px;
-  background:white;
+.label{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.value{
+  font-size:24px;
+  font-weight:700;
+  margin-top:5px;
+}
+
+.unit{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.sectionTitle{
+  font-size:17px;
+  margin:19px 2px 10px;
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.dot{
+  width:9px;
+  height:9px;
   border-radius:50%;
-  transition:.2s;
+  background:var(--good);
 }
 
-.toggle:checked{
-  background:var(--green);
+.dangerDot{background:var(--danger)}
+.warnDot{background:var(--warn)}
+
+.sosWrap{
+  text-align:center;
+  padding:16px;
 }
 
-.toggle:checked:before{
-  left:24px;
+.sos{
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,#ff6672 0,#c62f3d 62%,#741f29 100%);
+  font-size:28px;
+  font-weight:800;
+  box-shadow:0 0 45px rgba(255,80,95,.22);
 }
 
-/* NAV */
+.count{
+  font-size:43px;
+  font-weight:800;
+  margin:12px;
+}
+
+.hide{display:none!important}
+
+.bar{
+  height:8px;
+  background:#162732;
+  border-radius:8px;
+  overflow:hidden;
+}
+
+.bar i{
+  display:block;
+  height:100%;
+  width:0;
+  background:var(--good);
+}
+
+.chart{
+  height:135px;
+  display:flex;
+  align-items:end;
+  gap:5px;
+  padding-top:15px;
+}
+
+.barCol{
+  flex:1;
+  background:#22536a;
+  border-radius:5px 5px 2px 2px;
+  min-height:12px;
+}
+
+.event{
+  padding:11px 0;
+  border-bottom:1px solid #1b2a35;
+  font-size:13px;
+}
+
+.event:last-child{border:0}
+
+.time{
+  color:var(--muted);
+  font-size:11px;
+  display:block;
+  margin-top:3px;
+}
+
+.report{
+  background:#0b151e;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px;
+  line-height:1.55;
+  font-size:13px;
+}
 
 nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  z-index:100;
-  background:rgba(7,10,16,.95);
-  backdrop-filter:blur(18px);
-  border-top:1px solid var(--border);
-}
-
-.nav-inner{
-  max-width:900px;
   margin:auto;
+  max-width:560px;
+  height:75px;
+  background:rgba(7,16,25,.96);
+  border-top:1px solid var(--line);
   display:grid;
   grid-template-columns:repeat(5,1fr);
+  z-index:10;
 }
 
 nav button{
-  border:0;
-  background:none;
+  background:transparent;
   color:var(--muted);
-  padding:11px 3px;
-  font-size:10px;
+  font-size:11px;
 }
 
-nav button.active{
-  color:var(--green);
-}
+nav button.active{color:var(--accent)}
 
-nav strong{
+nav span{
   display:block;
-  font-size:19px;
-  margin-bottom:2px;
+  font-size:20px;
+  margin-bottom:3px;
 }
 
 .toast{
   position:fixed;
   left:16px;
   right:16px;
-  bottom:80px;
-  z-index:200;
-  background:#18202c;
-  border:1px solid var(--border);
+  bottom:88px;
+  max-width:528px;
+  margin:auto;
+  background:#142634;
+  border:1px solid #2d4c5d;
+  padding:13px 15px;
   border-radius:14px;
-  padding:13px;
-  text-align:center;
-  box-shadow:0 15px 40px #0009;
+  display:none;
+  z-index:20;
 }
 
-.command-example{
+.toast.show{display:block}
+
+.tag{
   display:inline-block;
-  background:#1b2431;
-  padding:7px 9px;
-  border-radius:9px;
-  margin:4px 3px;
-  font-size:12px;
-  color:#dfe6ef;
+  font-size:10px;
+  padding:4px 7px;
+  border-radius:7px;
+  background:#182934;
+  color:var(--warn);
+  margin-left:5px;
 }
 
-@media(max-width:560px){
-  .hero h1{
-    font-size:31px;
-  }
+select{
+  width:100%;
+  background:#0a131b;
+  border:1px solid var(--line);
+  color:var(--text);
+  padding:12px;
+  border-radius:12px;
+}
 
-  .sos{
-    width:140px;
-    height:140px;
-  }
+.check{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px solid #1b2a35;
+}
+
+.check:last-child{border:0}
+
+.switch{
+  width:43px;
+  height:24px;
+  border-radius:20px;
+  background:#263844;
+  position:relative;
+}
+
+.switch:after{
+  content:"";
+  width:18px;
+  height:18px;
+  position:absolute;
+  top:3px;
+  left:3px;
+  border-radius:50%;
+  background:#8799a4;
+  transition:.2s;
+}
+
+.switch.on{background:#1d7897}
+
+.switch.on:after{
+  left:22px;
+  background:white;
+}
+
+.small{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.aiListening{
+  animation:pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(99,199,255,.5)}
+  70%{box-shadow:0 0 0 15px rgba(99,199,255,0)}
+  100%{box-shadow:0 0 0 0 rgba(99,199,255,0)}
+}
+
+@media(min-width:600px){
+  body{padding:0 10px}
 }
 </style>
 </head>
@@ -467,169 +427,87 @@ nav strong{
 <div class="app">
 
 <header>
-  <div class="logo">
-    RESQ ONE
-    <small>PERSONAL SAFETY COMPANION</small>
-  </div>
-
-  <div class="system">
-    <span class="system-dot"></span>
-    <span id="systemStatus">READY</span>
+  <div class="brand">
+    <b>RESQ ONE</b>
+    <span class="pill" id="globalStatus">● SYSTEM READY</span>
   </div>
 </header>
 
+<main>
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
 <section id="home" class="page active">
 
 <div class="hero">
-  <h1>Your safety.<br>Always within reach.</h1>
-  <p>
-    RESQ ONE connects emergency assistance, location awareness
-    and safety controls in one simple interface.
-  </p>
+
+<div class="status">
+<span class="dot" id="safeDot"></span>
+<span id="safeText">You appear safe</span>
 </div>
 
+<h1>Your safety. Always within reach.</h1>
 
-<!-- AI -->
+<div class="sub">
+RESQ continuously monitors available device signals while this app is active.
+</div>
 
-<div class="card">
+<div class="ai">
 
-  <div class="ai-header">
+<div class="aiTop">
 
-    <div>
-      <div class="eyebrow">RESQ AI</div>
+<div class="orb" id="aiOrb">✦</div>
 
-      <h2 class="ai-title">
-        Your personal safety assistant
-      </h2>
-
-      <div class="muted">
-        Talk naturally. You don't need to use exact commands.
-      </div>
-    </div>
-
-    <button class="mic" id="mic">
-      🎙️
-    </button>
-
-  </div>
-
-
-  <div class="chat" id="chat">
-    Hi. I'm RESQ AI. Tell me what you need.
-  </div>
-
-
-  <div class="command">
-
-    <input
-      id="command"
-      autocomplete="off"
-      placeholder="Try: I'm in danger, help me…"
-    >
-
-    <button
-      class="primary"
-      onclick="sendCommand()"
-    >
-      Send
-    </button>
-
-  </div>
+<div>
+<b>RESQ AI</b>
+<small id="listenState">Automatic assistant ready</small>
+</div>
 
 </div>
 
-
-<!-- SOS -->
-
-<div class="card sos-card">
-
-  <div class="eyebrow">
-    EMERGENCY CENTER
-  </div>
-
-  <h2 id="sosTitle">
-    Need help?
-  </h2>
-
-  <button
-    class="sos"
-    onclick="startSOS()"
-  >
-    SOS
-  </button>
-
-  <div
-    class="countdown"
-    id="countdown"
-  ></div>
-
-  <p class="muted">
-    Tap SOS to begin the emergency countdown.
-  </p>
-
-  <button
-    id="cancelSOS"
-    class="secondary hidden"
-    onclick="cancelEmergency()"
-  >
-    I'M SAFE / CANCEL
-  </button>
-
-  <div
-    class="sos-state"
-    id="sosState"
-  >
-    Emergency system ready
-  </div>
-
+<div class="aiMsg" id="aiMsg">
+Hi. I'm RESQ AI. I can help with safety, health, location, emergency mode and reports.
 </div>
 
+<div class="row">
+<input
+class="input"
+id="cmd"
+placeholder="Ask RESQ anything…"
+>
+<button class="btn primary" onclick="typed()">Send</button>
+</div>
 
-<!-- STATUS -->
+</div>
+</div>
 
 <div class="grid">
 
 <div class="card">
-  <div class="eyebrow">SAFETY</div>
-  <div class="stat" id="safetyStatus">
-    READY
-  </div>
-  <small class="muted">
-    Current state
-  </small>
+<div class="label">Battery</div>
+<div class="value" id="battery">—</div>
 </div>
 
 <div class="card">
-  <div class="eyebrow">LOCATION</div>
-  <div class="stat" id="locationStatus">
-    OFF
-  </div>
-  <small class="muted" id="locationMeta">
-    Permission required
-  </small>
+<div class="label">Location</div>
+<div class="value" id="locMini">OFF</div>
+</div>
+
+</div>
+
+<div class="sectionTitle">Today</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="label">Safety events</div>
+<div class="value" id="eventCount">0</div>
 </div>
 
 <div class="card">
-  <div class="eyebrow">BATTERY</div>
-  <div class="stat" id="battery">
-    —
-  </div>
-  <small class="muted">
-    Phone battery
-  </small>
-</div>
-
-<div class="card">
-  <div class="eyebrow">CONTACTS</div>
-  <div class="stat" id="contactCount">
-    0
-  </div>
-  <small class="muted">
-    Safety circle
-  </small>
+<div class="label">Wellness</div>
+<div class="value">Good</div>
+<div class="unit">Prototype estimate</div>
 </div>
 
 </div>
@@ -637,1925 +515,1536 @@ nav strong{
 </section>
 
 
-<!-- ================= SAFETY ================= -->
+<!-- HEALTH -->
+
+<section id="health" class="page">
+
+<h1>Health</h1>
+
+<div class="sub">
+Your personal health overview. Hardware-fed values will replace prototype readings when connected.
+</div>
+
+<div class="grid" style="margin-top:13px">
+
+<div class="card">
+<div class="label">Heart rate</div>
+<div class="value" id="hr">72</div>
+<div class="unit">BPM · prototype</div>
+</div>
+
+<div class="card">
+<div class="label">Wellness score</div>
+<div class="value" id="well">86</div>
+<div class="unit">/100 · prototype</div>
+</div>
+
+<div class="card">
+<div class="label">Activity</div>
+<div class="value" id="activity">6,420</div>
+<div class="unit">steps · prototype</div>
+</div>
+
+<div class="card">
+<div class="label">Rest</div>
+<div class="value">7h 18m</div>
+<div class="unit">prototype</div>
+</div>
+
+</div>
+
+<div class="sectionTitle">Heart-rate trend</div>
+
+<div class="card">
+
+<div class="chart" id="chart"></div>
+
+<div class="small">
+Last 7 sample periods · prototype data
+</div>
+
+</div>
+
+<div class="sectionTitle">
+AI health insight
+</div>
+
+<div class="card" id="healthInsight">
+Your current prototype wellness profile looks stable. Keep regular movement, hydration and rest.
+</div>
+
+<div class="sectionTitle">
+Health Reports
+</div>
+
+<div class="report">
+
+<b>Latest report</b>
+
+<p id="reportText">
+No clinical diagnosis is generated. This report summarizes prototype readings and safety events for testing.
+</p>
+
+<button class="btn primary" onclick="generateReport()">
+Generate health report
+</button>
+
+<button class="btn ghost" onclick="window.print()">
+Print / Save PDF
+</button>
+
+</div>
+
+</section>
+
+
+<!-- SAFETY -->
 
 <section id="safety" class="page">
 
-<h2 class="section-title">
-  Safety Center
-</h2>
+<h1>Safety Center</h1>
 
-<div class="card">
+<div class="sub">
+Emergency protection and automatic safety responses.
+</div>
 
-  <div class="eyebrow">
-    CURRENT STATE
-  </div>
+<div class="card sosWrap">
 
-  <h2 id="safetyMode">
-    READY
-  </h2>
+<div class="label">
+EMERGENCY CENTER
+</div>
 
-  <p
-    class="muted"
-    id="safetyMessage"
-  >
-    No emergency is active.
-  </p>
+<div class="count hide" id="count">
+10
+</div>
+
+<button class="sos" id="sosBtn" onclick="startSOS()">
+SOS
+</button>
+
+<p class="small" id="sosHint">
+Press only when you need emergency help.
+</p>
+
+<button
+class="btn ghost hide"
+id="safeBtn"
+onclick="cancelSOS()"
+>
+I'M SAFE / CANCEL
+</button>
 
 </div>
 
+<div class="grid">
 
 <div class="card">
 
-  <div class="eyebrow">
-    FALL DETECTION TEST
-  </div>
-
-  <h2>
-    Test emergency response
-  </h2>
-
-  <p class="muted">
-    This safely tests the software emergency workflow.
-    It does not claim to detect a real fall.
-  </p>
-
-  <button
-    class="primary"
-    onclick="testFall()"
-  >
-    TEST FALL DETECTION
-  </button>
-
+<div class="label">
+Fall monitoring
 </div>
 
+<div class="status" style="margin-top:8px">
+<span class="dot"></span>
+<b id="fallStatus">Active</b>
+</div>
+
+</div>
 
 <div class="card">
 
-  <div class="eyebrow">
-    SAFETY ACTIVITY
-  </div>
+<div class="label">
+Motion sensor
+</div>
 
-  <div id="events">
-  </div>
-
-  <button
-    class="secondary"
-    onclick="clearEvents()"
-  >
-    Clear activity
-  </button>
+<div class="status" style="margin-top:8px">
+<span class="dot"></span>
+<b id="motionStatus">Ready</b>
+</div>
 
 </div>
+
+</div>
+
+<div class="sectionTitle">
+Safety activity
+</div>
+
+<div class="card" id="events"></div>
 
 </section>
 
 
-<!-- ================= LOCATION ================= -->
+<!-- LOCATION -->
 
 <section id="location" class="page">
 
-<h2 class="section-title">
-  Location
-</h2>
+<h1>Location</h1>
+
+<div class="sub">
+Live device location requires your browser permission.
+</div>
 
 <div class="card">
 
-  <div class="eyebrow">
-    LIVE LOCATION
-  </div>
+<div class="status">
 
-  <h2 id="locationHeading">
-    Location not started
-  </h2>
+<span class="dot" id="locDot"></span>
 
-  <p
-    class="muted"
-    id="locationDescription"
-  >
-    RESQ ONE can request your phone's location.
-  </p>
-
-  <div class="actions">
-
-    <button
-      class="primary"
-      onclick="getLocation()"
-    >
-      Get my location
-    </button>
-
-    <button
-      class="secondary"
-      onclick="openMap()"
-    >
-      Open Google Maps
-    </button>
-
-  </div>
-
-
-  <div
-    class="location-box"
-    id="locationBox"
-  >
-    📍<br>
-    Location preview will appear here.
-  </div>
+<b id="locState">
+Location not started
+</b>
 
 </div>
 
+<div style="margin-top:13px" class="grid">
+
+<div>
+<div class="label">Latitude</div>
+<div id="lat">—</div>
+</div>
+
+<div>
+<div class="label">Longitude</div>
+<div id="lon">—</div>
+</div>
+
+</div>
+
+<p class="small" id="accuracy">—</p>
+
+<div class="row">
+
+<button class="btn primary" onclick="getLocation()">
+Get live location
+</button>
+
+<button class="btn ghost" onclick="openMap()">
+Open Maps
+</button>
+
+</div>
+
+</div>
 
 <div class="card">
 
-  <div class="row">
-    <span>Latitude</span>
-    <b id="latitude">—</b>
-  </div>
+<b>Privacy</b>
 
-  <div class="row">
-    <span>Longitude</span>
-    <b id="longitude">—</b>
-  </div>
-
-  <div class="row">
-    <span>Accuracy</span>
-    <b id="accuracy">—</b>
-  </div>
-
-  <div class="row">
-    <span>Last update</span>
-    <b id="locationTime">—</b>
-  </div>
+<p class="small">
+Location is used locally by this prototype unless you choose to share it.
+This website does not automatically contact emergency services.
+</p>
 
 </div>
 
 </section>
 
 
-<!-- ================= AI ================= -->
+<!-- AI -->
 
 <section id="ai" class="page">
 
-<h2 class="section-title">
-  RESQ AI
-</h2>
+<h1>RESQ AI</h1>
+
+<div class="sub">
+Hands-free assistance, multilingual commands and proactive safety guidance.
+</div>
 
 <div class="card">
 
-  <div class="eyebrow">
-    NATURAL LANGUAGE
-  </div>
+<label class="label">
+Language
+</label>
 
-  <h2>
-    You don't need exact commands
-  </h2>
+<select id="lang" onchange="changeLanguage()">
 
-  <p class="muted">
-    RESQ AI recognizes different ways of asking for the
-    same safety action.
-  </p>
+<option value="en-IN">
+English
+</option>
 
-  <div>
-    <span class="command-example">I'm in danger</span>
-    <span class="command-example">Help me</span>
-    <span class="command-example">Where am I?</span>
-    <span class="command-example">Check my battery</span>
-    <span class="command-example">I'm okay now</span>
-    <span class="command-example">Open my map</span>
-  </div>
+<option value="te-IN">
+తెలుగు (Telugu)
+</option>
+
+<option value="hi-IN">
+हिन्दी (Hindi)
+</option>
+
+<option value="ta-IN">
+தமிழ் (Tamil)
+</option>
+
+<option value="kn-IN">
+ಕನ್ನಡ (Kannada)
+</option>
+
+<option value="ml-IN">
+മലയാളം (Malayalam)
+</option>
+
+<option value="mr-IN">
+मराठी (Marathi)
+</option>
+
+<option value="bn-IN">
+বাংলা (Bengali)
+</option>
+
+</select>
+
+
+<div class="check">
+
+<span>
+Voice responses
+</span>
+
+<div
+class="switch on"
+id="voiceSwitch"
+onclick="toggleVoice()">
+</div>
 
 </div>
 
 
-<div class="card">
+<div class="check">
 
-  <div class="eyebrow">
-    VOICE
-  </div>
+<span>
+Automatic voice listening
+<span class="tag">
+while page is active
+</span>
+</span>
 
-  <div class="row">
-    <span>
-      Spoken AI replies
-    </span>
+<div
+class="switch"
+id="autoSwitch"
+onclick="toggleAuto()">
+</div>
 
-    <input
-      class="toggle"
-      id="voiceToggle"
-      type="checkbox"
-      checked
-    >
-  </div>
+</div>
 
-  <br>
 
-  <div class="row">
-    <span>
-      Voice recognition
-    </span>
+<div class="check">
 
-    <span class="muted">
-      Browser dependent
-    </span>
-  </div>
+<span>
+Proactive safety messages
+</span>
 
+<div
+class="switch on"
+id="proSwitch"
+onclick="togglePro()">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="sectionTitle">
+Try saying
+</div>
+
+<div class="card small">
+
+“RESQ, I need help”<br>
+“Where am I?”<br>
+“Check my health”<br>
+“Am I safe?”<br>
+“Start emergency mode”<br>
+“I'm safe now”<br>
+“What's my battery?”<br>
+“Open Maps”
+
+</div>
+
+
+<div class="sectionTitle">
+Assistant
+</div>
+
+<div class="card" id="aiLog">
+RESQ AI is ready.
 </div>
 
 </section>
 
-
-<!-- ================= PROFILE ================= -->
-
-<section id="profile" class="page">
-
-<h2 class="section-title">
-  Profile & Safety Circle
-</h2>
+</main>
 
 
-<div class="card">
-
-  <div class="eyebrow">
-    PROFILE
-  </div>
-
-  <div class="form">
-
-    <div class="field">
-      <label>Your name</label>
-
-      <input
-        id="profileName"
-        placeholder="Your name"
-      >
-    </div>
-
-
-    <div class="field">
-      <label>Emergency information</label>
-
-      <textarea
-        id="profileNote"
-        rows="3"
-        placeholder="Optional emergency information"
-      ></textarea>
-
-    </div>
-
-
-    <button
-      class="primary"
-      onclick="saveProfile()"
-    >
-      Save profile
-    </button>
-
-  </div>
-
-</div>
-
-
-<div class="card">
-
-  <div class="eyebrow">
-    SAFETY CIRCLE
-  </div>
-
-  <h2>
-    Emergency contacts
-  </h2>
-
-  <div class="form">
-
-    <div class="field">
-      <label>Name</label>
-
-      <input
-        id="contactName"
-        placeholder="e.g. Mom"
-      >
-    </div>
-
-
-    <div class="field">
-      <label>Phone</label>
-
-      <input
-        id="contactPhone"
-        type="tel"
-        placeholder="+91..."
-      >
-    </div>
-
-
-    <div class="field">
-      <label>Relationship</label>
-
-      <select id="contactRelation">
-
-        <option>Family</option>
-        <option>Friend</option>
-        <option>Partner</option>
-        <option>Other</option>
-
-      </select>
-
-    </div>
-
-
-    <button
-      class="primary"
-      onclick="addContact()"
-    >
-      Add emergency contact
-    </button>
-
-  </div>
-
-
-  <div id="contacts">
-  </div>
-
-</div>
-
-
-<div class="card">
-
-  <div class="eyebrow">
-    PREFERENCES
-  </div>
-
-  <div class="row">
-    <span>Vibration</span>
-    <input
-      class="toggle"
-      id="vibrationToggle"
-      type="checkbox"
-      checked
-    >
-  </div>
-
-</div>
-
-</section>
-
-</div>
-
-
-<!-- ================= NAVIGATION ================= -->
+<!-- NAVIGATION -->
 
 <nav>
 
-<div class="nav-inner">
-
-<button
-  class="active"
-  onclick="showPage('home',this)"
->
-  <strong>⌂</strong>
-  Home
+<button class="active" onclick="show('home',this)">
+<span>⌂</span>
+Home
 </button>
 
-<button
-  onclick="showPage('safety',this)"
->
-  <strong>⚠</strong>
-  Safety
+<button onclick="show('health',this)">
+<span>♥</span>
+Health
 </button>
 
-<button
-  onclick="showPage('location',this)"
->
-  <strong>⌖</strong>
-  Location
+<button onclick="show('safety',this)">
+<span>!</span>
+Safety
 </button>
 
-<button
-  onclick="showPage('ai',this)"
->
-  <strong>✦</strong>
-  AI
+<button onclick="show('location',this)">
+<span>⌖</span>
+Location
 </button>
 
-<button
-  onclick="showPage('profile',this)"
->
-  <strong>◉</strong>
-  Profile
+<button onclick="show('ai',this)">
+<span>✦</span>
+AI
 </button>
-
-</div>
 
 </nav>
 
 
-<div
-  id="toast"
-  class="toast hidden"
-></div>
+<div class="toast" id="toast"></div>
+
+</div>
 
 
 <script>
 
-/* =========================================================
-   RESQ ONE
-   LOCAL AI SAFETY ENGINE
-   ========================================================= */
-
+/* =========================================
+   RESQ ONE V3
+   CORE STATE
+========================================= */
 
 const $ = id => document.getElementById(id);
 
-let currentLatitude = null;
-let currentLongitude = null;
-let currentAccuracy = null;
+let events =
+JSON.parse(localStorage.getItem("resq_events") || "[]");
 
-let emergencyActive = false;
-let countdownValue = 10;
-let countdownTimer = null;
+let emergency = false;
+let countdown = 10;
+let timer = null;
+
+let currentLat = null;
+let currentLon = null;
+
+let voice = true;
+let autoListen = false;
+let proactive = true;
+
+let recognition = null;
 
 
-/* =========================================================
-   LOCAL STORAGE
-   ========================================================= */
+/* =========================================
+   MULTILINGUAL RESPONSES
+========================================= */
 
-const STORAGE_KEY = "RESQ_ONE_DATA_V3";
+const langMap = {
 
-let data = JSON.parse(
-  localStorage.getItem(STORAGE_KEY) ||
-  '{"events":[],"contacts":[],"profile":{"name":"","note":""}}'
+"en-IN":{
+ok:"You appear safe.",
+help:"I'm here with you. If you are in danger, say 'I need help' or press SOS.",
+loc:"I'll check your live location.",
+cancel:"Emergency cancelled. I'm glad you are safe.",
+health:"Your current prototype wellness profile looks stable. Real health sensors can replace these readings when connected.",
+battery:"Your phone battery is",
+fall:"I detected a possible fall. Please tell me if you are okay.",
+unknown:"I can help with safety, health, location, battery, emergency mode and reports."
+},
+
+"te-IN":{
+ok:"మీరు సురక్షితంగా ఉన్నట్లు కనిపిస్తోంది.",
+help:"నేను మీతోనే ఉన్నాను. ప్రమాదంలో ఉంటే నాకు సహాయం కావాలి అని చెప్పండి లేదా SOS నొక్కండి.",
+loc:"మీ లైవ్ లొకేషన్‌ను చెక్ చేస్తున్నాను.",
+cancel:"ఎమర్జెన్సీ రద్దు చేయబడింది. మీరు సురక్షితంగా ఉన్నందుకు సంతోషంగా ఉంది.",
+health:"మీ ప్రోటోటైప్ వెల్‌నెస్ ప్రొఫైల్ స్థిరంగా ఉంది. నిజమైన సెన్సర్లు కనెక్ట్ అయినప్పుడు వాటి డేటా ఉపయోగించబడుతుంది.",
+battery:"మీ ఫోన్ బ్యాటరీ",
+fall:"సాధ్యమైన ఫాల్ గుర్తించబడింది. మీరు బాగున్నారా?",
+unknown:"సేఫ్టీ, హెల్త్, లొకేషన్, బ్యాటరీ, ఎమర్జెన్సీ మరియు రిపోర్ట్స్‌లో నేను సహాయం చేయగలను."
+},
+
+"hi-IN":{
+ok:"आप सुरक्षित दिखाई दे रहे हैं।",
+help:"मैं आपके साथ हूँ। खतरा हो तो मुझे मदद चाहिए कहें या SOS दबाएँ।",
+loc:"मैं आपकी लाइव लोकेशन जाँच रहा हूँ।",
+cancel:"इमरजेंसी रद्द कर दी गई है। अच्छा है कि आप सुरक्षित हैं।",
+health:"आपका प्रोटोटाइप वेलनेस प्रोफाइल अभी स्थिर दिख रहा है। असली सेंसर जुड़ने पर उनका डेटा इस्तेमाल होगा।",
+battery:"आपके फोन की बैटरी",
+fall:"संभावित गिरना detected हुआ है। क्या आप ठीक हैं?",
+unknown:"मैं सुरक्षा, स्वास्थ्य, लोकेशन, बैटरी, इमरजेंसी और रिपोर्ट में मदद कर सकता हूँ।"
+},
+
+"ta-IN":{
+ok:"நீங்கள் பாதுகாப்பாக இருப்பது போல் தெரிகிறது.",
+help:"நான் உங்களுடன் இருக்கிறேன். ஆபத்தில் இருந்தால் உதவி வேண்டும் என்று சொல்லுங்கள் அல்லது SOS அழுத்துங்கள்.",
+loc:"உங்கள் நேரடி இருப்பிடத்தை சரிபார்க்கிறேன்.",
+cancel:"அவசரநிலை ரத்து செய்யப்பட்டது. நீங்கள் பாதுகாப்பாக இருப்பதில் மகிழ்ச்சி.",
+health:"உங்கள் தற்போதைய prototype wellness profile நிலையாக உள்ளது.",
+battery:"உங்கள் தொலைபேசி பேட்டரி",
+fall:"விழுந்திருக்கலாம் என்று கண்டறியப்பட்டது. நீங்கள் நலமாக இருக்கிறீர்களா?",
+unknown:"பாதுகாப்பு, உடல்நலம், இருப்பிடம், பேட்டரி மற்றும் அவசரநிலைகளில் நான் உதவ முடியும்."
+},
+
+"kn-IN":{
+ok:"ನೀವು ಸುರಕ್ಷಿತವಾಗಿರುವಂತೆ ಕಾಣುತ್ತದೆ.",
+help:"ನಾನು ನಿಮ್ಮೊಂದಿಗಿದ್ದೇನೆ. ಅಪಾಯದಲ್ಲಿದ್ದರೆ ಸಹಾಯ ಬೇಕು ಎಂದು ಹೇಳಿ ಅಥವಾ SOS ಒತ್ತಿರಿ.",
+loc:"ನಿಮ್ಮ ಲೈವ್ ಸ್ಥಳವನ್ನು ಪರಿಶೀಲಿಸುತ್ತಿದ್ದೇನೆ.",
+cancel:"ತುರ್ತು ಪರಿಸ್ಥಿತಿ ರದ್ದುಗೊಂಡಿದೆ. ನೀವು ಸುರಕ್ಷಿತವಾಗಿರುವುದಕ್ಕೆ ಸಂತೋಷವಾಗಿದೆ.",
+health:"ನಿಮ್ಮ ಪ್ರಸ್ತುತ prototype wellness profile ಸ್ಥಿರವಾಗಿದೆ.",
+battery:"ನಿಮ್ಮ ಫೋನ್ ಬ್ಯಾಟರಿ",
+fall:"ಸಂಭಾವ್ಯವಾಗಿ ಬಿದ್ದಿರುವುದು ಪತ್ತೆಯಾಗಿದೆ. ನೀವು ಚೆನ್ನಾಗಿದ್ದೀರಾ?",
+unknown:"ಸುರಕ್ಷತೆ, ಆರೋಗ್ಯ, ಸ್ಥಳ, ಬ್ಯಾಟರಿ ಮತ್ತು ತುರ್ತು ಪರಿಸ್ಥಿತಿಗಳಲ್ಲಿ ನಾನು ಸಹಾಯ ಮಾಡಬಹುದು."
+},
+
+"ml-IN":{
+ok:"നിങ്ങൾ സുരക്ഷിതരാണെന്ന് തോന്നുന്നു.",
+help:"ഞാൻ നിങ്ങളോടൊപ്പമുണ്ട്. അപകടത്തിലാണെങ്കിൽ സഹായം വേണമെന്ന് പറയുക അല്ലെങ്കിൽ SOS അമർത്തുക.",
+loc:"നിങ്ങളുടെ ലൈവ് ലൊക്കേഷൻ പരിശോധിക്കുകയാണ്.",
+cancel:"അടിയന്തരാവസ്ഥ റദ്ദാക്കി. നിങ്ങൾ സുരക്ഷിതരാണെന്നതിൽ സന്തോഷം.",
+health:"നിങ്ങളുടെ നിലവിലെ prototype wellness profile സ്ഥിരമാണ്.",
+battery:"നിങ്ങളുടെ ഫോൺ ബാറ്ററി",
+fall:"സാധ്യതയുള്ള വീഴ്ച കണ്ടെത്തി. നിങ്ങൾക്ക് സുഖമാണോ?",
+unknown:"സുരക്ഷ, ആരോഗ്യം, ലൊക്കേഷൻ, ബാറ്ററി, അടിയന്തരാവസ്ഥ എന്നിവയിൽ സഹായിക്കാം."
+},
+
+"mr-IN":{
+ok:"तुम्ही सुरक्षित दिसत आहात.",
+help:"मी तुमच्यासोबत आहे. धोका असल्यास मला मदत हवी आहे असे म्हणा किंवा SOS दाबा.",
+loc:"मी तुमचे लाइव्ह लोकेशन तपासत आहे.",
+cancel:"आपत्कालीन स्थिती रद्द केली आहे. तुम्ही सुरक्षित आहात याचा आनंद आहे.",
+health:"तुमचे सध्याचे prototype wellness profile स्थिर दिसत आहे.",
+battery:"तुमच्या फोनची बॅटरी",
+fall:"संभाव्य पडणे आढळले आहे. तुम्ही ठीक आहात का?",
+unknown:"मी सुरक्षा, आरोग्य, लोकेशन, बॅटरी आणि आपत्कालीन मदतीमध्ये सहाय्य करू शकतो."
+},
+
+"bn-IN":{
+ok:"আপনি নিরাপদ আছেন বলে মনে হচ্ছে।",
+help:"আমি আপনার সঙ্গে আছি। বিপদে থাকলে সাহায্য চাই বলুন অথবা SOS চাপুন।",
+loc:"আমি আপনার লাইভ লোকেশন পরীক্ষা করছি।",
+cancel:"জরুরি অবস্থা বাতিল করা হয়েছে। আপনি নিরাপদ আছেন জেনে ভালো লাগছে।",
+health:"আপনার বর্তমান prototype wellness profile স্থিতিশীল।",
+battery:"আপনার ফোনের ব্যাটারি",
+fall:"সম্ভাব্য পড়ে যাওয়া শনাক্ত হয়েছে। আপনি কি ঠিক আছেন?",
+unknown:"আমি নিরাপত্তা, স্বাস্থ্য, লোকেশন, ব্যাটারি এবং জরুরি পরিস্থিতিতে সাহায্য করতে পারি।"
+}
+
+};
+
+function L(){
+return langMap[$("lang").value] || langMap["en-IN"];
+}
+
+
+/* =========================================
+   AI SPEECH
+========================================= */
+
+function speak(text){
+
+if(!voice)return;
+
+if(!("speechSynthesis" in window))return;
+
+speechSynthesis.cancel();
+
+const u =
+new SpeechSynthesisUtterance(text);
+
+u.lang = $("lang").value;
+
+speechSynthesis.speak(u);
+
+}
+
+
+function say(text){
+
+$("aiMsg").textContent = text;
+$("aiLog").textContent = text;
+
+speak(text);
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function toast(text){
+
+$("toast").textContent = text;
+
+$("toast").classList.add("show");
+
+setTimeout(()=>{
+$("toast").classList.remove("show");
+},3500);
+
+}
+
+
+/* =========================================
+   EVENT HISTORY
+========================================= */
+
+function addEvent(text){
+
+events.unshift({
+t:text,
+time:new Date().toLocaleTimeString()
+});
+
+events = events.slice(0,30);
+
+localStorage.setItem(
+"resq_events",
+JSON.stringify(events)
 );
 
-
-function saveData(){
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(data)
-  );
+renderEvents();
 
 }
 
 
-/* =========================================================
-   BASIC HELPERS
-   ========================================================= */
+function renderEvents(){
 
-function now(){
+$("eventCount").textContent =
+events.length;
 
-  return new Date().toLocaleString(
-    [],
-    {
-      dateStyle:"medium",
-      timeStyle:"short"
-    }
-  );
+$("events").innerHTML =
+events.length
 
-}
+? events.map(e => `
+<div class="event">
+${e.t}
+<span class="time">${e.time}</span>
+</div>
+`).join("")
 
-
-function vibrate(pattern=[100]){
-
-  if(
-    $("vibrationToggle") &&
-    $("vibrationToggle").checked &&
-    navigator.vibrate
-  ){
-
-    navigator.vibrate(pattern);
-
-  }
+: `<div class="small">
+No safety events yet.
+</div>`;
 
 }
 
 
-function toast(message){
+/* =========================================
+   NAVIGATION
+========================================= */
 
-  const box = $("toast");
+function show(id,btn){
 
-  box.textContent = message;
+document
+.querySelectorAll(".page")
+.forEach(x=>x.classList.remove("active"));
 
-  box.classList.remove("hidden");
+$(id).classList.add("active");
 
-  clearTimeout(window.toastTimer);
+document
+.querySelectorAll("nav button")
+.forEach(x=>x.classList.remove("active"));
 
-  window.toastTimer =
-    setTimeout(
-      () => box.classList.add("hidden"),
-      2800
-    );
-
-}
-
-
-function escapeHTML(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+btn.classList.add("active");
 
 }
 
 
-/* =========================================================
-   VOICE RESPONSE
-   ========================================================= */
-
-function speak(message){
-
-  if(
-    !$("voiceToggle") ||
-    !$("voiceToggle").checked
-  ){
-
-    return;
-
-  }
-
-
-  if(!("speechSynthesis" in window)){
-
-    return;
-
-  }
-
-
-  speechSynthesis.cancel();
-
-  const speech =
-    new SpeechSynthesisUtterance(message);
-
-  speech.lang = "en-IN";
-
-  speech.rate = .95;
-
-  speech.pitch = 1;
-
-  speechSynthesis.speak(speech);
-
-}
-
-
-function respond(message){
-
-  $("chat").textContent = message;
-
-  speak(message);
-
-  toast(message);
-
-}
-
-
-/* =========================================================
-   ACTIVITY LOG
-   ========================================================= */
-
-function logEvent(message){
-
-  data.events.unshift({
-
-    message:message,
-    time:now()
-
-  });
-
-
-  data.events =
-    data.events.slice(0,40);
-
-
-  saveData();
-
-  render();
-
-}
-
-
-/* =========================================================
-   PAGE NAVIGATION
-   ========================================================= */
-
-function showPage(page,button){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(
-      p => p.classList.remove("active")
-    );
-
-
-  $(page).classList.add("active");
-
-
-  document
-    .querySelectorAll("nav button")
-    .forEach(
-      b => b.classList.remove("active")
-    );
-
-
-  button.classList.add("active");
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* =========================================================
-   SOS ENGINE
-   ========================================================= */
-
-function startSOS(){
-
-  if(emergencyActive){
-
-    return;
-
-  }
-
-
-  emergencyActive = true;
-
-  countdownValue = 10;
-
-
-  $("countdown").textContent =
-    countdownValue;
-
-
-  $("cancelSOS")
-    .classList
-    .remove("hidden");
-
-
-  $("sosTitle").textContent =
-    "SOS COUNTDOWN";
-
-
-  $("sosState").textContent =
-    "Emergency countdown active — cancel if this is a test.";
-
-
-  $("systemStatus").textContent =
-    "EMERGENCY";
-
-
-  $("safetyStatus").textContent =
-    "ALERT";
-
-
-  $("safetyMode").textContent =
-    "ALERT";
-
-
-  $("safetyMessage").textContent =
-    "Emergency countdown is active.";
-
-
-  logEvent(
-    "SOS countdown started"
-  );
-
-
-  vibrate([250,100,250]);
-
-
-  respond(
-    "Emergency countdown started. You have 10 seconds to cancel if this is a false alarm."
-  );
-
-
-  clearInterval(countdownTimer);
-
-
-  countdownTimer =
-    setInterval(() => {
-
-      countdownValue--;
-
-      $("countdown").textContent =
-        countdownValue;
-
-
-      vibrate([60]);
-
-
-      if(countdownValue <= 0){
-
-        clearInterval(countdownTimer);
-
-        confirmSOS();
-
-      }
-
-    },1000);
-
-}
-
-
-function confirmSOS(){
-
-  $("countdown").textContent =
-    "SOS";
-
-
-  $("sosState").textContent =
-    "SOS event confirmed. This website prototype does not automatically contact emergency services.";
-
-
-  logEvent(
-    "SOS event confirmed — prototype only"
-  );
-
-
-  respond(
-    "SOS event confirmed. Your emergency event has been recorded. This web prototype does not automatically contact emergency services."
-  );
-
-}
-
-
-function cancelEmergency(){
-
-  clearInterval(countdownTimer);
-
-  countdownTimer = null;
-
-  emergencyActive = false;
-
-
-  $("countdown").textContent =
-    "";
-
-
-  $("cancelSOS")
-    .classList
-    .add("hidden");
-
-
-  $("sosTitle").textContent =
-    "Need help?";
-
-
-  $("sosState").textContent =
-    "Emergency system ready";
-
-
-  $("systemStatus").textContent =
-    "READY";
-
-
-  $("safetyStatus").textContent =
-    "READY";
-
-
-  $("safetyMode").textContent =
-    "READY";
-
-
-  $("safetyMessage").textContent =
-    "No emergency is active.";
-
-
-  logEvent(
-    "Emergency cancelled — user safe"
-  );
-
-
-  respond(
-    "Emergency cancelled. I'm glad you're safe."
-  );
-
-}
-
-
-function testFall(){
-
-  logEvent(
-    "Fall detection test triggered"
-  );
-
-
-  respond(
-    "Fall detection test triggered. This is a software test and does not claim that a real fall was detected."
-  );
-
-
-  setTimeout(
-    () => startSOS(),
-    500
-  );
-
-}
-
-
-/* =========================================================
+/* =========================================
    LOCATION
-   ========================================================= */
+========================================= */
 
 function getLocation(){
 
-  if(!navigator.geolocation){
+if(!navigator.geolocation){
 
-    respond(
-      "Your browser does not provide location access."
-    );
+say("Location is not available in this browser.");
 
-    return;
+return;
 
-  }
+}
 
+say(L().loc);
 
-  $("locationStatus").textContent =
-    "REQUESTING";
+$("locState").textContent =
+"Requesting live location…";
 
+navigator.geolocation.getCurrentPosition(
 
-  $("locationHeading").textContent =
-    "Requesting location…";
+p=>{
 
+currentLat =
+p.coords.latitude;
 
-  $("locationDescription").textContent =
-    "Please allow location access when your browser asks.";
+currentLon =
+p.coords.longitude;
 
+$("lat").textContent =
+currentLat.toFixed(6);
 
-  navigator.geolocation.getCurrentPosition(
+$("lon").textContent =
+currentLon.toFixed(6);
 
-    position => {
+$("accuracy").textContent =
+"Accuracy: " +
+Math.round(p.coords.accuracy) +
+" m · " +
+new Date().toLocaleTimeString();
 
-      currentLatitude =
-        position.coords.latitude;
+$("locMini").textContent =
+"ON";
 
-      currentLongitude =
-        position.coords.longitude;
+$("locState").textContent =
+"Live location available";
 
-      currentAccuracy =
-        position.coords.accuracy;
+$("locDot").className =
+"dot";
 
+},
 
-      $("locationStatus").textContent =
-        "ON";
+e=>{
 
+$("locState").textContent =
+"Location permission unavailable";
 
-      $("locationMeta").textContent =
-        "±" +
-        Math.round(currentAccuracy) +
-        " m";
+say(
+"I could not access your location. Please allow location permission in the browser."
+);
 
+},
 
-      $("locationHeading").textContent =
-        "Location available";
+{
+enableHighAccuracy:true,
+timeout:10000,
+maximumAge:10000
+}
 
-
-      $("locationDescription").textContent =
-        "Your phone supplied the current GPS coordinates.";
-
-
-      $("latitude").textContent =
-        currentLatitude.toFixed(6);
-
-
-      $("longitude").textContent =
-        currentLongitude.toFixed(6);
-
-
-      $("accuracy").textContent =
-        "±" +
-        Math.round(currentAccuracy) +
-        " m";
-
-
-      $("locationTime").textContent =
-        now();
-
-
-      $("locationBox").innerHTML =
-        "📍<br><br>" +
-        "<b>Current location ready</b><br>" +
-        "<span class='muted'>" +
-        currentLatitude.toFixed(5) +
-        ", " +
-        currentLongitude.toFixed(5) +
-        "</span>";
-
-
-      logEvent(
-        "Phone location updated"
-      );
-
-
-      respond(
-        "I have your current phone location. The reported accuracy is about " +
-        Math.round(currentAccuracy) +
-        " meters."
-      );
-
-    },
-
-    error => {
-
-      $("locationStatus").textContent =
-        "BLOCKED";
-
-
-      $("locationHeading").textContent =
-        "Location unavailable";
-
-
-      $("locationDescription").textContent =
-        "Please check your browser's location permission.";
-
-
-      respond(
-        "I couldn't access your location. Please allow location permission and try again."
-      );
-
-    },
-
-    {
-      enableHighAccuracy:true,
-      timeout:10000,
-      maximumAge:0
-    }
-
-  );
+);
 
 }
 
 
 function openMap(){
 
-  if(
-    currentLatitude === null ||
-    currentLongitude === null
-  ){
+if(currentLat === null){
 
-    respond(
-      "I don't have your location yet. Say 'where am I' or press Get my location first."
-    );
+getLocation();
 
-    return;
+return;
 
-  }
+}
 
-
-  const mapURL =
-    "https://www.google.com/maps?q=" +
-    currentLatitude +
-    "," +
-    currentLongitude;
-
-
-  window.open(
-    mapURL,
-    "_blank"
-  );
-
-
-  logEvent(
-    "Google Maps opened"
-  );
+window.open(
+`https://www.google.com/maps?q=${currentLat},${currentLon}`,
+"_blank"
+);
 
 }
 
 
-/* =========================================================
+/* =========================================
+   SOS
+========================================= */
+
+function startSOS(){
+
+if(emergency)return;
+
+emergency = true;
+
+countdown = 10;
+
+$("count").textContent =
+countdown;
+
+$("count").classList.remove("hide");
+
+$("sosBtn").classList.add("hide");
+
+$("safeBtn").classList.remove("hide");
+
+$("sosHint").textContent =
+"Emergency mode is preparing.";
+
+$("safeDot").className =
+"dot dangerDot";
+
+$("safeText").textContent =
+"EMERGENCY MODE";
+
+$("globalStatus").textContent =
+"● EMERGENCY";
+
+addEvent(
+"SOS countdown started"
+);
+
+say(
+"Emergency mode started. I'm giving you 10 seconds to cancel if this was accidental."
+);
+
+getLocation();
+
+timer =
+setInterval(()=>{
+
+countdown--;
+
+$("count").textContent =
+countdown;
+
+if(countdown <= 0){
+
+clearInterval(timer);
+
+$("sosHint").textContent =
+"SOS READY — prototype emergency workflow reached.";
+
+addEvent(
+"SOS READY — prototype workflow"
+);
+
+say(
+"SOS is ready. This website does not automatically call emergency services or contacts."
+);
+
+toast(
+"SOS workflow reached — prototype only."
+);
+
+}
+
+},1000);
+
+}
+
+
+function cancelSOS(){
+
+if(timer)
+clearInterval(timer);
+
+emergency = false;
+
+$("count").classList.add("hide");
+
+$("sosBtn").classList.remove("hide");
+
+$("safeBtn").classList.add("hide");
+
+$("sosHint").textContent =
+"Press only when you need emergency help.";
+
+$("safeDot").className =
+"dot";
+
+$("safeText").textContent =
+"You appear safe";
+
+$("globalStatus").textContent =
+"● SYSTEM READY";
+
+addEvent(
+"Emergency cancelled — user safe"
+);
+
+say(L().cancel);
+
+}
+
+
+/* =========================================
    BATTERY
-   ========================================================= */
+========================================= */
 
-async function getBatteryInfo(){
+function batteryInit(){
 
-  if(!navigator.getBattery){
+if(!navigator.getBattery)return;
 
-    $("battery").textContent =
-      "N/A";
+navigator.getBattery()
+.then(b=>{
 
+const update = ()=>{
 
-    return (
-      "This browser does not provide battery information."
-    );
+$("battery").textContent =
+Math.round(b.level * 100) + "%";
 
-  }
+};
 
+update();
 
-  try{
-
-    const battery =
-      await navigator.getBattery();
-
-
-    const percentage =
-      Math.round(
-        battery.level * 100
-      );
-
-
-    $("battery").textContent =
-      percentage + "%";
-
-
-    return (
-      "Your phone battery is " +
-      percentage +
-      " percent" +
-      (
-        battery.charging
-        ? ", and the phone is charging."
-        : "."
-      )
-    );
-
-  }
-  catch(error){
-
-    $("battery").textContent =
-      "N/A";
-
-
-    return (
-      "I couldn't read the phone battery status."
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   SMART LOCAL RESQ AI
-   =========================================================
-
-   This is intentionally a local intent engine.
-
-   It understands many different phrases instead of
-   requiring one exact command.
-   ========================================================= */
-
-function processCommand(input){
-
-  const original =
-    input.trim();
-
-
-  const text =
-    original
-      .toLowerCase()
-      .replace(/[?!.,]/g," ")
-      .replace(/\s+/g," ")
-      .trim();
-
-
-  if(!text){
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     EMERGENCY / SOS
-     --------------------------------------------- */
-
-  const emergencyWords = [
-
-    "sos",
-    "emergency",
-    "danger",
-    "help me",
-    "i need help",
-    "please help",
-    "send help",
-    "i need assistance",
-    "i am in danger",
-    "i'm in danger",
-    "something is wrong",
-    "something happened",
-    "activate emergency",
-    "start emergency",
-    "emergency mode",
-    "emergency alert",
-    "send an emergency alert",
-    "call for help",
-    "i feel unsafe",
-    "i don't feel safe",
-    "not safe",
-    "i'm not safe",
-    "im not safe"
-  ];
-
-
-  if(
-    emergencyWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    startSOS();
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     CANCEL / SAFE
-     --------------------------------------------- */
-
-  const safeWords = [
-
-    "i am safe",
-    "i'm safe",
-    "im safe",
-    "i am okay",
-    "i'm okay",
-    "im okay",
-    "i am fine",
-    "i'm fine",
-    "im fine",
-    "everything is fine",
-    "everything is okay",
-    "cancel sos",
-    "cancel emergency",
-    "cancel the emergency",
-    "stop emergency",
-    "stop the emergency",
-    "stop sos",
-    "cancel alert",
-    "false alarm",
-    "no help needed"
-  ];
-
-
-  if(
-    safeWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    cancelEmergency();
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     LOCATION
-     --------------------------------------------- */
-
-  const locationWords = [
-
-    "where am i",
-    "where i am",
-    "my location",
-    "my current location",
-    "current location",
-    "check my location",
-    "show my location",
-    "show me my location",
-    "find my location",
-    "get my location",
-    "track my location",
-    "locate me",
-    "where am i right now",
-    "what is my location",
-    "whats my location",
-    "where is my phone"
-  ];
-
-
-  if(
-    locationWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    getLocation();
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     MAP
-     --------------------------------------------- */
-
-  const mapWords = [
-
-    "open map",
-    "open maps",
-    "open google maps",
-    "show map",
-    "show maps",
-    "show me the map",
-    "take me to the map",
-    "show my location on map",
-    "open my location on map"
-  ];
-
-
-  if(
-    mapWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    openMap();
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     BATTERY
-     --------------------------------------------- */
-
-  const batteryWords = [
-
-    "battery",
-    "battery level",
-    "phone battery",
-    "how much battery",
-    "how much charge",
-    "phone charge",
-    "is my phone charging",
-    "am i charging",
-    "power level"
-  ];
-
-
-  if(
-    batteryWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    getBatteryInfo()
-      .then(
-        result => respond(result)
-      );
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     STATUS
-     --------------------------------------------- */
-
-  const statusWords = [
-
-    "status",
-    "safety status",
-    "my status",
-    "am i safe",
-    "is everything okay",
-    "is everything alright",
-    "what is my safety status",
-    "check safety",
-    "check my safety",
-    "are we safe",
-    "tell me my status"
-  ];
-
-
-  if(
-    statusWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    if(emergencyActive){
-
-      respond(
-        "Your RESQ emergency mode is currently active. If this is a false alarm, say 'I'm safe' or cancel the emergency."
-      );
-
-    }
-    else{
-
-      respond(
-        "RESQ ONE is ready. There is currently no active emergency."
-      );
-
-    }
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     FALL
-     --------------------------------------------- */
-
-  const fallWords = [
-
-    "i fell",
-    "i have fallen",
-    "i just fell",
-    "fall detected",
-    "detect a fall",
-    "i think i fell",
-    "i fell down",
-    "i've fallen",
-    "i have fallen down"
-  ];
-
-
-  if(
-    fallWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    respond(
-      "I understand. I'm starting the emergency fall-response test. Cancel it if you're safe."
-    );
-
-
-    setTimeout(
-      () => startSOS(),
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     VOICE OFF
-     --------------------------------------------- */
-
-  const muteWords = [
-
-    "mute",
-    "mute yourself",
-    "stop talking",
-    "stop speaking",
-    "voice off",
-    "turn voice off",
-    "silent mode",
-    "be quiet"
-  ];
-
-
-  if(
-    muteWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    $("voiceToggle").checked =
-      false;
-
-
-    $("chat").textContent =
-      "Voice replies are now off.";
-
-
-    toast(
-      "Voice replies OFF"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     VOICE ON
-     --------------------------------------------- */
-
-  const voiceWords = [
-
-    "voice on",
-    "turn voice on",
-    "speak to me",
-    "talk to me",
-    "enable voice",
-    "enable speaking",
-    "start talking"
-  ];
-
-
-  if(
-    voiceWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    $("voiceToggle").checked =
-      true;
-
-
-    respond(
-      "Voice replies are now on."
-    );
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     HELP / CAPABILITIES
-     --------------------------------------------- */
-
-  const helpWords = [
-
-    "help",
-    "what can you do",
-    "what can you help with",
-    "commands",
-    "available commands",
-    "capabilities",
-    "what are your commands",
-    "how can you help me",
-    "show commands"
-  ];
-
-
-  if(
-    helpWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    respond(
-      "I can start or cancel an emergency, check your location, open Google Maps, check your phone battery, report your safety status, respond to fall-test requests, and control voice replies. You can speak naturally."
-    );
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     GREETING
-     --------------------------------------------- */
-
-  const greetingWords = [
-
-    "hello",
-    "hi",
-    "hey",
-    "good morning",
-    "good afternoon",
-    "good evening",
-    "hey resq",
-    "hi resq"
-  ];
-
-
-  if(
-    greetingWords.some(
-      phrase => text.includes(phrase)
-    )
-  ){
-
-    respond(
-      "Hi. I'm RESQ AI. I'm ready to help with your safety system."
-    );
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     THANK YOU
-     --------------------------------------------- */
-
-  if(
-    text.includes("thank you") ||
-    text.includes("thanks") ||
-    text.includes("thank u")
-  ){
-
-    respond(
-      "You're welcome. I'm here whenever you need me."
-    );
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     WHO ARE YOU
-     --------------------------------------------- */
-
-  if(
-    text.includes("who are you") ||
-    text.includes("what are you")
-  ){
-
-    respond(
-      "I'm RESQ AI, the local safety assistant inside your RESQ ONE prototype."
-    );
-
-    return;
-
-  }
-
-
-  /* ---------------------------------------------
-     UNKNOWN
-     --------------------------------------------- */
-
-  respond(
-    "I understood your message, but I don't have an action for that request yet. Try asking 'What can you do?' and I'll show you the available safety functions."
-  );
-
-}
-
-
-/* =========================================================
-   TEXT INPUT
-   ========================================================= */
-
-function sendCommand(){
-
-  const input =
-    $("command").value.trim();
-
-
-  if(!input){
-
-    return;
-
-  }
-
-
-  $("command").value = "";
-
-
-  processCommand(input);
-
-}
-
-
-$("command").addEventListener(
-  "keydown",
-  event => {
-
-    if(event.key === "Enter"){
-
-      sendCommand();
-
-    }
-
-  }
+b.addEventListener(
+"levelchange",
+update
 );
 
+});
 
-/* =========================================================
-   VOICE INPUT
-   ========================================================= */
-
-$("mic").addEventListener(
-  "click",
-  () => {
-
-    const Recognition =
-      window.SpeechRecognition ||
-      window.webkitSpeechRecognition;
+}
 
 
-    if(!Recognition){
+/* =========================================
+   AI INTENT ENGINE
+========================================= */
 
-      respond(
-        "Voice recognition is not supported by this browser. You can type your request instead."
-      );
+function normalize(s){
 
-      return;
+return s
+.toLowerCase()
+.replace(/[.,!?]/g," ")
+.replace(/\s+/g," ")
+.trim();
 
-    }
-
-
-    const recognition =
-      new Recognition();
-
-
-    recognition.lang =
-      "en-IN";
+}
 
 
-    recognition.continuous =
-      false;
+function process(raw){
+
+const t =
+normalize(raw);
 
 
-    recognition.interimResults =
-      false;
+/* EMERGENCY */
+
+const emergencyWords = [
+
+"sos",
+"emergency",
+"help me",
+"need help",
+"i need help",
+"danger",
+"save me",
+"trouble",
+"hurt",
+"unsafe",
+"please help",
+"help"
+
+];
 
 
-    $("mic")
-      .classList
-      .add("listening");
+/* CANCEL */
+
+const cancelWords = [
+
+"i am safe",
+"im safe",
+"i m safe",
+"i am okay",
+"i m okay",
+"i am ok",
+"cancel emergency",
+"cancel sos",
+"stop emergency",
+"safe now",
+"i'm safe"
+
+];
 
 
-    $("chat").textContent =
-      "Listening…";
+/* LOCATION */
+
+const locationWords = [
+
+"where am i",
+"my location",
+"check my location",
+"live location",
+"current location",
+"location please",
+"meri location",
+"నా లొకేషన్",
+"నా స్థానం"
+
+];
 
 
-    recognition.onresult =
-      event => {
+/* HEALTH */
 
-        const transcript =
-          event
-            .results[0][0]
-            .transcript;
+const healthWords = [
 
+"health",
+"health report",
+"heart rate",
+"wellness",
+"my health",
+"check my health",
+"fitness",
+"health status",
+"health summary"
 
-        $("command").value =
-          transcript;
-
-
-        processCommand(
-          transcript
-        );
-
-      };
+];
 
 
-    recognition.onerror =
-      () => {
+/* BATTERY */
 
-        respond(
-          "I couldn't hear that. Please try again or type your request."
-        );
+const batteryWords = [
 
-      };
+"battery",
+"charge",
+"phone charge",
+"battery level"
 
-
-    recognition.onend =
-      () => {
-
-        $("mic")
-          .classList
-          .remove("listening");
-
-      };
+];
 
 
-    recognition.start();
+/* MAP */
 
-  }
+const mapWords = [
+
+"open map",
+"open maps",
+"google maps",
+"show map",
+"show maps"
+
+];
+
+
+/* CANCEL FIRST */
+
+if(
+cancelWords.some(
+x=>t.includes(normalize(x))
+)
+){
+
+return cancelSOS();
+
+}
+
+
+/* EMERGENCY */
+
+if(
+emergencyWords.some(
+x=>t.includes(normalize(x))
+)
+){
+
+return startSOS();
+
+}
+
+
+/* LOCATION */
+
+if(
+locationWords.some(
+x=>t.includes(normalize(x))
+)
+){
+
+show(
+"location",
+document.querySelectorAll("nav button")[3]
 );
 
-
-/* =========================================================
-   PROFILE
-   ========================================================= */
-
-function saveProfile(){
-
-  data.profile.name =
-    $("profileName").value.trim();
-
-
-  data.profile.note =
-    $("profileNote").value.trim();
-
-
-  saveData();
-
-
-  toast(
-    "Profile saved"
-  );
+return getLocation();
 
 }
 
 
-/* =========================================================
-   CONTACTS
-   ========================================================= */
+/* HEALTH */
 
-function addContact(){
+if(
+healthWords.some(
+x=>t.includes(normalize(x))
+)
+){
 
-  const name =
-    $("contactName").value.trim();
+show(
+"health",
+document.querySelectorAll("nav button")[1]
+);
 
-
-  const phone =
-    $("contactPhone").value.trim();
-
-
-  const relation =
-    $("contactRelation").value;
-
-
-  if(!name || !phone){
-
-    toast(
-      "Enter a contact name and phone number."
-    );
-
-    return;
-
-  }
-
-
-  data.contacts.push({
-
-    name:name,
-    phone:phone,
-    relation:relation
-
-  });
-
-
-  $("contactName").value =
-    "";
-
-  $("contactPhone").value =
-    "";
-
-
-  saveData();
-
-
-  toast(
-    "Emergency contact added"
-  );
+return say(L().health);
 
 }
 
 
-function removeContact(index){
+/* BATTERY */
 
-  data.contacts.splice(
-    index,
-    1
-  );
+if(
+batteryWords.some(
+x=>t.includes(x)
+)
+){
 
-
-  saveData();
-
-
-  toast(
-    "Contact removed"
-  );
-
-}
-
-
-/* =========================================================
-   ACTIVITY
-   ========================================================= */
-
-function clearEvents(){
-
-  data.events = [];
-
-
-  saveData();
-
-
-  toast(
-    "Activity cleared"
-  );
+return say(
+L().battery +
+" " +
+(
+$("battery").textContent ||
+"is currently unavailable"
+) +
+"."
+);
 
 }
 
 
-/* =========================================================
-   RENDER
-   ========================================================= */
+/* MAP */
 
-function render(){
+if(
+mapWords.some(
+x=>t.includes(normalize(x))
+)
+){
 
-  /* EVENTS */
-
-  if(data.events.length){
-
-    $("events").innerHTML =
-      data.events
-        .map(
-          event => `
-            <div class="event">
-              <b>${escapeHTML(event.message)}</b>
-              <span>${escapeHTML(event.time)}</span>
-            </div>
-          `
-        )
-        .join("");
-
-  }
-  else{
-
-    $("events").innerHTML =
-      '<p class="muted">No safety events yet.</p>';
-
-  }
-
-
-  /* CONTACTS */
-
-  $("contactCount").textContent =
-    data.contacts.length;
-
-
-  if(data.contacts.length){
-
-    $("contacts").innerHTML =
-      data.contacts
-        .map(
-          (contact,index) => `
-
-            <div class="event">
-
-              <b>
-                ${escapeHTML(contact.name)}
-                ·
-                ${escapeHTML(contact.relation)}
-              </b>
-
-              <span>
-                ${escapeHTML(contact.phone)}
-
-                <button
-                  class="secondary"
-                  style="float:right;padding:5px 9px"
-                  onclick="removeContact(${index})"
-                >
-                  Remove
-                </button>
-
-              </span>
-
-            </div>
-
-          `
-        )
-        .join("");
-
-  }
-  else{
-
-    $("contacts").innerHTML =
-      '<p class="muted">No emergency contacts saved.</p>';
-
-  }
-
-
-  /* PROFILE */
-
-  $("profileName").value =
-    data.profile.name || "";
-
-
-  $("profileNote").value =
-    data.profile.note || "";
+return openMap();
 
 }
 
 
-/* =========================================================
+/* STATUS */
+
+if(
+t.includes("safe") ||
+t.includes("status") ||
+t.includes("am i okay") ||
+t.includes("am i safe")
+){
+
+return say(L().ok);
+
+}
+
+
+/* CAPABILITIES */
+
+if(
+t.includes("what can you do") ||
+t === "help"
+){
+
+return say(L().unknown);
+
+}
+
+
+/* GREETINGS */
+
+if(
+t.match(
+/^(hi|hello|hey|namaste|namaskaram|హాయ్|नमस्ते)$/
+)
+){
+
+return say(
+"Hello. RESQ AI is ready. Tell me what you need."
+);
+
+}
+
+
+/* FALL */
+
+if(
+t.includes("fall") ||
+t.includes("fell down") ||
+t.includes("i fell")
+){
+
+return startSOS();
+
+}
+
+
+/* UNKNOWN */
+
+return say(L().unknown);
+
+}
+
+
+/* =========================================
+   TEXT COMMAND
+========================================= */
+
+function typed(){
+
+const value =
+$("cmd").value.trim();
+
+if(!value)return;
+
+process(value);
+
+$("cmd").value = "";
+
+}
+
+
+/* =========================================
+   SPEECH RECOGNITION
+========================================= */
+
+function setupRecognition(){
+
+const SR =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
+
+if(!SR){
+
+$("listenState").textContent =
+"Voice recognition unavailable in this browser";
+
+return;
+
+}
+
+recognition =
+new SR();
+
+recognition.lang =
+$("lang").value;
+
+recognition.continuous =
+true;
+
+recognition.interimResults =
+false;
+
+
+recognition.onstart = ()=>{
+
+$("listenState").textContent =
+"Listening automatically…";
+
+$("aiOrb").classList.add(
+"aiListening"
+);
+
+};
+
+
+recognition.onresult = e=>{
+
+const result =
+e.results[
+e.results.length-1
+][0].transcript;
+
+$("listenState").textContent =
+"I heard: " + result;
+
+process(result);
+
+};
+
+
+recognition.onerror = e=>{
+
+$("listenState").textContent =
+"Listening paused — " +
+e.error;
+
+$("aiOrb").classList.remove(
+"aiListening"
+);
+
+};
+
+
+recognition.onend = ()=>{
+
+$("aiOrb").classList.remove(
+"aiListening"
+);
+
+if(autoListen){
+
+setTimeout(()=>{
+
+try{
+recognition.start();
+}catch(e){}
+
+},400);
+
+}
+
+};
+
+}
+
+
+/* =========================================
+   AUTO LISTEN
+========================================= */
+
+function toggleAuto(){
+
+autoListen =
+!autoListen;
+
+$("autoSwitch")
+.classList.toggle(
+"on",
+autoListen
+);
+
+if(!recognition)
+setupRecognition();
+
+if(autoListen){
+
+try{
+recognition.start();
+}catch(e){}
+
+toast(
+"Automatic listening enabled while this page is active."
+);
+
+}else{
+
+try{
+recognition.stop();
+}catch(e){}
+
+$("listenState").textContent =
+"Automatic assistant ready";
+
+}
+
+}
+
+
+/* =========================================
+   VOICE
+========================================= */
+
+function toggleVoice(){
+
+voice =
+!voice;
+
+$("voiceSwitch")
+.classList.toggle(
+"on",
+voice
+);
+
+if(!voice)
+speechSynthesis.cancel();
+
+toast(
+voice
+? "Voice responses ON"
+: "Voice responses OFF"
+);
+
+}
+
+
+/* =========================================
+   PROACTIVE AI
+========================================= */
+
+function togglePro(){
+
+proactive =
+!proactive;
+
+$("proSwitch")
+.classList.toggle(
+"on",
+proactive
+);
+
+}
+
+
+/* =========================================
+   LANGUAGE
+========================================= */
+
+function changeLanguage(){
+
+if(recognition)
+recognition.lang =
+$("lang").value;
+
+say(L().ok);
+
+}
+
+
+/* =========================================
+   HEALTH REPORT
+========================================= */
+
+function generateReport(){
+
+const text =
+
+`RESQ ONE HEALTH REPORT — ${new Date().toLocaleString()}
+
+Wellness score:
+${$("well").textContent}/100 (prototype)
+
+Heart rate:
+${$("hr").textContent} BPM (prototype)
+
+Activity:
+${$("activity").textContent} steps (prototype)
+
+Safety events recorded:
+${events.length}
+
+Location available:
+${currentLat !== null ? "Yes" : "No"}
+
+AI summary:
+Current prototype readings appear stable.
+
+This is not a medical diagnosis and should not be used as a substitute for professional medical care.`;
+
+$("reportText").textContent =
+text.replace(/\n/g," ");
+
+toast(
+"Health report generated. Use Print / Save PDF to export it."
+);
+
+}
+
+
+/* =========================================
+   PROTOTYPE HEALTH SENSOR SIMULATION
+========================================= */
+
+function simulateHealth(){
+
+let hr =
+68 +
+Math.floor(
+Math.random()*11
+);
+
+$("hr").textContent =
+hr;
+
+$("well").textContent =
+82 +
+Math.floor(
+Math.random()*11
+);
+
+$("activity").textContent =
+(
+6200 +
+Math.floor(
+Math.random()*800
+)
+).toLocaleString();
+
+
+if(
+proactive &&
+hr >= 76
+){
+
+$("healthInsight").textContent =
+"RESQ noticed a small change in the prototype heart-rate reading. I'll keep monitoring the available data.";
+
+}
+
+}
+
+
+/* =========================================
+   CHART
+========================================= */
+
+function initChart(){
+
+const values =
+[72,75,70,78,74,71,73];
+
+$("chart").innerHTML =
+values.map(v=>
+
+`<div
+class="barCol"
+style="height:${v+25}px">
+</div>`
+
+).join("");
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+$("cmd").addEventListener(
+"keydown",
+e=>{
+
+if(e.key === "Enter")
+typed();
+
+});
+
+
+/* =========================================
    INITIALIZATION
-   ========================================================= */
+========================================= */
 
-render();
+batteryInit();
+
+renderEvents();
+
+initChart();
+
+setupRecognition();
 
 
-getBatteryInfo();
+/*
+   Prototype health updates.
+   Replace with real sensor data
+   when hardware/Android bridge
+   is connected.
+*/
+
+setInterval(
+simulateHealth,
+12000
+);
 
 
-/* Battery changes */
+/*
+   Stop recognition when leaving
+   the page.
+*/
 
-if(navigator.getBattery){
+document.addEventListener(
+"visibilitychange",
+()=>{
 
-  navigator
-    .getBattery()
-    .then(
-      battery => {
+if(
+document.hidden &&
+autoListen &&
+recognition
+){
 
-        battery.addEventListener(
-          "levelchange",
-          getBatteryInfo
-        );
-
-        battery.addEventListener(
-          "chargingchange",
-          getBatteryInfo
-        );
-
-      }
-    );
+try{
+recognition.stop();
+}catch(e){}
 
 }
+
+});
 
 </script>
 
