@@ -4,420 +4,296 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071019">
-<title>RESQ ONE — Personal Safety & Health</title>
+
+<title>RESQ ONE — Safety Companion</title>
 
 <style>
 :root{
   --bg:#071019;
-  --panel:#0d1823;
-  --panel2:#111f2d;
-  --line:#203342;
-  --text:#eef7fb;
-  --muted:#8ea4b2;
-  --good:#55e39b;
-  --warn:#ffd166;
-  --danger:#ff5f6d;
-  --accent:#63c7ff;
-  --radius:20px;
+  --card:#0d1a24;
+  --card2:#11232f;
+  --text:#eef7fa;
+  --muted:#8ea7b2;
+  --line:#20343f;
+  --accent:#5ee7c5;
+  --danger:#ff6577;
+  --warning:#ffd166;
 }
 
 *{box-sizing:border-box}
 
 body{
   margin:0;
-  background:
-    radial-gradient(circle at 50% -10%,#15354a 0,#071019 42%);
+  background:linear-gradient(180deg,#061018,#09151e);
   color:var(--text);
-  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-button,input,select{font:inherit}
+button,input,select{
+  font:inherit;
+}
 
 button{
-  border:0;
-  color:var(--text);
   cursor:pointer;
+  color:var(--text);
 }
 
 .app{
-  max-width:560px;
+  max-width:760px;
   margin:auto;
   min-height:100vh;
-  padding-bottom:88px;
+  padding-bottom:90px;
 }
 
-header{
-  padding:22px 18px 10px;
-  position:sticky;
-  top:0;
-  background:rgba(7,16,25,.9);
-  backdrop-filter:blur(15px);
-  z-index:5;
-  border-bottom:1px solid rgba(255,255,255,.04);
-}
-
-.brand{
+.top{
+  padding:18px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-.brand b{
-  font-size:21px;
-  letter-spacing:.5px;
+.brand{
+  font-weight:800;
+  letter-spacing:.08em;
 }
 
 .pill{
-  font-size:11px;
   padding:7px 10px;
-  border-radius:20px;
-  background:#102431;
-  color:var(--good);
-  border:1px solid #1c4050;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--muted);
+  font-size:12px;
 }
 
-main{padding:14px 16px}
+.page{
+  display:none;
+  padding:8px 16px;
+}
 
-.page{display:none}
-.page.active{display:block}
+.page.active{
+  display:block;
+}
 
 .hero{
-  padding:19px;
+  background:
+    radial-gradient(circle at 50% 10%,#163a43,#0b1b25 58%);
   border:1px solid var(--line);
-  background:linear-gradient(145deg,#102330,#0b151e);
-  border-radius:var(--radius);
-  margin-bottom:13px;
+  border-radius:26px;
+  padding:26px 20px;
+  text-align:center;
 }
 
-h1{
-  font-size:27px;
-  margin:4px 0 7px;
+.tag{
+  font-size:11px;
+  color:var(--accent);
+  letter-spacing:.08em;
+  font-weight:700;
 }
 
-.sub{
+.status{
+  font-size:28px;
+  font-weight:800;
+  margin:8px 0;
+}
+
+.sub,
+.muted{
   color:var(--muted);
-  font-size:14px;
-  line-height:1.45;
-}
-
-.ai{
-  margin-top:16px;
-  padding:15px;
-  border-radius:18px;
-  background:#0b141d;
-  border:1px solid #203a4b;
-}
-
-.aiTop{
-  display:flex;
-  gap:11px;
-  align-items:center;
 }
 
 .orb{
-  width:42px;
-  height:42px;
+  width:104px;
+  height:104px;
+  margin:22px auto;
   border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:#15374b;
-  box-shadow:0 0 25px rgba(99,199,255,.18);
+  background:
+    radial-gradient(
+      circle,
+      #7ff6d5 0 8%,
+      #238f82 10% 30%,
+      #102e35 55%,
+      #0b1b25 70%
+    );
+  box-shadow:
+    0 0 0 10px #123038,
+    0 0 45px #32cdb080;
 }
 
-.ai b{font-size:15px}
-
-.ai small{
-  display:block;
-  color:var(--muted);
-  margin-top:2px;
+.listening{
+  animation:pulse 1.3s infinite;
 }
 
-.aiMsg{
-  margin-top:13px;
-  padding:12px;
-  border-radius:13px;
-  background:#101e29;
-  font-size:14px;
-  line-height:1.4;
-}
-
-.row{
-  display:flex;
-  gap:9px;
-  margin-top:10px;
-}
-
-.input{
-  flex:1;
-  background:#0a131b;
-  border:1px solid var(--line);
-  color:var(--text);
-  padding:12px;
-  border-radius:13px;
-  outline:none;
-}
-
-.btn{
-  background:#163447;
-  padding:11px 14px;
-  border-radius:13px;
-}
-
-.btn.primary{background:#1c7da7}
-.btn.danger{background:#7e2630}
-
-.btn.ghost{
-  background:transparent;
-  border:1px solid var(--line);
+@keyframes pulse{
+  50%{
+    transform:scale(1.06);
+    box-shadow:
+      0 0 0 18px #123038,
+      0 0 70px #32cdb0aa;
+  }
 }
 
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:12px;
+  margin-top:14px;
 }
 
 .card{
-  background:var(--panel);
+  background:var(--card);
   border:1px solid var(--line);
   border-radius:18px;
-  padding:15px;
-  margin-bottom:10px;
-}
-
-.label{
-  font-size:12px;
-  color:var(--muted);
-}
-
-.value{
-  font-size:24px;
-  font-weight:700;
-  margin-top:5px;
-}
-
-.unit{
-  font-size:12px;
-  color:var(--muted);
-}
-
-.sectionTitle{
-  font-size:17px;
-  margin:19px 2px 10px;
-}
-
-.status{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.dot{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--good);
-}
-
-.dangerDot{background:var(--danger)}
-.warnDot{background:var(--warn)}
-
-.sosWrap{
-  text-align:center;
   padding:16px;
 }
 
-.sos{
-  width:170px;
-  height:170px;
-  border-radius:50%;
-  background:
-    radial-gradient(circle,#ff6672 0,#c62f3d 62%,#741f29 100%);
-  font-size:28px;
+.big{
+  font-size:21px;
   font-weight:800;
-  box-shadow:0 0 45px rgba(255,80,95,.22);
 }
 
-.count{
-  font-size:43px;
+.primary{
+  background:var(--accent);
+  color:#03231e;
   font-weight:800;
-  margin:12px;
+  border:0;
+  border-radius:14px;
+  padding:13px 16px;
 }
 
-.hide{display:none!important}
-
-.bar{
-  height:8px;
-  background:#162732;
-  border-radius:8px;
-  overflow:hidden;
+.danger{
+  background:var(--danger);
+  color:white;
+  font-weight:800;
+  border:0;
+  border-radius:14px;
+  padding:16px;
+  width:100%;
+  font-size:20px;
 }
 
-.bar i{
-  display:block;
-  height:100%;
-  width:0;
-  background:var(--good);
-}
-
-.chart{
-  height:135px;
-  display:flex;
-  align-items:end;
-  gap:5px;
-  padding-top:15px;
-}
-
-.barCol{
-  flex:1;
-  background:#22536a;
-  border-radius:5px 5px 2px 2px;
-  min-height:12px;
-}
-
-.event{
-  padding:11px 0;
-  border-bottom:1px solid #1b2a35;
-  font-size:13px;
-}
-
-.event:last-child{border:0}
-
-.time{
-  color:var(--muted);
-  font-size:11px;
-  display:block;
-  margin-top:3px;
-}
-
-.report{
-  background:#0b151e;
+.ghost{
+  background:#142632;
   border:1px solid var(--line);
-  border-radius:16px;
-  padding:15px;
-  line-height:1.55;
-  font-size:13px;
+  border-radius:12px;
+  padding:11px 14px;
 }
 
-nav{
+.row{
+  display:flex;
+  gap:9px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.chat{
+  min-height:170px;
+  max-height:330px;
+  overflow:auto;
+  margin-top:14px;
+}
+
+.msg{
+  padding:11px 13px;
+  border-radius:15px;
+  margin:8px 0;
+  max-width:88%;
+  white-space:pre-wrap;
+}
+
+.ai{
+  background:#132b32;
+}
+
+.me{
+  background:#183d38;
+  margin-left:auto;
+}
+
+.inputrow{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.inputrow input{
+  flex:1;
+  background:#0b151d;
+  border:1px solid var(--line);
+  color:var(--text);
+  padding:13px;
+  border-radius:13px;
+  outline:none;
+}
+
+.nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  margin:auto;
-  max-width:560px;
-  height:75px;
-  background:rgba(7,16,25,.96);
+  background:#08131bd9;
+  backdrop-filter:blur(15px);
   border-top:1px solid var(--line);
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
+  display:flex;
+  justify-content:center;
   z-index:10;
 }
 
-nav button{
-  background:transparent;
+.nav button{
+  background:none;
+  border:0;
+  padding:12px 11px;
   color:var(--muted);
-  font-size:11px;
+  font-size:12px;
 }
 
-nav button.active{color:var(--accent)}
-
-nav span{
-  display:block;
-  font-size:20px;
-  margin-bottom:3px;
+.nav button.active{
+  color:var(--accent);
 }
 
-.toast{
-  position:fixed;
-  left:16px;
-  right:16px;
-  bottom:88px;
-  max-width:528px;
-  margin:auto;
-  background:#142634;
-  border:1px solid #2d4c5d;
-  padding:13px 15px;
-  border-radius:14px;
-  display:none;
-  z-index:20;
-}
-
-.toast.show{display:block}
-
-.tag{
-  display:inline-block;
-  font-size:10px;
-  padding:4px 7px;
-  border-radius:7px;
-  background:#182934;
-  color:var(--warn);
-  margin-left:5px;
-}
-
-select{
-  width:100%;
-  background:#0a131b;
-  border:1px solid var(--line);
-  color:var(--text);
-  padding:12px;
-  border-radius:12px;
-}
-
-.check{
+.service{
   display:flex;
   justify-content:space-between;
+  gap:10px;
   align-items:center;
+  border-bottom:1px solid var(--line);
+  padding:14px 0;
+}
+
+.service:last-child{
+  border:0;
+}
+
+.metric{
+  display:flex;
+  justify-content:space-between;
   padding:12px 0;
-  border-bottom:1px solid #1b2a35;
+  border-bottom:1px solid var(--line);
 }
 
-.check:last-child{border:0}
-
-.switch{
-  width:43px;
-  height:24px;
-  border-radius:20px;
-  background:#263844;
-  position:relative;
+.metric:last-child{
+  border:0;
 }
 
-.switch:after{
-  content:"";
-  width:18px;
-  height:18px;
-  position:absolute;
-  top:3px;
-  left:3px;
-  border-radius:50%;
-  background:#8799a4;
-  transition:.2s;
-}
-
-.switch.on{background:#1d7897}
-
-.switch.on:after{
-  left:22px;
-  background:white;
+.notice{
+  border-left:3px solid var(--warning);
+  padding:10px 12px;
+  background:#1b2119;
+  border-radius:8px;
+  color:#e9dfbd;
+  margin-top:12px;
 }
 
 .small{
   font-size:12px;
-  color:var(--muted);
 }
 
-.aiListening{
-  animation:pulse 1.4s infinite;
-}
-
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(99,199,255,.5)}
-  70%{box-shadow:0 0 0 15px rgba(99,199,255,0)}
-  100%{box-shadow:0 0 0 0 rgba(99,199,255,0)}
-}
-
-@media(min-width:600px){
-  body{padding:0 10px}
+select{
+  margin-left:8px;
+  background:#10212b;
+  color:white;
+  border:1px solid var(--line);
+  padding:8px;
+  border-radius:8px;
 }
 </style>
 </head>
@@ -426,1627 +302,1557 @@ select{
 
 <div class="app">
 
-<header>
-  <div class="brand">
-    <b>RESQ ONE</b>
-    <span class="pill" id="globalStatus">● SYSTEM READY</span>
-  </div>
+<header class="top">
+  <div class="brand">RESQ ONE</div>
+  <div id="listenState" class="pill">AI offline</div>
 </header>
 
-<main>
 
 <!-- HOME -->
 
 <section id="home" class="page active">
 
-<div class="hero">
+  <div class="hero">
 
-<div class="status">
-<span class="dot" id="safeDot"></span>
-<span id="safeText">You appear safe</span>
-</div>
+    <div class="tag">
+      PERSONAL SAFETY COMPANION
+    </div>
 
-<h1>Your safety. Always within reach.</h1>
+    <div id="safeStatus" class="status">
+      YOU'RE SAFE
+    </div>
 
-<div class="sub">
-RESQ continuously monitors available device signals while this app is active.
-</div>
+    <div class="sub">
+      RESQ is ready to listen and help.
+    </div>
 
-<div class="ai">
+    <div id="orb" class="orb"></div>
 
-<div class="aiTop">
+    <div class="row" style="justify-content:center">
 
-<div class="orb" id="aiOrb">✦</div>
+      <button
+        class="primary"
+        onclick="toggleVoice()">
+        🎙 Start RESQ AI
+      </button>
 
-<div>
-<b>RESQ AI</b>
-<small id="listenState">Automatic assistant ready</small>
-</div>
+      <button
+        class="ghost"
+        onclick="startSOS()">
+        SOS
+      </button>
 
-</div>
+    </div>
 
-<div class="aiMsg" id="aiMsg">
-Hi. I'm RESQ AI. I can help with safety, health, location, emergency mode and reports.
-</div>
+  </div>
 
-<div class="row">
-<input
-class="input"
-id="cmd"
-placeholder="Ask RESQ anything…"
->
-<button class="btn primary" onclick="typed()">Send</button>
-</div>
 
-</div>
-</div>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card">
 
-<div class="card">
-<div class="label">Battery</div>
-<div class="value" id="battery">—</div>
-</div>
+      <div class="muted">
+        Location
+      </div>
 
-<div class="card">
-<div class="label">Location</div>
-<div class="value" id="locMini">OFF</div>
-</div>
+      <div id="locHome" class="big">
+        Checking…
+      </div>
 
-</div>
+    </div>
 
-<div class="sectionTitle">Today</div>
 
-<div class="grid">
+    <div class="card">
 
-<div class="card">
-<div class="label">Safety events</div>
-<div class="value" id="eventCount">0</div>
-</div>
+      <div class="muted">
+        Battery
+      </div>
 
-<div class="card">
-<div class="label">Wellness</div>
-<div class="value">Good</div>
-<div class="unit">Prototype estimate</div>
-</div>
+      <div id="batHome" class="big">
+        —
+      </div>
 
-</div>
+    </div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:12px">
+
+    <b>
+      Try saying
+    </b>
+
+    <p class="muted">
+
+      “Where am I?”
+
+      <br>
+
+      “Find the nearest hospital”
+
+      <br>
+
+      “I need an ambulance”
+
+      <br>
+
+      “I'm feeling dizzy”
+
+      <br>
+
+      “Start emergency”
+
+    </p>
+
+  </div>
 
 </section>
+
 
 
 <!-- HEALTH -->
 
 <section id="health" class="page">
 
-<h1>Health</h1>
-
-<div class="sub">
-Your personal health overview. Hardware-fed values will replace prototype readings when connected.
-</div>
-
-<div class="grid" style="margin-top:13px">
-
-<div class="card">
-<div class="label">Heart rate</div>
-<div class="value" id="hr">72</div>
-<div class="unit">BPM · prototype</div>
-</div>
-
-<div class="card">
-<div class="label">Wellness score</div>
-<div class="value" id="well">86</div>
-<div class="unit">/100 · prototype</div>
-</div>
-
-<div class="card">
-<div class="label">Activity</div>
-<div class="value" id="activity">6,420</div>
-<div class="unit">steps · prototype</div>
-</div>
-
-<div class="card">
-<div class="label">Rest</div>
-<div class="value">7h 18m</div>
-<div class="unit">prototype</div>
-</div>
-
-</div>
-
-<div class="sectionTitle">Heart-rate trend</div>
+<h2>
+  Health
+</h2>
 
 <div class="card">
 
-<div class="chart" id="chart"></div>
+  <div class="tag">
+    DEVICE / DEMO DATA
+  </div>
 
-<div class="small">
-Last 7 sample periods · prototype data
+  <div class="metric">
+    <span>Wellness</span>
+    <b id="wellness">Stable</b>
+  </div>
+
+  <div class="metric">
+    <span>Activity</span>
+    <b id="activity">Moderate</b>
+  </div>
+
+  <div class="metric">
+    <span>Rest</span>
+    <b id="rest">7h 18m</b>
+  </div>
+
+  <div class="metric">
+    <span>Heart rate</span>
+    <b>Connect PPG sensor</b>
+  </div>
+
 </div>
 
+
+<div class="card" style="margin-top:12px">
+
+  <b>
+    Health report
+  </b>
+
+  <p class="muted">
+    Create a printable RESQ health report.
+  </p>
+
+  <button
+    class="primary"
+    onclick="report()">
+    Generate report
+  </button>
+
 </div>
 
-<div class="sectionTitle">
-AI health insight
-</div>
 
-<div class="card" id="healthInsight">
-Your current prototype wellness profile looks stable. Keep regular movement, hydration and rest.
-</div>
+<div class="notice">
 
-<div class="sectionTitle">
-Health Reports
-</div>
-
-<div class="report">
-
-<b>Latest report</b>
-
-<p id="reportText">
-No clinical diagnosis is generated. This report summarizes prototype readings and safety events for testing.
-</p>
-
-<button class="btn primary" onclick="generateReport()">
-Generate health report
-</button>
-
-<button class="btn ghost" onclick="window.print()">
-Print / Save PDF
-</button>
+  Health values shown here are demonstration values until
+  a validated wearable/medical sensor is connected.
 
 </div>
 
 </section>
+
 
 
 <!-- SAFETY -->
 
 <section id="safety" class="page">
 
-<h1>Safety Center</h1>
-
-<div class="sub">
-Emergency protection and automatic safety responses.
-</div>
-
-<div class="card sosWrap">
-
-<div class="label">
-EMERGENCY CENTER
-</div>
-
-<div class="count hide" id="count">
-10
-</div>
-
-<button class="sos" id="sosBtn" onclick="startSOS()">
-SOS
-</button>
-
-<p class="small" id="sosHint">
-Press only when you need emergency help.
-</p>
-
-<button
-class="btn ghost hide"
-id="safeBtn"
-onclick="cancelSOS()"
->
-I'M SAFE / CANCEL
-</button>
-
-</div>
-
-<div class="grid">
+<h2>
+  Safety Center
+</h2>
 
 <div class="card">
 
-<div class="label">
-Fall monitoring
+  <div class="tag">
+    EMERGENCY CONTROL
+  </div>
+
+  <h3 id="safetyTitle">
+    Ready
+  </h3>
+
+  <p id="safetyText" class="muted">
+    If you need help, press SOS or tell RESQ.
+  </p>
+
+  <button
+    class="danger"
+    onclick="startSOS()">
+    START SOS
+  </button>
+
+  <button
+    class="ghost"
+    style="width:100%;margin-top:9px"
+    onclick="cancelSOS()">
+    I'M SAFE / CANCEL
+  </button>
+
 </div>
 
-<div class="status" style="margin-top:8px">
-<span class="dot"></span>
-<b id="fallStatus">Active</b>
-</div>
+
+<div class="card" style="margin-top:12px">
+
+  <b>
+    Safety activity
+  </b>
+
+  <div
+    id="events"
+    class="muted small">
+  </div>
 
 </div>
-
-<div class="card">
-
-<div class="label">
-Motion sensor
-</div>
-
-<div class="status" style="margin-top:8px">
-<span class="dot"></span>
-<b id="motionStatus">Ready</b>
-</div>
-
-</div>
-
-</div>
-
-<div class="sectionTitle">
-Safety activity
-</div>
-
-<div class="card" id="events"></div>
 
 </section>
 
 
-<!-- LOCATION -->
 
-<section id="location" class="page">
+<!-- NEARBY -->
 
-<h1>Location</h1>
+<section id="nearby" class="page">
 
-<div class="sub">
-Live device location requires your browser permission.
-</div>
-
-<div class="card">
-
-<div class="status">
-
-<span class="dot" id="locDot"></span>
-
-<b id="locState">
-Location not started
-</b>
-
-</div>
-
-<div style="margin-top:13px" class="grid">
-
-<div>
-<div class="label">Latitude</div>
-<div id="lat">—</div>
-</div>
-
-<div>
-<div class="label">Longitude</div>
-<div id="lon">—</div>
-</div>
-
-</div>
-
-<p class="small" id="accuracy">—</p>
-
-<div class="row">
-
-<button class="btn primary" onclick="getLocation()">
-Get live location
-</button>
-
-<button class="btn ghost" onclick="openMap()">
-Open Maps
-</button>
-
-</div>
-
-</div>
+<h2>
+  Nearby Help
+</h2>
 
 <div class="card">
 
-<b>Privacy</b>
+  <div class="muted">
+    Device location
+  </div>
 
-<p class="small">
-Location is used locally by this prototype unless you choose to share it.
-This website does not automatically contact emergency services.
-</p>
+  <div id="nearLoc">
+    Location not loaded
+  </div>
 
+  <div class="row" style="margin-top:10px">
+
+    <button
+      class="primary"
+      onclick="locate()">
+      Update location
+    </button>
+
+    <button
+      class="ghost"
+      onclick="mapsSearch('hospital')">
+      Hospitals
+    </button>
+
+  </div>
+
+</div>
+
+
+<div
+  id="services"
+  class="card"
+  style="margin-top:12px">
 </div>
 
 </section>
+
 
 
 <!-- AI -->
 
 <section id="ai" class="page">
 
-<h1>RESQ AI</h1>
+<h2>
+  RESQ AI
+</h2>
 
-<div class="sub">
-Hands-free assistance, multilingual commands and proactive safety guidance.
+<div class="hero" style="padding:18px">
+
+  <div id="aiState" class="tag">
+    VOICE ASSISTANT
+  </div>
+
+  <div
+    id="aiOrb"
+    class="orb"
+    style="width:80px;height:80px;margin:15px auto">
+  </div>
+
+  <button
+    class="primary"
+    onclick="toggleVoice()">
+    🎙 Toggle voice
+  </button>
+
 </div>
 
-<div class="card">
-
-<label class="label">
-Language
-</label>
-
-<select id="lang" onchange="changeLanguage()">
-
-<option value="en-IN">
-English
-</option>
-
-<option value="te-IN">
-తెలుగు (Telugu)
-</option>
-
-<option value="hi-IN">
-हिन्दी (Hindi)
-</option>
-
-<option value="ta-IN">
-தமிழ் (Tamil)
-</option>
-
-<option value="kn-IN">
-ಕನ್ನಡ (Kannada)
-</option>
-
-<option value="ml-IN">
-മലയാളം (Malayalam)
-</option>
-
-<option value="mr-IN">
-मराठी (Marathi)
-</option>
-
-<option value="bn-IN">
-বাংলা (Bengali)
-</option>
-
-</select>
-
-
-<div class="check">
-
-<span>
-Voice responses
-</span>
 
 <div
-class="switch on"
-id="voiceSwitch"
-onclick="toggleVoice()">
-</div>
-
+  id="chat"
+  class="chat card">
 </div>
 
 
-<div class="check">
+<div class="inputrow">
 
-<span>
-Automatic voice listening
-<span class="tag">
-while page is active
-</span>
-</span>
+  <input
+    id="command"
+    placeholder="Talk or type naturally…">
+
+  <button
+    class="primary"
+    onclick="sendText()">
+    Send
+  </button>
+
+</div>
+
 
 <div
-class="switch"
-id="autoSwitch"
-onclick="toggleAuto()">
-</div>
+  class="card"
+  style="margin-top:12px">
 
-</div>
+  <label>
 
+    Language
 
-<div class="check">
+    <select
+      id="lang"
+      onchange="setLanguage()">
 
-<span>
-Proactive safety messages
-</span>
+      <option value="en-IN">
+        English
+      </option>
 
-<div
-class="switch on"
-id="proSwitch"
-onclick="togglePro()">
-</div>
+      <option value="te-IN">
+        తెలుగు
+      </option>
 
-</div>
+      <option value="hi-IN">
+        हिन्दी
+      </option>
 
-</div>
+      <option value="ta-IN">
+        தமிழ்
+      </option>
 
+      <option value="kn-IN">
+        ಕನ್ನಡ
+      </option>
 
-<div class="sectionTitle">
-Try saying
-</div>
+      <option value="ml-IN">
+        മലയാളം
+      </option>
 
-<div class="card small">
+      <option value="mr-IN">
+        मराठी
+      </option>
 
-“RESQ, I need help”<br>
-“Where am I?”<br>
-“Check my health”<br>
-“Am I safe?”<br>
-“Start emergency mode”<br>
-“I'm safe now”<br>
-“What's my battery?”<br>
-“Open Maps”
+      <option value="bn-IN">
+        বাংলা
+      </option>
 
-</div>
+    </select>
 
+  </label>
 
-<div class="sectionTitle">
-Assistant
-</div>
-
-<div class="card" id="aiLog">
-RESQ AI is ready.
 </div>
 
 </section>
 
-</main>
 
 
 <!-- NAVIGATION -->
 
-<nav>
+<div class="nav">
 
-<button class="active" onclick="show('home',this)">
-<span>⌂</span>
-Home
+<button
+  onclick="show('home')"
+  data-p="home"
+  class="active">
+  ⌂<br>Home
 </button>
 
-<button onclick="show('health',this)">
-<span>♥</span>
-Health
+<button
+  onclick="show('health')"
+  data-p="health">
+  ♥<br>Health
 </button>
 
-<button onclick="show('safety',this)">
-<span>!</span>
-Safety
+<button
+  onclick="show('safety')"
+  data-p="safety">
+  🛡<br>Safety
 </button>
 
-<button onclick="show('location',this)">
-<span>⌖</span>
-Location
+<button
+  onclick="show('nearby')"
+  data-p="nearby">
+  ⌖<br>Nearby
 </button>
 
-<button onclick="show('ai',this)">
-<span>✦</span>
-AI
+<button
+  onclick="show('ai')"
+  data-p="ai">
+  ◉<br>AI
 </button>
 
-</nav>
-
-
-<div class="toast" id="toast"></div>
+</div>
 
 </div>
 
 
 <script>
 
-/* =========================================
-   RESQ ONE V3
-   CORE STATE
-========================================= */
+let lat = null;
+let lon = null;
+
+let voiceOn = false;
+let recognition = null;
+
+let count = 10;
+let timer = null;
+
 
 const $ = id => document.getElementById(id);
 
-let events =
-JSON.parse(localStorage.getItem("resq_events") || "[]");
-
-let emergency = false;
-let countdown = 10;
-let timer = null;
-
-let currentLat = null;
-let currentLon = null;
-
-let voice = true;
-let autoListen = false;
-let proactive = true;
-
-let recognition = null;
 
 
-/* =========================================
-   MULTILINGUAL RESPONSES
-========================================= */
+/* EVENTS */
 
-const langMap = {
+function log(event){
 
-"en-IN":{
-ok:"You appear safe.",
-help:"I'm here with you. If you are in danger, say 'I need help' or press SOS.",
-loc:"I'll check your live location.",
-cancel:"Emergency cancelled. I'm glad you are safe.",
-health:"Your current prototype wellness profile looks stable. Real health sensors can replace these readings when connected.",
-battery:"Your phone battery is",
-fall:"I detected a possible fall. Please tell me if you are okay.",
-unknown:"I can help with safety, health, location, battery, emergency mode and reports."
-},
+  let events =
+    JSON.parse(
+      localStorage.getItem("resq_events") || "[]"
+    );
 
-"te-IN":{
-ok:"మీరు సురక్షితంగా ఉన్నట్లు కనిపిస్తోంది.",
-help:"నేను మీతోనే ఉన్నాను. ప్రమాదంలో ఉంటే నాకు సహాయం కావాలి అని చెప్పండి లేదా SOS నొక్కండి.",
-loc:"మీ లైవ్ లొకేషన్‌ను చెక్ చేస్తున్నాను.",
-cancel:"ఎమర్జెన్సీ రద్దు చేయబడింది. మీరు సురక్షితంగా ఉన్నందుకు సంతోషంగా ఉంది.",
-health:"మీ ప్రోటోటైప్ వెల్‌నెస్ ప్రొఫైల్ స్థిరంగా ఉంది. నిజమైన సెన్సర్లు కనెక్ట్ అయినప్పుడు వాటి డేటా ఉపయోగించబడుతుంది.",
-battery:"మీ ఫోన్ బ్యాటరీ",
-fall:"సాధ్యమైన ఫాల్ గుర్తించబడింది. మీరు బాగున్నారా?",
-unknown:"సేఫ్టీ, హెల్త్, లొకేషన్, బ్యాటరీ, ఎమర్జెన్సీ మరియు రిపోర్ట్స్‌లో నేను సహాయం చేయగలను."
-},
+  events.unshift(
+    new Date().toLocaleString() +
+    ": " +
+    event
+  );
 
-"hi-IN":{
-ok:"आप सुरक्षित दिखाई दे रहे हैं।",
-help:"मैं आपके साथ हूँ। खतरा हो तो मुझे मदद चाहिए कहें या SOS दबाएँ।",
-loc:"मैं आपकी लाइव लोकेशन जाँच रहा हूँ।",
-cancel:"इमरजेंसी रद्द कर दी गई है। अच्छा है कि आप सुरक्षित हैं।",
-health:"आपका प्रोटोटाइप वेलनेस प्रोफाइल अभी स्थिर दिख रहा है। असली सेंसर जुड़ने पर उनका डेटा इस्तेमाल होगा।",
-battery:"आपके फोन की बैटरी",
-fall:"संभावित गिरना detected हुआ है। क्या आप ठीक हैं?",
-unknown:"मैं सुरक्षा, स्वास्थ्य, लोकेशन, बैटरी, इमरजेंसी और रिपोर्ट में मदद कर सकता हूँ।"
-},
+  localStorage.setItem(
+    "resq_events",
+    JSON.stringify(events.slice(0,30))
+  );
 
-"ta-IN":{
-ok:"நீங்கள் பாதுகாப்பாக இருப்பது போல் தெரிகிறது.",
-help:"நான் உங்களுடன் இருக்கிறேன். ஆபத்தில் இருந்தால் உதவி வேண்டும் என்று சொல்லுங்கள் அல்லது SOS அழுத்துங்கள்.",
-loc:"உங்கள் நேரடி இருப்பிடத்தை சரிபார்க்கிறேன்.",
-cancel:"அவசரநிலை ரத்து செய்யப்பட்டது. நீங்கள் பாதுகாப்பாக இருப்பதில் மகிழ்ச்சி.",
-health:"உங்கள் தற்போதைய prototype wellness profile நிலையாக உள்ளது.",
-battery:"உங்கள் தொலைபேசி பேட்டரி",
-fall:"விழுந்திருக்கலாம் என்று கண்டறியப்பட்டது. நீங்கள் நலமாக இருக்கிறீர்களா?",
-unknown:"பாதுகாப்பு, உடல்நலம், இருப்பிடம், பேட்டரி மற்றும் அவசரநிலைகளில் நான் உதவ முடியும்."
-},
-
-"kn-IN":{
-ok:"ನೀವು ಸುರಕ್ಷಿತವಾಗಿರುವಂತೆ ಕಾಣುತ್ತದೆ.",
-help:"ನಾನು ನಿಮ್ಮೊಂದಿಗಿದ್ದೇನೆ. ಅಪಾಯದಲ್ಲಿದ್ದರೆ ಸಹಾಯ ಬೇಕು ಎಂದು ಹೇಳಿ ಅಥವಾ SOS ಒತ್ತಿರಿ.",
-loc:"ನಿಮ್ಮ ಲೈವ್ ಸ್ಥಳವನ್ನು ಪರಿಶೀಲಿಸುತ್ತಿದ್ದೇನೆ.",
-cancel:"ತುರ್ತು ಪರಿಸ್ಥಿತಿ ರದ್ದುಗೊಂಡಿದೆ. ನೀವು ಸುರಕ್ಷಿತವಾಗಿರುವುದಕ್ಕೆ ಸಂತೋಷವಾಗಿದೆ.",
-health:"ನಿಮ್ಮ ಪ್ರಸ್ತುತ prototype wellness profile ಸ್ಥಿರವಾಗಿದೆ.",
-battery:"ನಿಮ್ಮ ಫೋನ್ ಬ್ಯಾಟರಿ",
-fall:"ಸಂಭಾವ್ಯವಾಗಿ ಬಿದ್ದಿರುವುದು ಪತ್ತೆಯಾಗಿದೆ. ನೀವು ಚೆನ್ನಾಗಿದ್ದೀರಾ?",
-unknown:"ಸುರಕ್ಷತೆ, ಆರೋಗ್ಯ, ಸ್ಥಳ, ಬ್ಯಾಟರಿ ಮತ್ತು ತುರ್ತು ಪರಿಸ್ಥಿತಿಗಳಲ್ಲಿ ನಾನು ಸಹಾಯ ಮಾಡಬಹುದು."
-},
-
-"ml-IN":{
-ok:"നിങ്ങൾ സുരക്ഷിതരാണെന്ന് തോന്നുന്നു.",
-help:"ഞാൻ നിങ്ങളോടൊപ്പമുണ്ട്. അപകടത്തിലാണെങ്കിൽ സഹായം വേണമെന്ന് പറയുക അല്ലെങ്കിൽ SOS അമർത്തുക.",
-loc:"നിങ്ങളുടെ ലൈവ് ലൊക്കേഷൻ പരിശോധിക്കുകയാണ്.",
-cancel:"അടിയന്തരാവസ്ഥ റദ്ദാക്കി. നിങ്ങൾ സുരക്ഷിതരാണെന്നതിൽ സന്തോഷം.",
-health:"നിങ്ങളുടെ നിലവിലെ prototype wellness profile സ്ഥിരമാണ്.",
-battery:"നിങ്ങളുടെ ഫോൺ ബാറ്ററി",
-fall:"സാധ്യതയുള്ള വീഴ്ച കണ്ടെത്തി. നിങ്ങൾക്ക് സുഖമാണോ?",
-unknown:"സുരക്ഷ, ആരോഗ്യം, ലൊക്കേഷൻ, ബാറ്ററി, അടിയന്തരാവസ്ഥ എന്നിവയിൽ സഹായിക്കാം."
-},
-
-"mr-IN":{
-ok:"तुम्ही सुरक्षित दिसत आहात.",
-help:"मी तुमच्यासोबत आहे. धोका असल्यास मला मदत हवी आहे असे म्हणा किंवा SOS दाबा.",
-loc:"मी तुमचे लाइव्ह लोकेशन तपासत आहे.",
-cancel:"आपत्कालीन स्थिती रद्द केली आहे. तुम्ही सुरक्षित आहात याचा आनंद आहे.",
-health:"तुमचे सध्याचे prototype wellness profile स्थिर दिसत आहे.",
-battery:"तुमच्या फोनची बॅटरी",
-fall:"संभाव्य पडणे आढळले आहे. तुम्ही ठीक आहात का?",
-unknown:"मी सुरक्षा, आरोग्य, लोकेशन, बॅटरी आणि आपत्कालीन मदतीमध्ये सहाय्य करू शकतो."
-},
-
-"bn-IN":{
-ok:"আপনি নিরাপদ আছেন বলে মনে হচ্ছে।",
-help:"আমি আপনার সঙ্গে আছি। বিপদে থাকলে সাহায্য চাই বলুন অথবা SOS চাপুন।",
-loc:"আমি আপনার লাইভ লোকেশন পরীক্ষা করছি।",
-cancel:"জরুরি অবস্থা বাতিল করা হয়েছে। আপনি নিরাপদ আছেন জেনে ভালো লাগছে।",
-health:"আপনার বর্তমান prototype wellness profile স্থিতিশীল।",
-battery:"আপনার ফোনের ব্যাটারি",
-fall:"সম্ভাব্য পড়ে যাওয়া শনাক্ত হয়েছে। আপনি কি ঠিক আছেন?",
-unknown:"আমি নিরাপত্তা, স্বাস্থ্য, লোকেশন, ব্যাটারি এবং জরুরি পরিস্থিতিতে সাহায্য করতে পারি।"
-}
-
-};
-
-function L(){
-return langMap[$("lang").value] || langMap["en-IN"];
-}
-
-
-/* =========================================
-   AI SPEECH
-========================================= */
-
-function speak(text){
-
-if(!voice)return;
-
-if(!("speechSynthesis" in window))return;
-
-speechSynthesis.cancel();
-
-const u =
-new SpeechSynthesisUtterance(text);
-
-u.lang = $("lang").value;
-
-speechSynthesis.speak(u);
-
-}
-
-
-function say(text){
-
-$("aiMsg").textContent = text;
-$("aiLog").textContent = text;
-
-speak(text);
-
-}
-
-
-/* =========================================
-   TOAST
-========================================= */
-
-function toast(text){
-
-$("toast").textContent = text;
-
-$("toast").classList.add("show");
-
-setTimeout(()=>{
-$("toast").classList.remove("show");
-},3500);
-
-}
-
-
-/* =========================================
-   EVENT HISTORY
-========================================= */
-
-function addEvent(text){
-
-events.unshift({
-t:text,
-time:new Date().toLocaleTimeString()
-});
-
-events = events.slice(0,30);
-
-localStorage.setItem(
-"resq_events",
-JSON.stringify(events)
-);
-
-renderEvents();
+  renderEvents();
 
 }
 
 
 function renderEvents(){
 
-$("eventCount").textContent =
-events.length;
+  let events =
+    JSON.parse(
+      localStorage.getItem("resq_events") || "[]"
+    );
 
-$("events").innerHTML =
-events.length
-
-? events.map(e => `
-<div class="event">
-${e.t}
-<span class="time">${e.time}</span>
-</div>
-`).join("")
-
-: `<div class="small">
-No safety events yet.
-</div>`;
+  $("events").innerHTML =
+    events.length
+      ? events.map(
+          e =>
+          `<div style="padding:7px 0;border-bottom:1px solid #20343f">
+             ${escapeHTML(e)}
+           </div>`
+        ).join("")
+      : "No events yet.";
 
 }
 
 
-/* =========================================
-   NAVIGATION
-========================================= */
+function escapeHTML(text){
 
-function show(id,btn){
-
-document
-.querySelectorAll(".page")
-.forEach(x=>x.classList.remove("active"));
-
-$(id).classList.add("active");
-
-document
-.querySelectorAll("nav button")
-.forEach(x=>x.classList.remove("active"));
-
-btn.classList.add("active");
+  return text
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;");
 
 }
 
 
-/* =========================================
-   LOCATION
-========================================= */
 
-function getLocation(){
+/* NAVIGATION */
 
-if(!navigator.geolocation){
+function show(page){
 
-say("Location is not available in this browser.");
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      page => page.classList.remove("active")
+    );
 
-return;
+  $(page).classList.add("active");
 
-}
+  document
+    .querySelectorAll(".nav button")
+    .forEach(
+      button =>
+      button.classList.toggle(
+        "active",
+        button.dataset.p === page
+      )
+    );
 
-say(L().loc);
-
-$("locState").textContent =
-"Requesting live location…";
-
-navigator.geolocation.getCurrentPosition(
-
-p=>{
-
-currentLat =
-p.coords.latitude;
-
-currentLon =
-p.coords.longitude;
-
-$("lat").textContent =
-currentLat.toFixed(6);
-
-$("lon").textContent =
-currentLon.toFixed(6);
-
-$("accuracy").textContent =
-"Accuracy: " +
-Math.round(p.coords.accuracy) +
-" m · " +
-new Date().toLocaleTimeString();
-
-$("locMini").textContent =
-"ON";
-
-$("locState").textContent =
-"Live location available";
-
-$("locDot").className =
-"dot";
-
-},
-
-e=>{
-
-$("locState").textContent =
-"Location permission unavailable";
-
-say(
-"I could not access your location. Please allow location permission in the browser."
-);
-
-},
-
-{
-enableHighAccuracy:true,
-timeout:10000,
-maximumAge:10000
-}
-
-);
+  if(page === "nearby"){
+    renderServices();
+  }
 
 }
 
 
-function openMap(){
 
-if(currentLat === null){
+/* VOICE */
 
-getLocation();
+function speak(text){
 
-return;
+  if(
+    !voiceOn ||
+    !("speechSynthesis" in window)
+  ){
+    return;
+  }
 
-}
+  speechSynthesis.cancel();
 
-window.open(
-`https://www.google.com/maps?q=${currentLat},${currentLon}`,
-"_blank"
-);
+  const utterance =
+    new SpeechSynthesisUtterance(text);
 
-}
+  utterance.lang =
+    $("lang").value;
 
+  utterance.rate = .96;
 
-/* =========================================
-   SOS
-========================================= */
-
-function startSOS(){
-
-if(emergency)return;
-
-emergency = true;
-
-countdown = 10;
-
-$("count").textContent =
-countdown;
-
-$("count").classList.remove("hide");
-
-$("sosBtn").classList.add("hide");
-
-$("safeBtn").classList.remove("hide");
-
-$("sosHint").textContent =
-"Emergency mode is preparing.";
-
-$("safeDot").className =
-"dot dangerDot";
-
-$("safeText").textContent =
-"EMERGENCY MODE";
-
-$("globalStatus").textContent =
-"● EMERGENCY";
-
-addEvent(
-"SOS countdown started"
-);
-
-say(
-"Emergency mode started. I'm giving you 10 seconds to cancel if this was accidental."
-);
-
-getLocation();
-
-timer =
-setInterval(()=>{
-
-countdown--;
-
-$("count").textContent =
-countdown;
-
-if(countdown <= 0){
-
-clearInterval(timer);
-
-$("sosHint").textContent =
-"SOS READY — prototype emergency workflow reached.";
-
-addEvent(
-"SOS READY — prototype workflow"
-);
-
-say(
-"SOS is ready. This website does not automatically call emergency services or contacts."
-);
-
-toast(
-"SOS workflow reached — prototype only."
-);
-
-}
-
-},1000);
+  speechSynthesis.speak(
+    utterance
+  );
 
 }
 
 
-function cancelSOS(){
+function addMessage(role,text){
 
-if(timer)
-clearInterval(timer);
+  const message =
+    document.createElement("div");
 
-emergency = false;
+  message.className =
+    "msg " + role;
 
-$("count").classList.add("hide");
+  message.textContent =
+    text;
 
-$("sosBtn").classList.remove("hide");
+  $("chat").appendChild(
+    message
+  );
 
-$("safeBtn").classList.add("hide");
-
-$("sosHint").textContent =
-"Press only when you need emergency help.";
-
-$("safeDot").className =
-"dot";
-
-$("safeText").textContent =
-"You appear safe";
-
-$("globalStatus").textContent =
-"● SYSTEM READY";
-
-addEvent(
-"Emergency cancelled — user safe"
-);
-
-say(L().cancel);
+  $("chat").scrollTop =
+    $("chat").scrollHeight;
 
 }
 
 
-/* =========================================
-   BATTERY
-========================================= */
+function ai(text){
 
-function batteryInit(){
+  addMessage(
+    "ai",
+    text
+  );
 
-if(!navigator.getBattery)return;
-
-navigator.getBattery()
-.then(b=>{
-
-const update = ()=>{
-
-$("battery").textContent =
-Math.round(b.level * 100) + "%";
-
-};
-
-update();
-
-b.addEventListener(
-"levelchange",
-update
-);
-
-});
+  speak(text);
 
 }
 
 
-/* =========================================
-   AI INTENT ENGINE
-========================================= */
 
-function normalize(s){
+/* LANGUAGE */
 
-return s
-.toLowerCase()
-.replace(/[.,!?]/g," ")
-.replace(/\s+/g," ")
-.trim();
+function setLanguage(){
 
-}
+  if(voiceOn){
+    startListening();
+  }
 
+  const lang =
+    $("lang").value;
 
-function process(raw){
+  if(lang === "te-IN"){
 
-const t =
-normalize(raw);
+    ai(
+      "భాష మార్చబడింది. నేను వినడానికి సిద్ధంగా ఉన్నాను."
+    );
 
+  }else{
 
-/* EMERGENCY */
+    ai(
+      "Language updated. I am ready to listen."
+    );
 
-const emergencyWords = [
-
-"sos",
-"emergency",
-"help me",
-"need help",
-"i need help",
-"danger",
-"save me",
-"trouble",
-"hurt",
-"unsafe",
-"please help",
-"help"
-
-];
-
-
-/* CANCEL */
-
-const cancelWords = [
-
-"i am safe",
-"im safe",
-"i m safe",
-"i am okay",
-"i m okay",
-"i am ok",
-"cancel emergency",
-"cancel sos",
-"stop emergency",
-"safe now",
-"i'm safe"
-
-];
-
-
-/* LOCATION */
-
-const locationWords = [
-
-"where am i",
-"my location",
-"check my location",
-"live location",
-"current location",
-"location please",
-"meri location",
-"నా లొకేషన్",
-"నా స్థానం"
-
-];
-
-
-/* HEALTH */
-
-const healthWords = [
-
-"health",
-"health report",
-"heart rate",
-"wellness",
-"my health",
-"check my health",
-"fitness",
-"health status",
-"health summary"
-
-];
-
-
-/* BATTERY */
-
-const batteryWords = [
-
-"battery",
-"charge",
-"phone charge",
-"battery level"
-
-];
-
-
-/* MAP */
-
-const mapWords = [
-
-"open map",
-"open maps",
-"google maps",
-"show map",
-"show maps"
-
-];
-
-
-/* CANCEL FIRST */
-
-if(
-cancelWords.some(
-x=>t.includes(normalize(x))
-)
-){
-
-return cancelSOS();
+  }
 
 }
 
 
-/* EMERGENCY */
 
-if(
-emergencyWords.some(
-x=>t.includes(normalize(x))
-)
-){
-
-return startSOS();
-
-}
-
-
-/* LOCATION */
-
-if(
-locationWords.some(
-x=>t.includes(normalize(x))
-)
-){
-
-show(
-"location",
-document.querySelectorAll("nav button")[3]
-);
-
-return getLocation();
-
-}
-
-
-/* HEALTH */
-
-if(
-healthWords.some(
-x=>t.includes(normalize(x))
-)
-){
-
-show(
-"health",
-document.querySelectorAll("nav button")[1]
-);
-
-return say(L().health);
-
-}
-
-
-/* BATTERY */
-
-if(
-batteryWords.some(
-x=>t.includes(x)
-)
-){
-
-return say(
-L().battery +
-" " +
-(
-$("battery").textContent ||
-"is currently unavailable"
-) +
-"."
-);
-
-}
-
-
-/* MAP */
-
-if(
-mapWords.some(
-x=>t.includes(normalize(x))
-)
-){
-
-return openMap();
-
-}
-
-
-/* STATUS */
-
-if(
-t.includes("safe") ||
-t.includes("status") ||
-t.includes("am i okay") ||
-t.includes("am i safe")
-){
-
-return say(L().ok);
-
-}
-
-
-/* CAPABILITIES */
-
-if(
-t.includes("what can you do") ||
-t === "help"
-){
-
-return say(L().unknown);
-
-}
-
-
-/* GREETINGS */
-
-if(
-t.match(
-/^(hi|hello|hey|namaste|namaskaram|హాయ్|नमस्ते)$/
-)
-){
-
-return say(
-"Hello. RESQ AI is ready. Tell me what you need."
-);
-
-}
-
-
-/* FALL */
-
-if(
-t.includes("fall") ||
-t.includes("fell down") ||
-t.includes("i fell")
-){
-
-return startSOS();
-
-}
-
-
-/* UNKNOWN */
-
-return say(L().unknown);
-
-}
-
-
-/* =========================================
-   TEXT COMMAND
-========================================= */
-
-function typed(){
-
-const value =
-$("cmd").value.trim();
-
-if(!value)return;
-
-process(value);
-
-$("cmd").value = "";
-
-}
-
-
-/* =========================================
-   SPEECH RECOGNITION
-========================================= */
-
-function setupRecognition(){
-
-const SR =
-window.SpeechRecognition ||
-window.webkitSpeechRecognition;
-
-if(!SR){
-
-$("listenState").textContent =
-"Voice recognition unavailable in this browser";
-
-return;
-
-}
-
-recognition =
-new SR();
-
-recognition.lang =
-$("lang").value;
-
-recognition.continuous =
-true;
-
-recognition.interimResults =
-false;
-
-
-recognition.onstart = ()=>{
-
-$("listenState").textContent =
-"Listening automatically…";
-
-$("aiOrb").classList.add(
-"aiListening"
-);
-
-};
-
-
-recognition.onresult = e=>{
-
-const result =
-e.results[
-e.results.length-1
-][0].transcript;
-
-$("listenState").textContent =
-"I heard: " + result;
-
-process(result);
-
-};
-
-
-recognition.onerror = e=>{
-
-$("listenState").textContent =
-"Listening paused — " +
-e.error;
-
-$("aiOrb").classList.remove(
-"aiListening"
-);
-
-};
-
-
-recognition.onend = ()=>{
-
-$("aiOrb").classList.remove(
-"aiListening"
-);
-
-if(autoListen){
-
-setTimeout(()=>{
-
-try{
-recognition.start();
-}catch(e){}
-
-},400);
-
-}
-
-};
-
-}
-
-
-/* =========================================
-   AUTO LISTEN
-========================================= */
-
-function toggleAuto(){
-
-autoListen =
-!autoListen;
-
-$("autoSwitch")
-.classList.toggle(
-"on",
-autoListen
-);
-
-if(!recognition)
-setupRecognition();
-
-if(autoListen){
-
-try{
-recognition.start();
-}catch(e){}
-
-toast(
-"Automatic listening enabled while this page is active."
-);
-
-}else{
-
-try{
-recognition.stop();
-}catch(e){}
-
-$("listenState").textContent =
-"Automatic assistant ready";
-
-}
-
-}
-
-
-/* =========================================
-   VOICE
-========================================= */
+/* VOICE CONTROL */
 
 function toggleVoice(){
 
-voice =
-!voice;
+  voiceOn =
+    !voiceOn;
 
-$("voiceSwitch")
-.classList.toggle(
-"on",
-voice
-);
+  if(voiceOn){
 
-if(!voice)
-speechSynthesis.cancel();
+    $("listenState").textContent =
+      "Listening";
 
-toast(
-voice
-? "Voice responses ON"
-: "Voice responses OFF"
-);
+    $("aiState").textContent =
+      "LISTENING";
 
-}
+    $("orb").classList.add(
+      "listening"
+    );
 
+    $("aiOrb").classList.add(
+      "listening"
+    );
 
-/* =========================================
-   PROACTIVE AI
-========================================= */
+    startListening();
 
-function togglePro(){
+    ai(
+      "I’m listening. Tell me what you need."
+    );
 
-proactive =
-!proactive;
+  }else{
 
-$("proSwitch")
-.classList.toggle(
-"on",
-proactive
-);
+    stopListening();
 
-}
+    $("listenState").textContent =
+      "AI offline";
 
+    $("aiState").textContent =
+      "VOICE ASSISTANT";
 
-/* =========================================
-   LANGUAGE
-========================================= */
+    $("orb").classList.remove(
+      "listening"
+    );
 
-function changeLanguage(){
+    $("aiOrb").classList.remove(
+      "listening"
+    );
 
-if(recognition)
-recognition.lang =
-$("lang").value;
-
-say(L().ok);
+  }
 
 }
 
 
-/* =========================================
-   HEALTH REPORT
-========================================= */
 
-function generateReport(){
+/* SPEECH RECOGNITION */
 
-const text =
+function startListening(){
 
-`RESQ ONE HEALTH REPORT — ${new Date().toLocaleString()}
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
 
-Wellness score:
-${$("well").textContent}/100 (prototype)
+  if(!SpeechRecognition){
 
-Heart rate:
-${$("hr").textContent} BPM (prototype)
+    $("listenState").textContent =
+      "Voice unsupported";
+
+    ai(
+      "Voice recognition is not available in this browser. You can still type to me."
+    );
+
+    return;
+
+  }
+
+  stopListening();
+
+  recognition =
+    new SpeechRecognition();
+
+  recognition.lang =
+    $("lang").value;
+
+  recognition.continuous =
+    true;
+
+  recognition.interimResults =
+    false;
+
+
+  recognition.onresult =
+    event => {
+
+      const result =
+        event.results[
+          event.results.length - 1
+        ][0].transcript;
+
+      addMessage(
+        "me",
+        result
+      );
+
+      processCommand(
+        result
+      );
+
+    };
+
+
+  recognition.onerror =
+    () => {};
+
+
+  recognition.onend =
+    () => {
+
+      if(voiceOn){
+
+        setTimeout(
+          startListening,
+          500
+        );
+
+      }
+
+    };
+
+
+  try{
+
+    recognition.start();
+
+  }catch(error){}
+
+}
+
+
+function stopListening(){
+
+  if(recognition){
+
+    try{
+
+      recognition.onend =
+        null;
+
+      recognition.stop();
+
+    }catch(error){}
+
+    recognition =
+      null;
+
+  }
+
+}
+
+
+
+/* TEXT */
+
+function sendText(){
+
+  const input =
+    $("command");
+
+  const text =
+    input.value.trim();
+
+  if(!text){
+    return;
+  }
+
+  input.value = "";
+
+  addMessage(
+    "me",
+    text
+  );
+
+  processCommand(
+    text
+  );
+
+}
+
+
+$("command").addEventListener(
+  "keydown",
+  event => {
+
+    if(event.key === "Enter"){
+      sendText();
+    }
+
+  }
+);
+
+
+
+/* NATURAL LANGUAGE SAFETY ROUTER */
+
+function processCommand(raw){
+
+  const text =
+    raw.toLowerCase().trim();
+
+
+  if(
+    /sos|emergency|help me|need help|danger|save me/.test(text)
+  ){
+
+    startSOS();
+
+    return;
+
+  }
+
+
+  if(
+    /i am safe|i'm safe|i am okay|i'm okay|cancel emergency|stop emergency|cancel sos/.test(text)
+  ){
+
+    cancelSOS();
+
+    return;
+
+  }
+
+
+  if(
+    /where am i|my location|locate me|what is my location/.test(text)
+  ){
+
+    locate();
+
+    return;
+
+  }
+
+
+  if(
+    /hospital|doctor|medical|emergency department/.test(text)
+  ){
+
+    findServices(
+      "hospital"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    /ambulance/.test(text)
+  ){
+
+    findServices(
+      "ambulance"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    /police/.test(text)
+  ){
+
+    findServices(
+      "police"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    /fire station|fire brigade|fire service/.test(text)
+  ){
+
+    findServices(
+      "fire station"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    /pharmacy|medical shop|medicine/.test(text)
+  ){
+
+    findServices(
+      "pharmacy"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    /map|directions|navigate|take me/.test(text)
+  ){
+
+    mapsSearch(
+      "hospital"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    /dizzy|faint|fainting|breathing|can't breathe|cannot breathe|chest pain|bleeding|injury|fell|fall/.test(text)
+  ){
+
+    ai(
+      "I’m sorry you’re feeling unwell. Please get somewhere safe and avoid driving yourself. I can locate nearby medical help. If this is severe or life-threatening, contact your local emergency service now. Would you like me to find the nearest hospital?"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    /battery|device status/.test(text)
+  ){
+
+    ai(
+      "Your current battery is " +
+      $("batHome").textContent +
+      "."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    /hello|hi|hey|namaste/.test(text)
+  ){
+
+    ai(
+      "Hello. I’m RESQ. I’m here to help with safety, location, nearby emergency services and your device status."
+    );
+
+    return;
+
+  }
+
+
+  ai(
+    "I’m not sure I understood that yet. Try speaking naturally, for example: “find the nearest hospital”, “where am I?”, “I need an ambulance”, or “start emergency”."
+  );
+
+}
+
+
+
+/* LOCATION */
+
+function locate(){
+
+  if(!navigator.geolocation){
+
+    ai(
+      "This browser does not provide location access."
+    );
+
+    return;
+
+  }
+
+
+  navigator.geolocation.getCurrentPosition(
+
+    position => {
+
+      lat =
+        position.coords.latitude;
+
+      lon =
+        position.coords.longitude;
+
+
+      $("locHome").textContent =
+        "Location ready";
+
+
+      $("nearLoc").textContent =
+        lat.toFixed(5) +
+        ", " +
+        lon.toFixed(5) +
+        " • ±" +
+        Math.round(
+          position.coords.accuracy
+        ) +
+        " m";
+
+
+      renderServices();
+
+    },
+
+
+    () => {
+
+      ai(
+        "I could not access your location. Please allow location permission in your browser."
+      );
+
+    },
+
+    {
+      enableHighAccuracy:true,
+      timeout:10000,
+      maximumAge:10000
+    }
+
+  );
+
+}
+
+
+
+/* MAPS */
+
+function mapsSearch(query){
+
+  if(lat === null){
+
+    locate();
+
+    return;
+
+  }
+
+
+  const url =
+    "https://www.google.com/maps/search/" +
+    encodeURIComponent(query) +
+    "/@" +
+    lat +
+    "," +
+    lon +
+    ",14z";
+
+
+  window.open(
+    url,
+    "_blank"
+  );
+
+}
+
+
+
+/* NEARBY */
+
+function findServices(query){
+
+  if(lat === null){
+
+    locate();
+
+    return;
+
+  }
+
+
+  show(
+    "nearby"
+  );
+
+  renderServices();
+
+  ai(
+    "I have your location. I’m opening nearby " +
+    query +
+    " options."
+  );
+
+  mapsSearch(
+    query
+  );
+
+}
+
+
+function renderServices(){
+
+  const services = [
+
+    ["🏥","Hospitals","hospital"],
+
+    ["🚑","Ambulance services","ambulance"],
+
+    ["👮","Police stations","police"],
+
+    ["🚒","Fire stations","fire station"],
+
+    ["💊","Pharmacies","pharmacy"]
+
+  ];
+
+
+  $("services").innerHTML =
+    "<b>Emergency & safety services near you</b>" +
+
+    services.map(
+
+      service => `
+
+        <div class="service">
+
+          <div>
+
+            <span style="font-size:22px">
+              ${service[0]}
+            </span>
+
+            ${service[1]}
+
+            <div class="tag">
+              OPEN MAP SEARCH
+            </div>
+
+          </div>
+
+          <button
+            class="ghost"
+            onclick='mapsSearch(${JSON.stringify(service[2])})'>
+            View
+          </button>
+
+        </div>
+
+      `
+
+    ).join("");
+
+}
+
+
+
+/* SOS */
+
+function startSOS(){
+
+  if(timer){
+    return;
+  }
+
+
+  count =
+    10;
+
+
+  $("safeStatus").textContent =
+    "SOS ACTIVE";
+
+
+  $("safetyTitle").textContent =
+    "SOS countdown: " +
+    count;
+
+
+  $("safetyText").textContent =
+    "Stay still if possible. Say “I’m safe” to cancel.";
+
+
+  log(
+    "SOS countdown started"
+  );
+
+
+  speak(
+    "Emergency mode started. You have ten seconds to cancel."
+  );
+
+
+  timer =
+    setInterval(
+
+      () => {
+
+        count--;
+
+        $("safetyTitle").textContent =
+          "SOS countdown: " +
+          count;
+
+
+        if(count <= 0){
+
+          clearInterval(
+            timer
+          );
+
+          timer =
+            null;
+
+
+          $("safetyTitle").textContent =
+            "EMERGENCY READY";
+
+
+          $("safetyText").textContent =
+            "Your location is ready. Use the nearby options to contact the appropriate emergency service.";
+
+
+          log(
+            "SOS reached emergency-ready state"
+          );
+
+
+          show(
+            "nearby"
+          );
+
+
+          locate();
+
+        }
+
+      },
+
+      1000
+
+    );
+
+}
+
+
+
+/* CANCEL SOS */
+
+function cancelSOS(){
+
+  if(timer){
+
+    clearInterval(
+      timer
+    );
+
+    timer =
+      null;
+
+  }
+
+
+  $("safeStatus").textContent =
+    "YOU'RE SAFE";
+
+
+  $("safetyTitle").textContent =
+    "Ready";
+
+
+  $("safetyText").textContent =
+    "Emergency cancelled. I’m here if you need help.";
+
+
+  log(
+    "Emergency cancelled — user safe"
+  );
+
+
+  speak(
+    "Okay. Emergency mode cancelled. I’m here if you need me."
+  );
+
+}
+
+
+
+/* BATTERY */
+
+async function battery(){
+
+  if(
+    "getBattery" in navigator
+  ){
+
+    try{
+
+      const battery =
+        await navigator.getBattery();
+
+
+      const update =
+        () => {
+
+          $("batHome").textContent =
+            Math.round(
+              battery.level * 100
+            ) +
+            "%";
+
+        };
+
+
+      update();
+
+      battery.addEventListener(
+        "levelchange",
+        update
+      );
+
+      return;
+
+    }catch(error){}
+
+  }
+
+
+  $("batHome").textContent =
+    "Unavailable";
+
+}
+
+
+
+/* HEALTH REPORT */
+
+function report(){
+
+  const reportText =
+
+`RESQ ONE HEALTH REPORT
+
+Generated:
+${new Date().toLocaleString()}
+
+Wellness:
+${$("wellness").textContent}
 
 Activity:
-${$("activity").textContent} steps (prototype)
+${$("activity").textContent}
 
-Safety events recorded:
-${events.length}
+Rest:
+${$("rest").textContent}
 
-Location available:
-${currentLat !== null ? "Yes" : "No"}
+Location:
+${lat !== null ? lat.toFixed(5)+", "+lon.toFixed(5) : "Unavailable"}
 
-AI summary:
-Current prototype readings appear stable.
+NOTE:
+This report contains prototype/device information.
+It is not a medical diagnosis.`;
 
-This is not a medical diagnosis and should not be used as a substitute for professional medical care.`;
-
-$("reportText").textContent =
-text.replace(/\n/g," ");
-
-toast(
-"Health report generated. Use Print / Save PDF to export it."
-);
-
-}
+  const windowReport =
+    window.open(
+      "",
+      "_blank"
+    );
 
 
-/* =========================================
-   PROTOTYPE HEALTH SENSOR SIMULATION
-========================================= */
+  if(!windowReport){
 
-function simulateHealth(){
+    alert(
+      "Please allow pop-ups to generate the report."
+    );
 
-let hr =
-68 +
-Math.floor(
-Math.random()*11
-);
+    return;
 
-$("hr").textContent =
-hr;
-
-$("well").textContent =
-82 +
-Math.floor(
-Math.random()*11
-);
-
-$("activity").textContent =
-(
-6200 +
-Math.floor(
-Math.random()*800
-)
-).toLocaleString();
+  }
 
 
-if(
-proactive &&
-hr >= 76
-){
+  windowReport.document.write(
+    "<pre style='font:16px system-ui;white-space:pre-wrap;padding:30px'>" +
+    escapeHTML(reportText) +
+    "</pre>"
+  );
 
-$("healthInsight").textContent =
-"RESQ noticed a small change in the prototype heart-rate reading. I'll keep monitoring the available data.";
 
-}
+  windowReport.print();
 
 }
 
 
-/* =========================================
-   CHART
-========================================= */
 
-function initChart(){
-
-const values =
-[72,75,70,78,74,71,73];
-
-$("chart").innerHTML =
-values.map(v=>
-
-`<div
-class="barCol"
-style="height:${v+25}px">
-</div>`
-
-).join("");
-
-}
-
-
-/* =========================================
-   ENTER KEY
-========================================= */
-
-$("cmd").addEventListener(
-"keydown",
-e=>{
-
-if(e.key === "Enter")
-typed();
-
-});
-
-
-/* =========================================
-   INITIALIZATION
-========================================= */
-
-batteryInit();
+/* STARTUP */
 
 renderEvents();
 
-initChart();
+battery();
 
-setupRecognition();
+locate();
 
-
-/*
-   Prototype health updates.
-   Replace with real sensor data
-   when hardware/Android bridge
-   is connected.
-*/
 
 setInterval(
-simulateHealth,
-12000
+
+  () => {
+
+    const activity = [
+      "Low",
+      "Moderate",
+      "Active"
+    ];
+
+    const wellness = [
+      "Stable",
+      "Good",
+      "Needs attention"
+    ];
+
+
+    $("activity").textContent =
+      activity[
+        Math.floor(
+          Math.random() *
+          activity.length
+        )
+      ];
+
+
+    $("wellness").textContent =
+      wellness[
+        Math.floor(
+          Math.random() *
+          wellness.length
+        )
+      ];
+
+  },
+
+  12000
+
 );
 
 
-/*
-   Stop recognition when leaving
-   the page.
-*/
-
-document.addEventListener(
-"visibilitychange",
-()=>{
-
-if(
-document.hidden &&
-autoListen &&
-recognition
-){
-
-try{
-recognition.stop();
-}catch(e){}
-
-}
-
-});
+addMessage(
+  "ai",
+  "Hello. I’m RESQ AI. I can help with your location, nearby safety services, emergency mode and device status."
+);
 
 </script>
 
 </body>
 </html>
+'''
+
+(root/"web/index.html").write_text(html,encoding="utf-8")
+
+(root/"README.md").write_text("""# RESQ ONE V4 — Consumer Safety Companion
+
+This is the next consumer-facing prototype.
+
+## Included
+- Mobile-first RESQ interface
+- Voice recognition where supported by the browser
+- Spoken AI responses
+- Multilingual voice selection
+- Natural-language local safety intent routing
+- Real browser GPS
+- Nearby hospital / ambulance / police / fire / pharmacy map searches
+- SOS countdown and cancellation
+- Battery status where supported
+- Local safety event history
+- Printable health report
+
+## Important
+This is not yet a certified emergency-response system. The browser cannot guarantee background monitoring, emergency dispatch, or phone calls/SMS without appropriate native permissions/integrations.
+
+The health values are demonstration values until a validated wearable/medical sensor is connected.
+
+## Real AI
+For open-ended AI conversation, add a secure backend. Never put a private AI API key into public GitHub Pages JavaScript.
+""",encoding="utf-8")
+
+(root/"backend/README.md").write_text("""# Secure RESQ AI Backend
+
+Recommended architecture:
+
+RESQ Web / Android
+        |
+        v
+   HTTPS Backend
+        |
+   +----+----+
+   |         |
+   LLM     Safety Tools
+             |
+     +-------+---------+
+     |       |         |
+ location  places   device/health
+
+Future controlled tools:
+- get_location
+- find_nearby_places
+- get_device_status
+- get_health_summary
+- prepare_sos
+- cancel_sos
+- create_emergency_message
+
+Critical actions such as calling, texting, or dispatching emergency services require explicit authorization and verified integrations.
+""",encoding="utf-8")
+
+(root/"android/README.md").write_text("""# RESQ ONE Android Integration
+
+The native Android app should become the reliable sensor/background layer.
+
+Next:
+1. Android SpeechRecognizer
+2. TextToSpeech
+3. Foreground monitoring
+4. Better fall detection
+5. Persistent event database
+6. Emergency contacts
+7. Authorized SMS/call workflow
+8. Location/maps
+9. BLE RESQ wearable
+10. PPG sensor
+11. Secure AI backend
+""",encoding="utf-8")
+
+zip_path=Path("/mnt/data/RESQ_ONE_V4_Consumer_AI_Prototype.zip")
+with zipfile.ZipFile(zip_path,"w",zipfile.ZIP_DEFLATED) as z:
+    for p in root.rglob("*"):
+        if p.is_file():
+            z.write(p,p.relative_to(root))
+
+print("READY:", zip_path)
+print("WEB CODE:", root/"web/index.html")
+print("Lines:", len(html.splitlines()))
+print("Bytes:", len(html.encode("utf-8")))
+print("The complete index.html is in web/index.html and the ZIP contains the project.")
+print(html)
+   
