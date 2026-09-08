@@ -1,508 +1,896 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>RESQ ONE | Team RESQ</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06111c">
+<title>RESQ ONE — Personal Safety & Health Companion</title>
 
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;
- font-family:Arial,Helvetica,sans-serif;
- background:#06111f;
- color:#f3f8ff;
- line-height:1.6
+margin:0;
+font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+background:#06111c;color:#f5f9fc;line-height:1.5
 }
-nav{
- position:sticky;top:0;z-index:10;
- padding:16px 7%;
- background:rgba(6,17,31,.94);
- border-bottom:1px solid #20364d;
- display:flex;justify-content:space-between;align-items:center
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:active{transform:scale(.98)}
+.top{
+position:sticky;top:0;z-index:100;height:68px;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 5%;background:rgba(5,15,25,.95);
+backdrop-filter:blur(18px);border-bottom:1px solid #1b3448
 }
-.logo{font-size:24px;font-weight:900;letter-spacing:1px}
-.logo span{color:#35b9ff}
-nav a{color:#a9bfd3;text-decoration:none;margin-left:22px;font-size:13px}
-.wrap{width:88%;max-width:1150px;margin:auto}
-section{padding:75px 0;border-bottom:1px solid #14283b}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px}
+.logo-icon{
+width:38px;height:38px;border-radius:12px;
+display:grid;place-items:center;
+background:linear-gradient(135deg,#28b9ff,#40dfc3);
+color:#04131d;font-weight:1000
+}
+.logo span{color:#38c5ff}
+.connection{font-size:11px;color:#7f9bad;display:flex;gap:7px;align-items:center}
+.green-dot{width:8px;height:8px;border-radius:50%;background:#4ce1ad;box-shadow:0 0 12px #4ce1ad}
+.container{width:min(1180px,92%);margin:auto}
 .hero{
- min-height:88vh;
- display:grid;grid-template-columns:1fr 1fr;
- gap:50px;align-items:center
+min-height:86vh;display:grid;grid-template-columns:1.15fr .85fr;
+gap:30px;align-items:center;padding:55px 0
 }
-.tag{
- color:#42dfcc;font-size:12px;font-weight:bold;
- letter-spacing:2px
+.eyebrow{
+font-size:11px;font-weight:900;letter-spacing:2px;color:#42ddc6
 }
-h1{
- font-size:clamp(48px,7vw,82px);
- line-height:.95;letter-spacing:-4px;margin:18px 0
+h1{font-size:clamp(43px,7vw,78px);line-height:.97;letter-spacing:-4px;margin:14px 0}
+h1 span{
+background:linear-gradient(90deg,#39bdff,#4be1c5);
+-webkit-background-clip:text;color:transparent
 }
-h1 span{color:#36b7ff}
-h2{font-size:40px;line-height:1.1;margin:12px 0 20px}
-p{color:#a9bdd0}
-.big{font-size:19px}
+h2{font-size:34px;line-height:1.05;letter-spacing:-1px;margin:7px 0 16px}
+h3{margin:5px 0 8px}
+p{color:#91aabd}
+.hero p{font-size:17px;max-width:700px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
 .btn{
- display:inline-block;
- padding:13px 20px;margin:8px 5px 8px 0;
- border-radius:12px;text-decoration:none;
- color:white;border:1px solid #29455f;font-weight:bold
+padding:12px 17px;border-radius:13px;border:1px solid #29475f;
+background:#0b1d2c;color:#fff;font-weight:800
 }
 .primary{
- background:linear-gradient(135deg,#159af0,#43dccb);
- color:#03111d;border:0
+border:0;background:linear-gradient(135deg,#20aaf3,#40dcc3);color:#03131d
+}
+.red{
+background:#4c1820;border-color:#77313a;color:#ffabb2
+}
+.product{
+background:linear-gradient(145deg,#0e2233,#07131f);
+border:1px solid #28465c;border-radius:28px;padding:28px;
+box-shadow:0 25px 70px #0007
 }
 .device{
- background:#0c1d2d;border:1px solid #2b4962;
- border-radius:28px;padding:35px;text-align:center
+width:165px;height:215px;margin:8px auto 22px;border-radius:50px;
+border:7px solid #2b4960;background:linear-gradient(145deg,#19354a,#07131e);
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+box-shadow:0 20px 55px #0008
 }
-.devicebox{
- width:190px;height:250px;margin:10px auto;
- border-radius:55px;
- background:linear-gradient(145deg,#182e43,#071321);
- border:8px solid #29465d;
- box-shadow:0 20px 60px #0008;
- display:flex;flex-direction:column;
- justify-content:center;align-items:center
+.heart{font-size:48px;color:#42dec5;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.wears{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wear{
+padding:11px;text-align:center;border-radius:12px;
+background:#091a29;border:1px solid #203d53;color:#abc0d0;font-size:12px
 }
-.devicebox .heart{font-size:48px;color:#43dccb}
-.devicebox b{font-size:22px}
-.grid{
- display:grid;grid-template-columns:repeat(4,1fr);
- gap:14px;margin-top:30px
+.section{padding:55px 0;border-top:1px solid #132a3c}
+.head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}
+.head p{max-width:650px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card,.panel{
+background:#091a29;border:1px solid #1d394f;border-radius:20px;padding:20px
 }
-.card{
- background:#0c1d2d;border:1px solid #203b54;
- border-radius:18px;padding:22px
-}
-.card b{font-size:17px}
-.modes{
- display:grid;grid-template-columns:repeat(4,1fr);gap:14px
-}
-.mode{
- padding:24px;background:#0c1d2d;
- border:1px solid #203b54;border-radius:18px
-}
-.mode .icon{font-size:35px}
-.mode b{display:block;font-size:18px}
-.dashboard{
- display:grid;grid-template-columns:1.3fr .7fr;gap:15px
-}
-.panel{
- background:#081827;border:1px solid #29455f;
- border-radius:20px;padding:23px
-}
-.metrics{
- display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
- margin-top:20px
-}
+.card p{font-size:13px}
+.dashboard{display:grid;grid-template-columns:1.3fr .7fr;gap:15px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
 .metric{
- border:1px solid #203b54;border-radius:14px;padding:16px
+padding:16px;border-radius:15px;background:#071521;border:1px solid #193449
 }
-.metric strong{font-size:28px;display:block}
-.metric small{color:#91a8bc}
+.metric strong{display:block;font-size:29px}
+.metric small{color:#748da0}
+.good{color:#51dfae}
+.live{
+font-size:10px;font-weight:900;color:#59dfae;
+background:#0c3833;border-radius:20px;padding:5px 9px
+}
+.title-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.chart{height:180px;display:flex;align-items:end;gap:7px;padding:20px 5px 0}
+.bar{
+flex:1;border-radius:8px 8px 2px 2px;
+background:linear-gradient(to top,#158fd0,#42dec5)
+}
+.labels{display:flex;justify-content:space-between;color:#60798c;font-size:10px}
+.events{margin-top:10px}
 .event{
- padding:12px 0;border-bottom:1px solid #193047;
- color:#b4c6d6;font-size:13px
+display:flex;gap:12px;align-items:center;
+padding:13px 0;border-bottom:1px solid #152e41
 }
-button{
- width:100%;padding:15px;border:0;border-radius:12px;
- background:#ff5967;color:white;font-weight:900;
- font-size:14px
+.event:last-child{border:0}
+.eicon{
+width:35px;height:35px;border-radius:10px;
+display:grid;place-items:center;background:#0d2638
 }
-.flow,.roadmap{
- display:grid;grid-template-columns:repeat(4,1fr);gap:13px
+.event small{color:#688196}
+.health{
+display:flex;align-items:center;gap:12px;
+padding:15px;border-radius:15px;background:#09261f;border:1px solid #164c40
 }
-.roadmap{grid-template-columns:repeat(5,1fr)}
-.step{
- background:#0c1d2d;border:1px solid #203b54;
- border-radius:17px;padding:20px
+.health-icon{
+width:42px;height:42px;border-radius:50%;
+display:grid;place-items:center;background:#0d4539;color:#53e0ad
 }
-.step b{color:#43dccb}
-.quote{
- text-align:center;
- padding:30px 0
+.alerts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.alert{
+padding:20px;border-radius:18px;background:#0a1b2a;border:1px solid #203d53
 }
+.alert.active{background:#24151b;border-color:#7b3d47}
+.alert-state{font-size:10px;font-weight:900;color:#55dfae;letter-spacing:1px}
+.alert.active .alert-state{color:#ff7f8b}
+.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.row{
+display:flex;justify-content:space-between;
+padding:12px 0;border-bottom:1px solid #173145
+}
+.row:last-child{border:0}
+.progress{height:8px;background:#112b3d;border-radius:20px;overflow:hidden;margin:9px 0}
+.progress div{height:100%;background:linear-gradient(90deg,#20a9ed,#43dec4);border-radius:20px}
+.sos-area{
+display:grid;grid-template-columns:.8fr 1.2fr;gap:15px
+}
+.sos-panel{
+background:linear-gradient(145deg,#24131a,#0e1823);
+border:1px solid #67343e;border-radius:22px;padding:25px;text-align:center
+}
+.sos{
+width:155px;height:155px;border-radius:50%;
+border:10px solid #432029;
+background:radial-gradient(circle,#ff6370,#c52d3c);
+color:#fff;font-size:22px;font-weight:1000;
+box-shadow:0 0 0 15px #ff52600d,0 15px 45px #0008
+}
+.sos-status{min-height:25px;color:#ff98a0;font-weight:800;margin-top:12px}
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.contact{
+padding:15px;background:#071622;border:1px solid #1b3549;border-radius:14px
+}
+.contact strong{display:block}
+.contact small{color:#748da0}
+.device-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.device-card{
+padding:20px;background:#0a1b2a;border:1px solid #203d53;border-radius:18px
+}
+.battery{height:9px;background:#102c3d;border-radius:20px;overflow:hidden;margin:10px 0}
+.battery div{height:100%;width:84%;background:linear-gradient(90deg,#28b5ee,#4ae0b9)}
+.modes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:15px}
+.mode{
+padding:13px 5px;border-radius:12px;background:#071622;
+border:1px solid #203d53;color:#8fa8ba
+}
+.mode.selected{background:#0b3941;border-color:#2bcab4;color:#69e8d1}
+.settings{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.setting{
+display:flex;align-items:center;justify-content:space-between;gap:15px;
+padding:15px;background:#091a29;border:1px solid #1d394f;border-radius:15px
+}
+.setting small{display:block;color:#71899d}
+.switch{
+width:48px;height:27px;border-radius:20px;background:#183247;padding:3px;flex:none
+}
+.switch i{
+display:block;width:21px;height:21px;border-radius:50%;
+background:#7890a1;transition:.2s
+}
+.switch.on{background:#116a61}
+.switch.on i{margin-left:21px;background:#4be0bc}
+.select{
+width:100%;padding:12px;border-radius:11px;
+background:#071622;color:white;border:1px solid #28465c
+}
+.note{
+padding:13px 15px;border-radius:12px;background:#0b2030;
+border:1px solid #1b3e55;color:#7894a7;font-size:12px
+}
+.quote{text-align:center;padding:65px 0}
 .quote h2{font-size:42px}
 footer{
- text-align:center;padding:45px 20px;color:#71899e
+padding:50px 20px 100px;text-align:center;color:#617a8e;font-size:12px
 }
-footer strong{color:white}
-
-@media(max-width:800px){
- nav a{display:none}
- .hero,.dashboard{grid-template-columns:1fr}
- .grid,.modes,.flow,.roadmap,.metrics{grid-template-columns:1fr 1fr}
- h1{letter-spacing:-2px}
+.mobile{
+display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;
+background:rgba(5,15,25,.97);border-top:1px solid #20384c;
+padding:8px 4px calc(8px + env(safe-area-inset-bottom))
 }
-@media(max-width:500px){
- .grid,.modes,.flow,.roadmap,.metrics{grid-template-columns:1fr}
- h2{font-size:32px}
- .quote h2{font-size:30px}
+.mobile button{
+flex:1;border:0;background:none;color:#6f879a;
+font-size:10px;display:flex;flex-direction:column;gap:3px;align-items:center
+}
+.mobile button.active{color:#42dec5}
+.toast{
+position:fixed;z-index:300;left:50%;bottom:80px;
+transform:translate(-50%,20px);opacity:0;pointer-events:none;
+padding:13px 18px;border-radius:14px;background:#10283a;
+border:1px solid #31526a;box-shadow:0 15px 40px #0008;
+font-size:13px;font-weight:800;transition:.3s
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){
+.hero,.dashboard,.sos-area{grid-template-columns:1fr}
+.alerts{grid-template-columns:1fr 1fr}
+.device-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.top{padding:0 4%}
+.container{width:92%}
+.hero{padding:40px 0}
+h1{letter-spacing:-2px}
+h2{font-size:30px}
+.head{display:block}
+.metrics{gap:7px}
+.metric{padding:12px}
+.metric strong{font-size:23px}
+.grid,.alerts,.report-grid,.settings{grid-template-columns:1fr}
+.device-grid{grid-template-columns:1fr 1fr}
+.modes{grid-template-columns:1fr 1fr}
+.contacts{grid-template-columns:1fr}
+.mobile{display:flex}
+.quote h2{font-size:30px}
 }
 </style>
 </head>
 
 <body>
 
-<nav>
- <div class="logo">RESQ <span>ONE</span></div>
- <div>
-  <a href="#solution">Solution</a>
-  <a href="#wear">Wear</a>
-  <a href="#demo">Demo</a>
-  <a href="#tech">Technology</a>
-  <a href="#future">Future</a>
- </div>
-</nav>
-
-<header class="wrap hero">
-
-<div>
- <div class="tag">TEAM RESQ · SIH 2026 · HARDWARE</div>
-
- <h1>Safety that <span>stays with you.</span></h1>
-
- <p class="big">
- RESQ ONE is a proposed intelligent personal safety and health companion
- built around one question:
- <b>What if a person needs help but cannot reach their phone?</b>
- </p>
-
- <a class="btn primary" href="#demo">Launch Live Demo</a>
- <a class="btn" href="#tech">Explore Technology</a>
-
- <p class="tag">● CONCEPT PROTOTYPE · MVP DEVELOPMENT NEXT</p>
+<header class="top">
+<div class="logo">
+<div class="logo-icon">R</div>
+<div>RESQ <span>ONE</span></div>
 </div>
-
-<div class="device">
-
- <div class="devicebox">
-  <div class="heart">♥</div>
-  <b>RESQ</b>
-  <small>ONE</small>
- </div>
-
- <h3>ONE CORE DEVICE</h3>
- <p>Watch · Necklace · Thigh / Strap · Clip</p>
-
+<div class="connection">
+<span class="green-dot"></span>
+DEVICE CONNECTED
 </div>
-
 </header>
 
+<main>
 
-<section id="solution">
-<div class="wrap">
+<section class="hero container" id="home">
+<div>
+<div class="eyebrow">PERSONAL SAFETY · HEALTH · INTELLIGENCE</div>
 
- <div class="tag">THE PROBLEM</div>
- <h2>When the user can't ask for help.</h2>
+<h1>Your safety.<br><span>Always within reach.</span></h1>
 
- <p class="big">
- Falls, accidents, sudden health distress, extreme heat, floods and other
- emergencies can happen when a person is alone or unable to access a phone.
- RESQ ONE is designed to reduce that dependence on manual SOS action.
- </p>
+<p>
+RESQ ONE is an intelligent personal safety and health companion
+designed to sense unusual events, understand context and help
+initiate an emergency response when the user may not be able to.
+</p>
 
- <div class="grid">
+<div class="actions">
+<button class="btn primary" onclick="go('dashboard')">Open My Dashboard</button>
+<button class="btn red" onclick="go('emergency')">Emergency Center</button>
+</div>
 
-  <div class="card">
-   <b>◉ SENSE</b>
-   <p>Collect signals from motion, pulse/wellness and the surrounding environment.</p>
-  </div>
+<div class="note">
+DEMO MODE · Values displayed on this website are simulated for
+product demonstration and are not medical measurements.
+</div>
+</div>
 
-  <div class="card">
-   <b>✦ THINK</b>
-   <p>Process signals locally using filtering and sensor-fusion logic.</p>
-  </div>
+<div class="product">
+<div class="device">
+<div class="heart">♥</div>
+<strong>RESQ</strong>
+<small>ONE</small>
+<small style="color:#42dec5;margin-top:7px">READY</small>
+</div>
 
-  <div class="card">
-   <b>! DECIDE</b>
-   <p>Identify potential falls, impacts, abnormal wellness or environmental events.</p>
-  </div>
+<h3 style="text-align:center">ONE CORE · MULTIPLE WEAR MODES</h3>
+<p style="text-align:center">Choose the form that fits your day.</p>
 
-  <div class="card">
-   <b>⌁ ALERT</b>
-   <p>Provide SOS, location and emergency communication through available connectivity.</p>
-  </div>
-
- </div>
+<div class="wears">
+<div class="wear">⌚ Watch</div>
+<div class="wear">◉ Necklace</div>
+<div class="wear">◒ Strap</div>
+<div class="wear">▣ Clip</div>
+</div>
 </div>
 </section>
 
 
-<section id="wear">
-<div class="wrap">
+<section class="section" id="dashboard">
+<div class="container">
 
- <div class="tag">OUR DIFFERENTIATOR</div>
- <h2>One device. Multiple ways to wear.</h2>
+<div class="head">
+<div>
+<div class="eyebrow">MY RESQ ONE</div>
+<h2>Good morning.</h2>
+</div>
+<p>Your personal safety and wellness snapshot.</p>
+</div>
 
- <p>
- Instead of designing the intelligence around only one wearable form,
- RESQ ONE is envisioned as a modular core that can adapt to different situations.
- </p>
+<div class="dashboard">
 
- <div class="modes">
+<div class="panel">
 
-  <div class="mode">
-   <div class="icon">⌚</div>
-   <b>Watch</b>
-   <p>Everyday use and quick emergency access.</p>
-  </div>
+<div class="title-row">
+<div>
+<strong>Today's overview</strong>
+<div style="font-size:12px;color:#6f879a">Personal demo profile</div>
+</div>
+<div class="live">● CONNECTED</div>
+</div>
 
-  <div class="mode">
-   <div class="icon">◉</div>
-   <b>Necklace</b>
-   <p>Discreet wearable form for accessible SOS.</p>
-  </div>
+<div class="metrics">
 
-  <div class="mode">
-   <div class="icon">◒</div>
-   <b>Thigh / Strap</b>
-   <p>Designed for active users, work and adventure.</p>
-  </div>
+<div class="metric">
+<strong>72</strong>
+<small>Pulse · BPM demo</small>
+</div>
 
-  <div class="mode">
-   <div class="icon">▣</div>
-   <b>Clip</b>
-   <p>Attach to clothing, belt, bag or equipment.</p>
-  </div>
+<div class="metric">
+<strong class="good">98%</strong>
+<small>Safety confidence</small>
+</div>
 
- </div>
+<div class="metric">
+<strong>84%</strong>
+<small>Battery</small>
+</div>
+
+</div>
+
+<strong>Wellness activity trend</strong>
+
+<div class="chart">
+<div class="bar" style="height:50%"></div>
+<div class="bar" style="height:63%"></div>
+<div class="bar" style="height:57%"></div>
+<div class="bar" style="height:75%"></div>
+<div class="bar" style="height:67%"></div>
+<div class="bar" style="height:82%"></div>
+<div class="bar" style="height:77%"></div>
+<div class="bar" style="height:88%"></div>
+<div class="bar" style="height:70%"></div>
+<div class="bar" style="height:80%"></div>
+<div class="bar" style="height:85%"></div>
+<div class="bar" style="height:74%"></div>
+</div>
+
+<div class="labels">
+<span>6 AM</span><span>12 PM</span><span>6 PM</span><span>Now</span>
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="health">
+<div class="health-icon">✓</div>
+<div>
+<strong>Safety status</strong>
+<div style="font-size:12px;color:#62dcb4">No active emergency</div>
+</div>
+</div>
+
+<div class="events">
+
+<div class="event">
+<div class="eicon">♥</div>
+<div><strong>Wellness signal</strong><br><small>Updated 2 minutes ago</small></div>
+</div>
+
+<div class="event">
+<div class="eicon">⌖</div>
+<div><strong>Location ready</strong><br><small>GPS status available</small></div>
+</div>
+
+<div class="event">
+<div class="eicon">◉</div>
+<div><strong>Motion normal</strong><br><small>No abnormal event</small></div>
+</div>
+
+<div class="event">
+<div class="eicon">▰</div>
+<div><strong>Battery healthy</strong><br><small>84% estimated</small></div>
+</div>
+
+</div>
+</div>
+
+</div>
 </div>
 </section>
 
 
-<section id="demo">
-<div class="wrap">
+<section class="section" id="health">
+<div class="container">
 
- <div class="tag">JUDGE-READY SIMULATION</div>
- <h2>Experience the RESQ ONE dashboard.</h2>
-
- <p>
- This is a UI simulation showing the intended companion experience.
- Values shown below are demonstration values, not live medical measurements.
- </p>
-
- <div class="dashboard">
-
-  <div class="panel">
-
-   <b style="color:#48d995">● RESQ ONE — CONNECTED</b>
-
-   <div class="metrics">
-
-    <div class="metric">
-     <strong>72</strong>
-     <small>BPM demo value</small>
-    </div>
-
-    <div class="metric">
-     <strong>98%</strong>
-     <small>Motion confidence</small>
-    </div>
-
-    <div class="metric">
-     <strong>84%</strong>
-     <small>Battery estimate</small>
-    </div>
-
-   </div>
-
-   <br>
-   <b>Recent Events</b>
-
-   <div class="event">Pulse signal updated · now</div>
-   <div class="event">Location available · now</div>
-   <div class="event">No abnormal event detected · 2m</div>
-   <div class="event">BLE connection stable · 5m</div>
-
-  </div>
-
-
-  <div class="panel">
-
-   <h3>Emergency Simulation</h3>
-
-   <p>
-    Show the intended response when abnormal motion is detected.
-   </p>
-
-   <button onclick="simulate()">SIMULATE FALL + SOS</button>
-
-   <p id="result">No active emergency.</p>
-
-  </div>
-
- </div>
+<div class="head">
+<div>
+<div class="eyebrow">HEALTH & WELLNESS</div>
+<h2>Know your trends.</h2>
 </div>
-</section>
+<p>Simple insights instead of overwhelming raw sensor readings.</p>
+</div>
+
+<div class="report-grid">
+
+<div class="panel">
+<strong>Pulse & wellness</strong>
+
+<div style="font-size:43px;font-weight:900;margin:12px 0">
+72 <span style="font-size:14px;color:#71899c">BPM demo</span>
+</div>
+
+<div class="progress"><div style="width:68%"></div></div>
+
+<div class="row"><span>Resting trend</span><strong>Stable</strong></div>
+<div class="row"><span>Activity pattern</span><strong>Moderate</strong></div>
+<div class="row"><span>Wellness signal</span><strong class="good">Normal</strong></div>
+</div>
 
 
-<section id="tech">
-<div class="wrap">
+<div class="panel">
+<strong>Daily wellness score</strong>
 
- <div class="tag">TECHNICAL APPROACH</div>
- <h2>From sensor signal to help.</h2>
+<div style="font-size:43px;font-weight:900;margin:12px 0">
+86<span style="font-size:14px;color:#71899c"> / 100 demo</span>
+</div>
 
- <div class="flow">
+<div class="progress"><div style="width:86%"></div></div>
 
-  <div class="step">
-   <b>01 · SENSE</b>
-   <p>PPG · IMU · temperature · pressure/water · GPS</p>
-  </div>
-
-  <div class="step">
-   <b>02 · THINK</b>
-   <p>MCU · filtering · sensor fusion · event classification</p>
-  </div>
-
-  <div class="step">
-   <b>03 · DECIDE</b>
-   <p>Fall/impact · abnormal wellness · environmental anomaly</p>
-  </div>
-
-  <div class="step">
-   <b>04 · ALERT</b>
-   <p>SOS · GPS · BLE / cellular-ready communication</p>
-  </div>
-
- </div>
-
- <div class="panel" style="margin-top:20px">
-  <b>Privacy-first architecture</b>
-  <p>
-   RESQ ONE is designed to perform relevant processing locally wherever
-   practical, reducing unnecessary dependence on cloud processing.
-  </p>
- </div>
+<div class="row"><span>Movement</span><strong>82%</strong></div>
+<div class="row"><span>Recovery</span><strong>88%</strong></div>
+<div class="row"><span>Consistency</span><strong>89%</strong></div>
+</div>
 
 </div>
-</section>
 
+<div class="panel" style="margin-top:15px">
+<div class="title-row">
+<strong>Weekly health report</strong>
+<button class="btn" onclick="printReport()">Print / Save Report</button>
+</div>
 
-<section>
-<div class="wrap">
-
- <div class="tag">FEASIBILITY</div>
- <h2>Build it in stages. Validate it properly.</h2>
-
- <p>
- RESQ ONE is currently at the concept and design stage. The physical
- functional MVP is planned as the next engineering phase.
- </p>
-
- <div class="roadmap">
-
-  <div class="step">
-   <b>PHASE 1</b>
-   <p>Architecture and component selection.</p>
-  </div>
-
-  <div class="step">
-   <b>PHASE 2</b>
-   <p>MVP sensors, MCU, fall detection, SOS and GPS/BLE.</p>
-  </div>
-
-  <div class="step">
-   <b>PHASE 3</b>
-   <p>Compact PCB, enclosure and wearable attachments.</p>
-  </div>
-
-  <div class="step">
-   <b>PHASE 4</b>
-   <p>Testing, false-alert reduction and battery optimisation.</p>
-  </div>
-
-  <div class="step">
-   <b>PHASE 5</b>
-   <p>Cellular/GNSS, environmental intelligence and advanced AI.</p>
-  </div>
-
- </div>
+<div class="note" style="margin-top:15px">
+A future functional RESQ ONE device would populate this report using
+validated sensor data. Current values are demonstration data.
+</div>
+</div>
 
 </div>
 </section>
 
 
-<section id="future">
-<div class="wrap">
+<section class="section" id="alerts">
+<div class="container">
 
- <div class="tag">IMPACT</div>
- <h2>Designed for people, not just sensors.</h2>
+<div class="head">
+<div>
+<div class="eyebrow">SMART ALERT CENTER</div>
+<h2>When something changes.</h2>
+</div>
+<p>Designed to move from sensing to decision to appropriate alert escalation.</p>
+</div>
 
- <div class="grid">
+<div class="alerts">
 
-  <div class="card">
-   <b>INDIVIDUALS</b>
-   <p>Additional safety support for people who may be alone or vulnerable.</p>
-  </div>
+<div class="alert" id="fallCard">
+<div class="alert-state" id="fallState">● MONITORING</div>
+<h3>Fall / Impact</h3>
+<p>Motion patterns can be analysed to identify a possible fall or impact.</p>
+<button class="btn" onclick="fallTest()">Test Fall Alert</button>
+</div>
 
-  <div class="card">
-   <b>HEALTHCARE</b>
-   <p>Potential integration with remote monitoring and emergency workflows.</p>
-  </div>
+<div class="alert">
+<div class="alert-state">● MONITORING</div>
+<h3>Wellness Alert</h3>
+<p>Unusual wellness patterns can be flagged for review or escalation.</p>
+<button class="btn" onclick="toast('Wellness alert simulation activated')">Test Wellness</button>
+</div>
 
-  <div class="card">
-   <b>DISASTER RESPONSE</b>
-   <p>Potential support for location-aware emergency communication.</p>
-  </div>
+<div class="alert">
+<div class="alert-state">● READY</div>
+<h3>Environmental</h3>
+<p>Future sensing can support temperature, water and environmental awareness.</p>
+<button class="btn" onclick="toast('Environmental alert simulation activated')">Test Environment</button>
+</div>
 
-  <div class="card">
-   <b>SCALABILITY</b>
-   <p>A modular platform designed for consumer and institutional pathways.</p>
-  </div>
+</div>
 
- </div>
+
+<div class="panel" style="margin-top:15px">
+<div class="title-row">
+<div>
+<strong>Emergency alert tone</strong>
+<div style="font-size:12px;color:#71899c">Test the intended audible alert experience</div>
+</div>
+<button class="btn primary" onclick="alertTone()">🔊 Test Tone</button>
+</div>
+
+<select class="select" id="tone" style="margin-top:15px">
+<option value="standard">RESQ Standard Alert</option>
+<option value="urgent">Urgent Emergency Alert</option>
+<option value="short">Short Attention Alert</option>
+</select>
+</div>
+
+</div>
+</section>
+
+
+<section class="section" id="emergency">
+<div class="container">
+
+<div class="head">
+<div>
+<div class="eyebrow">EMERGENCY CENTER</div>
+<h2>Help, one action away.</h2>
+</div>
+<p>Designed for a future emergency workflow connecting event, location and configured contacts.</p>
+</div>
+
+<div class="sos-area">
+
+<div class="sos-panel">
+<button class="sos" onclick="startSOS()">SOS</button>
+<h3>Emergency SOS</h3>
+<p>Run the complete emergency simulation.</p>
+<div class="sos-status" id="sosStatus">System ready</div>
+</div>
+
+<div class="panel">
+<strong>Emergency contacts</strong>
+
+<div class="contacts" style="margin-top:15px">
+<div class="contact">
+<strong>Primary Contact</strong>
+<small>Configured in consumer app</small>
+</div>
+<div class="contact">
+<strong>Secondary Contact</strong>
+<small>Configured in consumer app</small>
+</div>
+<div class="contact">
+<strong>Emergency Service</strong>
+<small>Country-specific configuration</small>
+</div>
+<div class="contact">
+<strong>Care Provider</strong>
+<small>Optional future integration</small>
+</div>
+</div>
+
+<div class="note" style="margin-top:15px">
+DEMO SAFETY: This website does not place real calls, send SMS messages
+or contact emergency services.
+</div>
+</div>
+
+</div>
+
+<div class="panel" style="margin-top:15px">
+<div class="title-row">
+<strong>Emergency location</strong>
+<div class="live">LOCATION READY</div>
+</div>
+
+<div style="margin-top:15px;padding:20px;border-radius:15px;background:#071622;border:1px solid #1a3549">
+<div style="font-size:32px">⌖</div>
+<strong>Location sharing status</strong>
+<p>
+A future hardware implementation can provide GPS coordinates and
+share them through the configured emergency communication path.
+</p>
+</div>
+</div>
+
+</div>
+</section>
+
+
+<section class="section" id="device">
+<div class="container">
+
+<div class="head">
+<div>
+<div class="eyebrow">DEVICE CENTER</div>
+<h2>Your RESQ ONE.</h2>
+</div>
+<p>Connection, battery and wearable configuration.</p>
+</div>
+
+<div class="device-grid">
+
+<div class="device-card">
+<strong>Battery</strong>
+<div style="font-size:30px;font-weight:900">84%</div>
+<div class="battery"><div></div></div>
+<small style="color:#748da0">Estimated demo value</small>
+</div>
+
+<div class="device-card">
+<strong>Connectivity</strong>
+<div style="font-size:22px;font-weight:900;color:#51dfad;margin-top:8px">CONNECTED</div>
+<small style="color:#748da0">BLE · GPS ready</small>
+</div>
+
+<div class="device-card">
+<strong>Device status</strong>
+<div style="font-size:22px;font-weight:900;margin-top:8px">READY</div>
+<small style="color:#748da0">Concept MVP</small>
+</div>
+
+</div>
+
+<div class="panel" style="margin-top:15px">
+<strong>Choose your wear mode</strong>
+
+<div class="modes">
+<button class="mode selected" onclick="wear(this,'Watch')">⌚<br>Watch</button>
+<button class="mode" onclick="wear(this,'Necklace')">◉<br>Necklace</button>
+<button class="mode" onclick="wear(this,'Strap')">◒<br>Strap</button>
+<button class="mode" onclick="wear(this,'Clip')">▣<br>Clip</button>
+</div>
+
+<div class="note" id="wearText" style="margin-top:12px">
+Current mode: Watch · everyday access.
+</div>
+</div>
+
+</div>
+</section>
+
+
+<section class="section" id="settings">
+<div class="container">
+
+<div class="head">
+<div>
+<div class="eyebrow">PERSONAL SETTINGS</div>
+<h2>Make RESQ ONE yours.</h2>
+</div>
+<p>Choose how your safety companion should behave.</p>
+</div>
+
+<div class="settings">
+
+<div class="setting">
+<div><strong>Fall detection</strong><small>Monitor abnormal motion events</small></div>
+<div class="switch on" onclick="toggle(this)"><i></i></div>
+</div>
+
+<div class="setting">
+<div><strong>Wellness monitoring</strong><small>Track wellness signals</small></div>
+<div class="switch on" onclick="toggle(this)"><i></i></div>
+</div>
+
+<div class="setting">
+<div><strong>Emergency location</strong><small>Location during SOS</small></div>
+<div class="switch on" onclick="toggle(this)"><i></i></div>
+</div>
+
+<div class="setting">
+<div><strong>Low battery alerts</strong><small>Notify before critical level</small></div>
+<div class="switch on" onclick="toggle(this)"><i></i></div>
+</div>
+
+<div class="setting">
+<div><strong>Haptic alert</strong><small>Future wearable vibration</small></div>
+<div class="switch on" onclick="toggle(this)"><i></i></div>
+</div>
+
+<div class="setting">
+<div><strong>Privacy-first processing</strong><small>Local processing where practical</small></div>
+<div class="switch on" onclick="toggle(this)"><i></i></div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<section class="section">
+<div class="container">
+
+<div class="panel">
+<div class="eyebrow">THE RESQ ENGINE</div>
+<h2>Sense → Think → Decide → Alert</h2>
+
+<div class="grid">
+
+<div class="card">
+<strong>01 · SENSE</strong>
+<p>PPG · IMU · temperature · pressure/water · GPS</p>
+</div>
+
+<div class="card">
+<strong>02 · THINK</strong>
+<p>Filtering · local processing · sensor fusion</p>
+</div>
+
+<div class="card">
+<strong>03 · DECIDE</strong>
+<p>Fall/impact · wellness · environmental events</p>
+</div>
+
+<div class="card">
+<strong>04 · ALERT</strong>
+<p>SOS · location · BLE / cellular-ready communication</p>
+</div>
+
+</div>
+
+<div class="note" style="margin-top:15px">
+The consumer interface demonstrates the intended product experience.
+Hardware sensing, medical validation and emergency-network integration
+remain engineering stages of the RESQ ONE development roadmap.
+</div>
+
+</div>
 
 </div>
 </section>
 
 
 <section class="quote">
-<div class="wrap">
-
- <div class="tag">THE ONE-LINE PITCH</div>
-
- <h2>
- “What if the device could ask for help when you can't?”
- </h2>
-
- <p>
- That question is the reason RESQ ONE exists.
- </p>
-
+<div class="container">
+<div class="eyebrow">THE QUESTION BEHIND RESQ ONE</div>
+<h2>“What if the device could ask for help when you can't?”</h2>
+<p>That's the idea behind RESQ ONE.</p>
 </div>
 </section>
 
+</main>
+
 
 <footer>
-
- <strong>TEAM RESQ · RESQ ONE · SIH 2026</strong>
-
- <br><br>
-
- Concept-stage product design · Functional MVP planned next
-
- <br>
-
- <small>
- RESQ ONE is not presented as a certified medical device or completed
- functional prototype. Concept visuals and dashboard values are for
- demonstration purposes.
- </small>
-
+<strong style="color:#edf7fb">RESQ ONE · TEAM RESQ</strong>
+<br><br>
+Intelligent Personal Safety & Health Companion
+<br><br>
+SIH 2026 · Consumer Product Experience
+<br><br>
+This website is a product/interface demonstration.
+It is not a certified medical device and does not send real emergency alerts.
 </footer>
 
 
+<div class="mobile">
+<button onclick="go('home')">⌂<span>Home</span></button>
+<button onclick="go('health')">♥<span>Health</span></button>
+<button onclick="go('alerts')">⚠<span>Alerts</span></button>
+<button onclick="go('emergency')">SOS<span>Emergency</span></button>
+<button onclick="go('settings')">⚙<span>Settings</span></button>
+</div>
+
+<div class="toast" id="toastBox"></div>
+
+
 <script>
-function simulate(){
- document.getElementById("result").innerHTML =
- '<b style="color:#ff7b86">EVENT DETECTED:</b><br>' +
- 'Abnormal motion → Local alert → SOS escalation → ' +
- 'Location sharing → Emergency contact notification.';
+let timer;
+let audioContext;
+
+function go(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function toast(message){
+const box=document.getElementById("toastBox");
+box.textContent=message;
+box.classList.add("show");
+clearTimeout(timer);
+timer=setTimeout(()=>box.classList.remove("show"),2600);
+}
+
+function toggle(el){
+el.classList.toggle("on");
+toast(el.classList.contains("on")?"Setting enabled":"Setting disabled");
+}
+
+function wear(btn,mode){
+document.querySelectorAll(".mode").forEach(x=>x.classList.remove("selected"));
+btn.classList.add("selected");
+
+const text={
+Watch:"Current mode: Watch · everyday access.",
+Necklace:"Current mode: Necklace · discreet accessibility.",
+Strap:"Current mode: Strap · active and occupational use.",
+Clip:"Current mode: Clip · clothing, belt or bag attachment."
+};
+
+document.getElementById("wearText").textContent=text[mode];
+toast(mode+" mode selected");
+}
+
+function fallTest(){
+const card=document.getElementById("fallCard");
+const state=document.getElementById("fallState");
+
+card.classList.add("active");
+state.textContent="⚠ EVENT DETECTED";
+
+toast("Possible fall detected · alert sequence initiated");
+
+setTimeout(()=>{
+state.textContent="● MONITORING";
+card.classList.remove("active");
+},5000);
+}
+
+function startSOS(){
+const status=document.getElementById("sosStatus");
+let n=5;
+
+status.textContent="SOS simulation in "+n+"…";
+
+const countdown=setInterval(()=>{
+n--;
+
+if(n>0){
+status.textContent="SOS simulation in "+n+"…";
+}else{
+clearInterval(countdown);
+status.textContent="SOS EVENT SIMULATED · LOCATION → CONTACT → ALERT";
+toast("Emergency sequence completed");
+}
+},1000);
+}
+
+function alertTone(){
+try{
+const AC=window.AudioContext||window.webkitAudioContext;
+audioContext=new AC();
+
+const type=document.getElementById("tone").value;
+
+let frequencies;
+
+if(type==="urgent"){
+frequencies=[900,650,900,650,1050,750];
+}else if(type==="short"){
+frequencies=[900,900];
+}else{
+frequencies=[700,900,700,1100];
+}
+
+frequencies.forEach((freq,i)=>{
+const osc=audioContext.createOscillator();
+const gain=audioContext.createGain();
+
+osc.type="sine";
+osc.frequency.value=freq;
+
+const start=audioContext.currentTime+i*.18;
+
+gain.gain.setValueAtTime(.0001,start);
+gain.gain.exponentialRampToValueAtTime(.18,start+.02);
+gain.gain.exponentialRampToValueAtTime(.0001,start+.15);
+
+osc.connect(gain);
+gain.connect(audioContext.destination);
+
+osc.start(start);
+osc.stop(start+.16);
+});
+
+toast("RESQ emergency alert tone playing");
+}catch(e){
+toast("Tap again to allow browser audio");
+}
+}
+
+function printReport(){
+toast("Preparing printable health report…");
+setTimeout(()=>window.print(),700);
 }
 </script>
 
