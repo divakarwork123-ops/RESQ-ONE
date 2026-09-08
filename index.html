@@ -1,299 +1,364 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#071019">
-
-<title>RESQ ONE — Safety Companion</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07101d">
+<title>RESQ ONE — Personal Safety</title>
 
 <style>
-:root{
-  --bg:#071019;
-  --card:#0d1a24;
-  --card2:#11232f;
-  --text:#eef7fa;
-  --muted:#8ea7b2;
-  --line:#20343f;
-  --accent:#5ee7c5;
-  --danger:#ff6577;
-  --warning:#ffd166;
+* {
+  box-sizing: border-box;
 }
 
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:linear-gradient(180deg,#061018,#09151e);
-  color:var(--text);
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+body {
+  margin: 0;
+  background: #07101d;
+  color: #eef5ff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-button,input,select{
-  font:inherit;
+button,
+input {
+  font: inherit;
 }
 
-button{
-  cursor:pointer;
-  color:var(--text);
+button {
+  cursor: pointer;
+  border: 0;
 }
 
-.app{
-  max-width:760px;
-  margin:auto;
-  min-height:100vh;
-  padding-bottom:90px;
+.app {
+  max-width: 760px;
+  margin: auto;
+  min-height: 100vh;
+  padding-bottom: 90px;
 }
 
-.top{
-  padding:18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+/* HEADER */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  background: rgba(7,16,29,0.96);
+  border-bottom: 1px solid #17283a;
 }
 
-.brand{
-  font-weight:800;
-  letter-spacing:.08em;
+.logo {
+  font-size: 21px;
+  font-weight: 900;
 }
 
-.pill{
-  padding:7px 10px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  color:var(--muted);
-  font-size:12px;
+.subtitle {
+  color: #8195ad;
+  font-size: 12px;
+  margin-top: 3px;
 }
 
-.page{
-  display:none;
-  padding:8px 16px;
+.status {
+  background: #10283b;
+  color: #6fe0aa;
+  padding: 8px 11px;
+  border-radius: 20px;
+  font-size: 11px;
 }
 
-.page.active{
-  display:block;
+/* MAIN */
+
+main {
+  padding: 10px 16px;
 }
 
-.hero{
-  background:
-    radial-gradient(circle at 50% 10%,#163a43,#0b1b25 58%);
-  border:1px solid var(--line);
-  border-radius:26px;
-  padding:26px 20px;
-  text-align:center;
+.screen {
+  display: none;
 }
 
-.tag{
-  font-size:11px;
-  color:var(--accent);
-  letter-spacing:.08em;
-  font-weight:700;
+.screen.active {
+  display: block;
 }
 
-.status{
-  font-size:28px;
-  font-weight:800;
-  margin:8px 0;
+.card {
+  background: #0d1928;
+  border: 1px solid #1a2c40;
+  border-radius: 20px;
+  padding: 18px;
+  margin: 12px 0;
 }
 
-.sub,
-.muted{
-  color:var(--muted);
+.hero {
+  padding: 22px;
 }
 
-.orb{
-  width:104px;
-  height:104px;
-  margin:22px auto;
-  border-radius:50%;
-  background:
-    radial-gradient(
-      circle,
-      #7ff6d5 0 8%,
-      #238f82 10% 30%,
-      #102e35 55%,
-      #0b1b25 70%
-    );
-  box-shadow:
-    0 0 0 10px #123038,
-    0 0 45px #32cdb080;
+.hero h1 {
+  margin: 7px 0;
+  font-size: 29px;
 }
 
-.listening{
-  animation:pulse 1.3s infinite;
+.muted {
+  color: #91a4bb;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
-@keyframes pulse{
-  50%{
-    transform:scale(1.06);
-    box-shadow:
-      0 0 0 18px #123038,
-      0 0 70px #32cdb0aa;
+/* AI */
+
+.ai-card {
+  background: linear-gradient(145deg,#102033,#0b1726);
+  border-color: #29445e;
+}
+
+.ai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ai-title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.green-dot {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  background: #54d89c;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+.voice-status {
+  color: #8398af;
+  font-size: 11px;
+}
+
+.chat {
+  min-height: 90px;
+  background: #07111e;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px 0;
+  color: #dce8f5;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  flex: 1;
+  width: 100%;
+  padding: 13px;
+  background: #08121f;
+  color: white;
+  border: 1px solid #263a50;
+  border-radius: 13px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #2477ff;
+}
+
+.mic {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #2477ff;
+  color: white;
+  font-size: 21px;
+}
+
+.mic.listening {
+  background: #d93655;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.08);
   }
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:14px;
+.button-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 9px;
 }
 
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:16px;
+.btn {
+  flex: 1;
+  padding: 13px;
+  border-radius: 13px;
+  background: #18304a;
+  color: white;
+  font-weight: bold;
 }
 
-.big{
-  font-size:21px;
-  font-weight:800;
+.btn.primary {
+  background: #2477ff;
 }
 
-.primary{
-  background:var(--accent);
-  color:#03231e;
-  font-weight:800;
-  border:0;
-  border-radius:14px;
-  padding:13px 16px;
+.btn.good {
+  background: #167b58;
 }
 
-.danger{
-  background:var(--danger);
-  color:white;
-  font-weight:800;
-  border:0;
-  border-radius:14px;
-  padding:16px;
-  width:100%;
-  font-size:20px;
+.btn.danger {
+  background: #a83245;
 }
 
-.ghost{
-  background:#142632;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:11px 14px;
+.btn.full {
+  width: 100%;
 }
 
-.row{
-  display:flex;
-  gap:9px;
-  align-items:center;
-  flex-wrap:wrap;
+/* STATS */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
 }
 
-.chat{
-  min-height:170px;
-  max-height:330px;
-  overflow:auto;
-  margin-top:14px;
+.stat {
+  background: #091522;
+  border: 1px solid #17283a;
+  border-radius: 16px;
+  padding: 15px;
 }
 
-.msg{
-  padding:11px 13px;
-  border-radius:15px;
-  margin:8px 0;
-  max-width:88%;
-  white-space:pre-wrap;
+.label {
+  color: #8195ad;
+  font-size: 11px;
 }
 
-.ai{
-  background:#132b32;
+.number {
+  font-size: 23px;
+  font-weight: 900;
+  margin-top: 6px;
 }
 
-.me{
-  background:#183d38;
-  margin-left:auto;
+/* SOS */
+
+.center {
+  text-align: center;
 }
 
-.inputrow{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
+.sos {
+  display: block;
+  width: 145px;
+  height: 145px;
+  margin: 22px auto;
+  border-radius: 50%;
+  background: #d9364f;
+  color: white;
+  font-size: 26px;
+  font-weight: 900;
+  box-shadow:
+    0 0 0 12px rgba(217,54,79,0.12),
+    0 15px 35px rgba(0,0,0,0.4);
 }
 
-.inputrow input{
-  flex:1;
-  background:#0b151d;
-  border:1px solid var(--line);
-  color:var(--text);
-  padding:13px;
-  border-radius:13px;
-  outline:none;
+.countdown {
+  font-size: 42px;
+  font-weight: 900;
+  color: #ff7184;
+  margin: 10px;
 }
 
-.nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#08131bd9;
-  backdrop-filter:blur(15px);
-  border-top:1px solid var(--line);
-  display:flex;
-  justify-content:center;
-  z-index:10;
+.hidden {
+  display: none !important;
 }
 
-.nav button{
-  background:none;
-  border:0;
-  padding:12px 11px;
-  color:var(--muted);
-  font-size:12px;
+/* HELP */
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 9px;
 }
 
-.nav button.active{
-  color:var(--accent);
+.help-button {
+  padding: 15px 8px;
+  border-radius: 14px;
+  background: #102238;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #1d3650;
 }
 
-.service{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:center;
-  border-bottom:1px solid var(--line);
-  padding:14px 0;
+.location-box {
+  background: #091522;
+  border: 1px solid #17283a;
+  padding: 15px;
+  border-radius: 15px;
+  line-height: 1.7;
+  color: #b8c8d9;
 }
 
-.service:last-child{
-  border:0;
+/* AI QUICK */
+
+.quick {
+  padding: 15px;
+  border-radius: 14px;
+  background: #091522;
+  border: 1px solid #182a3d;
+  margin: 9px 0;
+  cursor: pointer;
 }
 
-.metric{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
+.quick:hover {
+  border-color: #2477ff;
 }
 
-.metric:last-child{
-  border:0;
+/* BOTTOM NAV */
+
+.nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  max-width: 760px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  background: rgba(9,20,33,0.97);
+  border-top: 1px solid #1b2b3d;
+  padding: 8px 5px;
 }
 
-.notice{
-  border-left:3px solid var(--warning);
-  padding:10px 12px;
-  background:#1b2119;
-  border-radius:8px;
-  color:#e9dfbd;
-  margin-top:12px;
+.nav button {
+  background: transparent;
+  color: #8195ad;
+  padding: 6px 2px;
+  font-size: 11px;
 }
 
-.small{
-  font-size:12px;
+.nav button.active {
+  color: white;
 }
 
-select{
-  margin-left:8px;
-  background:#10212b;
-  color:white;
-  border:1px solid var(--line);
-  padding:8px;
-  border-radius:8px;
+.nav-icon {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+/* DESKTOP */
+
+@media (min-width:600px) {
+  main {
+    padding: 15px 24px;
+  }
 }
 </style>
 </head>
@@ -302,997 +367,958 @@ select{
 
 <div class="app">
 
-<header class="top">
-  <div class="brand">RESQ ONE</div>
-  <div id="listenState" class="pill">AI offline</div>
+<header>
+  <div>
+    <div class="logo">RESQ ONE</div>
+    <div class="subtitle">Personal Safety Companion</div>
+  </div>
+
+  <div id="topStatus" class="status">
+    ● Ready
+  </div>
 </header>
 
 
+<main>
+
 <!-- HOME -->
 
-<section id="home" class="page active">
+<section id="home" class="screen active">
 
-  <div class="hero">
+  <div class="card hero">
+    <div class="muted">YOUR SAFETY</div>
 
-    <div class="tag">
-      PERSONAL SAFETY COMPANION
+    <h1 id="safeTitle">
+      You're in control.
+    </h1>
+
+    <div id="safeText" class="muted">
+      RESQ is ready. Ask me anything about your safety.
+    </div>
+  </div>
+
+
+  <!-- AI -->
+
+  <div class="card ai-card">
+
+    <div class="ai-header">
+
+      <div class="ai-title">
+        <span class="green-dot"></span>
+        RESQ AI
+      </div>
+
+      <div id="voiceStatus" class="voice-status">
+        Voice ready
+      </div>
+
     </div>
 
-    <div id="safeStatus" class="status">
-      YOU'RE SAFE
+
+    <div id="chat" class="chat">
+      Hi! I'm RESQ AI.<br><br>
+
+      Try:
+      <b>“Where am I?”</b><br>
+      <b>“Find a hospital near me”</b><br>
+      <b>“Start emergency”</b><br>
+      <b>“What should I do if I fall?”</b>
     </div>
 
-    <div class="sub">
-      RESQ is ready to listen and help.
-    </div>
 
-    <div id="orb" class="orb"></div>
+    <div class="input-row">
 
-    <div class="row" style="justify-content:center">
+      <input
+        id="command"
+        class="input"
+        type="text"
+        placeholder="Type your message..."
+      >
 
       <button
-        class="primary"
-        onclick="toggleVoice()">
-        🎙 Start RESQ AI
+        id="mic"
+        class="mic"
+        type="button"
+        title="Speak to RESQ AI"
+      >
+        🎙️
+      </button>
+
+    </div>
+
+
+    <div class="button-row">
+
+      <button
+        class="btn primary"
+        onclick="sendMessage()"
+      >
+        Ask RESQ
       </button>
 
       <button
-        class="ghost"
-        onclick="startSOS()">
-        SOS
+        class="btn"
+        onclick="speakLast()"
+      >
+        🔊 Speak
       </button>
 
     </div>
+
+  </div>
+
+
+  <!-- STATUS -->
+
+  <div class="card">
+
+    <div class="grid">
+
+      <div class="stat">
+        <div class="label">LOCATION</div>
+        <div id="locationStatus" class="number">
+          —
+        </div>
+      </div>
+
+      <div class="stat">
+        <div class="label">BATTERY</div>
+        <div id="battery" class="number">
+          —
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- HEALTH -->
+
+<section id="health" class="screen">
+
+  <div class="card hero">
+
+    <div class="muted">HEALTH</div>
+
+    <h1>Wellness</h1>
+
+    <p class="muted">
+      Health measurements shown here are demonstration values
+      until a real RESQ wearable sensor is connected.
+    </p>
 
   </div>
 
 
   <div class="grid">
 
-    <div class="card">
-
-      <div class="muted">
-        Location
-      </div>
-
-      <div id="locHome" class="big">
-        Checking…
-      </div>
-
+    <div class="stat">
+      <div class="label">HEART RATE</div>
+      <div class="number">72 BPM</div>
     </div>
 
+    <div class="stat">
+      <div class="label">ACTIVITY</div>
+      <div class="number">6,240</div>
+      <div class="label">steps</div>
+    </div>
 
-    <div class="card">
+    <div class="stat">
+      <div class="label">REST</div>
+      <div class="number">7h 18m</div>
+    </div>
 
-      <div class="muted">
-        Battery
-      </div>
-
-      <div id="batHome" class="big">
-        —
-      </div>
-
+    <div class="stat">
+      <div class="label">WELLNESS</div>
+      <div class="number">Good</div>
     </div>
 
   </div>
 
 
-  <div class="card" style="margin-top:12px">
+  <div class="card">
 
-    <b>
-      Try saying
-    </b>
-
-    <p class="muted">
-
-      “Where am I?”
-
-      <br>
-
-      “Find the nearest hospital”
-
-      <br>
-
-      “I need an ambulance”
-
-      <br>
-
-      “I'm feeling dizzy”
-
-      <br>
-
-      “Start emergency”
-
-    </p>
+    <button
+      class="btn primary full"
+      onclick="generateReport()"
+    >
+      Generate Health Report
+    </button>
 
   </div>
 
 </section>
-
-
-
-<!-- HEALTH -->
-
-<section id="health" class="page">
-
-<h2>
-  Health
-</h2>
-
-<div class="card">
-
-  <div class="tag">
-    DEVICE / DEMO DATA
-  </div>
-
-  <div class="metric">
-    <span>Wellness</span>
-    <b id="wellness">Stable</b>
-  </div>
-
-  <div class="metric">
-    <span>Activity</span>
-    <b id="activity">Moderate</b>
-  </div>
-
-  <div class="metric">
-    <span>Rest</span>
-    <b id="rest">7h 18m</b>
-  </div>
-
-  <div class="metric">
-    <span>Heart rate</span>
-    <b>Connect PPG sensor</b>
-  </div>
-
-</div>
-
-
-<div class="card" style="margin-top:12px">
-
-  <b>
-    Health report
-  </b>
-
-  <p class="muted">
-    Create a printable RESQ health report.
-  </p>
-
-  <button
-    class="primary"
-    onclick="report()">
-    Generate report
-  </button>
-
-</div>
-
-
-<div class="notice">
-
-  Health values shown here are demonstration values until
-  a validated wearable/medical sensor is connected.
-
-</div>
-
-</section>
-
 
 
 <!-- SAFETY -->
 
-<section id="safety" class="page">
+<section id="safety" class="screen">
 
-<h2>
-  Safety Center
-</h2>
+  <div class="card hero center">
 
-<div class="card">
+    <div class="muted">
+      EMERGENCY CENTER
+    </div>
 
-  <div class="tag">
-    EMERGENCY CONTROL
+    <h1>Need help?</h1>
+
+    <p class="muted">
+      Press SOS to start a 10-second emergency confirmation.
+    </p>
+
+
+    <button
+      class="sos"
+      onclick="startSOS()"
+    >
+      SOS
+    </button>
+
+
+    <div
+      id="countdown"
+      class="countdown hidden"
+    >
+      10
+    </div>
+
+
+    <div class="button-row">
+
+      <button
+        class="btn good"
+        onclick="cancelSOS()"
+      >
+        I'M SAFE
+      </button>
+
+      <button
+        class="btn danger"
+        onclick="callEmergency()"
+      >
+        📞 112
+      </button>
+
+    </div>
+
+
+    <p class="muted">
+      The website cannot automatically dispatch an ambulance
+      or emergency team.
+    </p>
+
   </div>
 
-  <h3 id="safetyTitle">
-    Ready
-  </h3>
 
-  <p id="safetyText" class="muted">
-    If you need help, press SOS or tell RESQ.
-  </p>
+  <div class="card">
 
-  <button
-    class="danger"
-    onclick="startSOS()">
-    START SOS
-  </button>
+    <h3>Safety guidance</h3>
 
-  <button
-    class="ghost"
-    style="width:100%;margin-top:9px"
-    onclick="cancelSOS()">
-    I'M SAFE / CANCEL
-  </button>
+    <div class="quick">
+      <b>If you fall</b><br>
+      Stay still if you may be injured and contact emergency help.
+    </div>
 
-</div>
+    <div class="quick">
+      <b>If you feel unsafe</b><br>
+      Move toward a populated safe location and contact someone you trust.
+    </div>
 
+    <div class="quick">
+      <b>If someone is unconscious</b><br>
+      Call emergency services immediately and follow the operator's instructions.
+    </div>
 
-<div class="card" style="margin-top:12px">
-
-  <b>
-    Safety activity
-  </b>
-
-  <div
-    id="events"
-    class="muted small">
   </div>
-
-</div>
 
 </section>
-
 
 
 <!-- NEARBY -->
 
-<section id="nearby" class="page">
+<section id="nearby" class="screen">
 
-<h2>
-  Nearby Help
-</h2>
+  <div class="card hero">
 
-<div class="card">
+    <div class="muted">
+      NEARBY HELP
+    </div>
 
-  <div class="muted">
-    Device location
-  </div>
+    <h1>Find help</h1>
 
-  <div id="nearLoc">
-    Location not loaded
-  </div>
+    <p id="nearText" class="muted">
+      First allow location access.
+    </p>
 
-  <div class="row" style="margin-top:10px">
 
     <button
-      class="primary"
-      onclick="locate()">
-      Update location
+      class="btn primary full"
+      onclick="getLocation()"
+    >
+      📍 Use My Location
     </button>
 
+  </div>
+
+
+  <div class="help-grid">
+
     <button
-      class="ghost"
-      onclick="mapsSearch('hospital')">
+      class="help-button"
+      onclick="findHelp('hospital')"
+    >
+      🏥<br>
       Hospitals
     </button>
 
+    <button
+      class="help-button"
+      onclick="findHelp('ambulance')"
+    >
+      🚑<br>
+      Ambulance
+    </button>
+
+    <button
+      class="help-button"
+      onclick="findHelp('police station')"
+    >
+      👮<br>
+      Police
+    </button>
+
+    <button
+      class="help-button"
+      onclick="findHelp('fire station')"
+    >
+      🚒<br>
+      Fire
+    </button>
+
+    <button
+      class="help-button"
+      onclick="findHelp('pharmacy')"
+    >
+      💊<br>
+      Pharmacy
+    </button>
+
+    <button
+      class="help-button"
+      onclick="findHelp('clinic')"
+    >
+      🩺<br>
+      Clinics
+    </button>
+
   </div>
 
-</div>
+
+  <div class="card">
+
+    <div class="label">
+      YOUR LOCATION
+    </div>
+
+    <div
+      id="locationBox"
+      class="location-box"
+      style="margin-top:8px"
+    >
+      Location not available.
+    </div>
 
 
-<div
-  id="services"
-  class="card"
-  style="margin-top:12px">
-</div>
+    <button
+      id="mapButton"
+      class="btn primary full hidden"
+      style="margin-top:10px"
+      onclick="openMap()"
+    >
+      🗺️ Open Google Maps
+    </button>
+
+  </div>
 
 </section>
 
 
+<!-- AI PAGE -->
 
-<!-- AI -->
+<section id="ai" class="screen">
 
-<section id="ai" class="page">
+  <div class="card hero">
 
-<h2>
-  RESQ AI
-</h2>
+    <div class="muted">
+      RESQ AI
+    </div>
 
-<div class="hero" style="padding:18px">
+    <h1>How can I help?</h1>
 
-  <div id="aiState" class="tag">
-    VOICE ASSISTANT
+    <p class="muted">
+      Tap a suggestion or type/speak your own request.
+    </p>
+
+
+    <div
+      class="quick"
+      onclick="quickMessage('Where am I?')"
+    >
+      📍 Where am I?
+    </div>
+
+    <div
+      class="quick"
+      onclick="quickMessage('Find a hospital near me')"
+    >
+      🏥 Find a hospital near me
+    </div>
+
+    <div
+      class="quick"
+      onclick="quickMessage('Find an ambulance')"
+    >
+      🚑 Find an ambulance
+    </div>
+
+    <div
+      class="quick"
+      onclick="quickMessage('Start emergency')"
+    >
+      🚨 Start emergency
+    </div>
+
+    <div
+      class="quick"
+      onclick="quickMessage('What should I do if I fall?')"
+    >
+      🛟 What should I do if I fall?
+    </div>
+
+    <div
+      class="quick"
+      onclick="quickMessage('How do I stay safe?')"
+    >
+      🛡️ How do I stay safe?
+    </div>
+
   </div>
-
-  <div
-    id="aiOrb"
-    class="orb"
-    style="width:80px;height:80px;margin:15px auto">
-  </div>
-
-  <button
-    class="primary"
-    onclick="toggleVoice()">
-    🎙 Toggle voice
-  </button>
-
-</div>
-
-
-<div
-  id="chat"
-  class="chat card">
-</div>
-
-
-<div class="inputrow">
-
-  <input
-    id="command"
-    placeholder="Talk or type naturally…">
-
-  <button
-    class="primary"
-    onclick="sendText()">
-    Send
-  </button>
-
-</div>
-
-
-<div
-  class="card"
-  style="margin-top:12px">
-
-  <label>
-
-    Language
-
-    <select
-      id="lang"
-      onchange="setLanguage()">
-
-      <option value="en-IN">
-        English
-      </option>
-
-      <option value="te-IN">
-        తెలుగు
-      </option>
-
-      <option value="hi-IN">
-        हिन्दी
-      </option>
-
-      <option value="ta-IN">
-        தமிழ்
-      </option>
-
-      <option value="kn-IN">
-        ಕನ್ನಡ
-      </option>
-
-      <option value="ml-IN">
-        മലയാളം
-      </option>
-
-      <option value="mr-IN">
-        मराठी
-      </option>
-
-      <option value="bn-IN">
-        বাংলা
-      </option>
-
-    </select>
-
-  </label>
-
-</div>
 
 </section>
 
+</main>
 
 
 <!-- NAVIGATION -->
 
-<div class="nav">
+<nav class="nav">
 
-<button
-  onclick="show('home')"
-  data-p="home"
-  class="active">
-  ⌂<br>Home
-</button>
+  <button
+    class="active"
+    data-screen="home"
+  >
+    <span class="nav-icon">⌂</span>
+    Home
+  </button>
 
-<button
-  onclick="show('health')"
-  data-p="health">
-  ♥<br>Health
-</button>
+  <button
+    data-screen="health"
+  >
+    <span class="nav-icon">♥</span>
+    Health
+  </button>
 
-<button
-  onclick="show('safety')"
-  data-p="safety">
-  🛡<br>Safety
-</button>
+  <button
+    data-screen="safety"
+  >
+    <span class="nav-icon">🚨</span>
+    Safety
+  </button>
 
-<button
-  onclick="show('nearby')"
-  data-p="nearby">
-  ⌖<br>Nearby
-</button>
+  <button
+    data-screen="nearby"
+  >
+    <span class="nav-icon">⌖</span>
+    Nearby
+  </button>
 
-<button
-  onclick="show('ai')"
-  data-p="ai">
-  ◉<br>AI
-</button>
+  <button
+    data-screen="ai"
+  >
+    <span class="nav-icon">✦</span>
+    AI
+  </button>
 
-</div>
+</nav>
 
 </div>
 
 
 <script>
 
-let lat = null;
-let lon = null;
+/* =========================================
+   RESQ ONE CORE
+========================================= */
 
-let voiceOn = false;
-let recognition = null;
+let lastResponse =
+  "Hi! I'm RESQ AI. How can I help?";
 
-let count = 10;
-let timer = null;
+let latitude = null;
+let longitude = null;
+let accuracy = null;
 
-
-const $ = id => document.getElementById(id);
-
-
-
-/* EVENTS */
-
-function log(event){
-
-  let events =
-    JSON.parse(
-      localStorage.getItem("resq_events") || "[]"
-    );
-
-  events.unshift(
-    new Date().toLocaleString() +
-    ": " +
-    event
-  );
-
-  localStorage.setItem(
-    "resq_events",
-    JSON.stringify(events.slice(0,30))
-  );
-
-  renderEvents();
-
-}
+let sosTimer = null;
+let sosSeconds = 10;
 
 
-function renderEvents(){
+/* =========================================
+   SCREEN NAVIGATION
+========================================= */
 
-  let events =
-    JSON.parse(
-      localStorage.getItem("resq_events") || "[]"
-    );
-
-  $("events").innerHTML =
-    events.length
-      ? events.map(
-          e =>
-          `<div style="padding:7px 0;border-bottom:1px solid #20343f">
-             ${escapeHTML(e)}
-           </div>`
-        ).join("")
-      : "No events yet.";
-
-}
-
-
-function escapeHTML(text){
-
-  return text
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;");
-
-}
-
-
-
-/* NAVIGATION */
-
-function show(page){
+function showScreen(screenName) {
 
   document
-    .querySelectorAll(".page")
-    .forEach(
-      page => page.classList.remove("active")
-    );
+    .querySelectorAll(".screen")
+    .forEach(screen => {
+      screen.classList.remove("active");
+    });
 
-  $(page).classList.add("active");
+  const target =
+    document.getElementById(screenName);
+
+  if (target) {
+    target.classList.add("active");
+  }
+
 
   document
     .querySelectorAll(".nav button")
-    .forEach(
-      button =>
+    .forEach(button => {
+
       button.classList.toggle(
         "active",
-        button.dataset.p === page
-      )
-    );
-
-  if(page === "nearby"){
-    renderServices();
-  }
-
-}
-
-
-
-/* VOICE */
-
-function speak(text){
-
-  if(
-    !voiceOn ||
-    !("speechSynthesis" in window)
-  ){
-    return;
-  }
-
-  speechSynthesis.cancel();
-
-  const utterance =
-    new SpeechSynthesisUtterance(text);
-
-  utterance.lang =
-    $("lang").value;
-
-  utterance.rate = .96;
-
-  speechSynthesis.speak(
-    utterance
-  );
-
-}
-
-
-function addMessage(role,text){
-
-  const message =
-    document.createElement("div");
-
-  message.className =
-    "msg " + role;
-
-  message.textContent =
-    text;
-
-  $("chat").appendChild(
-    message
-  );
-
-  $("chat").scrollTop =
-    $("chat").scrollHeight;
-
-}
-
-
-function ai(text){
-
-  addMessage(
-    "ai",
-    text
-  );
-
-  speak(text);
-
-}
-
-
-
-/* LANGUAGE */
-
-function setLanguage(){
-
-  if(voiceOn){
-    startListening();
-  }
-
-  const lang =
-    $("lang").value;
-
-  if(lang === "te-IN"){
-
-    ai(
-      "భాష మార్చబడింది. నేను వినడానికి సిద్ధంగా ఉన్నాను."
-    );
-
-  }else{
-
-    ai(
-      "Language updated. I am ready to listen."
-    );
-
-  }
-
-}
-
-
-
-/* VOICE CONTROL */
-
-function toggleVoice(){
-
-  voiceOn =
-    !voiceOn;
-
-  if(voiceOn){
-
-    $("listenState").textContent =
-      "Listening";
-
-    $("aiState").textContent =
-      "LISTENING";
-
-    $("orb").classList.add(
-      "listening"
-    );
-
-    $("aiOrb").classList.add(
-      "listening"
-    );
-
-    startListening();
-
-    ai(
-      "I’m listening. Tell me what you need."
-    );
-
-  }else{
-
-    stopListening();
-
-    $("listenState").textContent =
-      "AI offline";
-
-    $("aiState").textContent =
-      "VOICE ASSISTANT";
-
-    $("orb").classList.remove(
-      "listening"
-    );
-
-    $("aiOrb").classList.remove(
-      "listening"
-    );
-
-  }
-
-}
-
-
-
-/* SPEECH RECOGNITION */
-
-function startListening(){
-
-  const SpeechRecognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
-
-  if(!SpeechRecognition){
-
-    $("listenState").textContent =
-      "Voice unsupported";
-
-    ai(
-      "Voice recognition is not available in this browser. You can still type to me."
-    );
-
-    return;
-
-  }
-
-  stopListening();
-
-  recognition =
-    new SpeechRecognition();
-
-  recognition.lang =
-    $("lang").value;
-
-  recognition.continuous =
-    true;
-
-  recognition.interimResults =
-    false;
-
-
-  recognition.onresult =
-    event => {
-
-      const result =
-        event.results[
-          event.results.length - 1
-        ][0].transcript;
-
-      addMessage(
-        "me",
-        result
+        button.dataset.screen === screenName
       );
 
-      processCommand(
-        result
-      );
-
-    };
+    });
 
 
-  recognition.onerror =
-    () => {};
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 
 
-  recognition.onend =
-    () => {
+document
+  .querySelectorAll(".nav button")
+  .forEach(button => {
 
-      if(voiceOn){
+    button.addEventListener(
+      "click",
+      function() {
 
-        setTimeout(
-          startListening,
-          500
+        showScreen(
+          this.dataset.screen
         );
 
       }
+    );
 
-    };
-
-
-  try{
-
-    recognition.start();
-
-  }catch(error){}
-
-}
+  });
 
 
-function stopListening(){
+/* =========================================
+   AI RESPONSE
+========================================= */
 
-  if(recognition){
+function respond(message, speakIt = true) {
 
-    try{
+  lastResponse = message;
 
-      recognition.onend =
-        null;
+  document.getElementById("chat").textContent =
+    message;
 
-      recognition.stop();
-
-    }catch(error){}
-
-    recognition =
-      null;
-
+  if (speakIt) {
+    speak(message);
   }
 
 }
 
 
+/* =========================================
+   TEXT TO SPEECH
+========================================= */
 
-/* TEXT */
+function speak(text) {
 
-function sendText(){
+  if (!("speechSynthesis" in window)) {
+
+    return;
+
+  }
+
+  window.speechSynthesis.cancel();
+
+  const speech =
+    new SpeechSynthesisUtterance(text);
+
+  speech.lang = "en-IN";
+  speech.rate = 0.95;
+  speech.pitch = 1;
+
+  window.speechSynthesis.speak(
+    speech
+  );
+}
+
+
+function speakLast() {
+
+  speak(lastResponse);
+
+}
+
+
+/* =========================================
+   AI MESSAGE
+========================================= */
+
+function sendMessage() {
 
   const input =
-    $("command");
+    document.getElementById("command");
 
-  const text =
+  const message =
     input.value.trim();
 
-  if(!text){
+  if (!message) {
+
+    respond(
+      "Please type something and I will help you."
+    );
+
     return;
+
   }
 
   input.value = "";
 
-  addMessage(
-    "me",
-    text
-  );
-
-  processCommand(
-    text
-  );
+  processCommand(message);
 
 }
 
 
-$("command").addEventListener(
-  "keydown",
-  event => {
+document
+  .getElementById("command")
+  .addEventListener(
+    "keydown",
+    function(event) {
 
-    if(event.key === "Enter"){
-      sendText();
+      if (event.key === "Enter") {
+
+        sendMessage();
+
+      }
+
     }
-
-  }
-);
+  );
 
 
+function quickMessage(message) {
 
-/* NATURAL LANGUAGE SAFETY ROUTER */
+  document.getElementById("command").value =
+    message;
 
-function processCommand(raw){
+  showScreen("home");
+
+  sendMessage();
+
+}
+
+
+/* =========================================
+   AI COMMAND ENGINE
+========================================= */
+
+function processCommand(message) {
 
   const text =
-    raw.toLowerCase().trim();
+    message.toLowerCase().trim();
 
 
-  if(
-    /sos|emergency|help me|need help|danger|save me/.test(text)
-  ){
+  /* LOCATION */
+
+  if (
+    text.includes("where am i") ||
+    text.includes("my location") ||
+    text.includes("current location") ||
+    text.includes("locate me")
+  ) {
+
+    showScreen("nearby");
+
+    respond(
+      "I will get your current location. Please allow location access when your browser asks.",
+      false
+    );
+
+    getLocation();
+
+    return;
+  }
+
+
+  /* HOSPITAL */
+
+  if (
+    text.includes("hospital") ||
+    text.includes("doctor") ||
+    text.includes("medical help")
+  ) {
+
+    showScreen("nearby");
+
+    findHelp("hospital");
+
+    return;
+  }
+
+
+  /* AMBULANCE */
+
+  if (
+    text.includes("ambulance")
+  ) {
+
+    showScreen("nearby");
+
+    findHelp("ambulance");
+
+    return;
+  }
+
+
+  /* POLICE */
+
+  if (
+    text.includes("police")
+  ) {
+
+    showScreen("nearby");
+
+    findHelp("police station");
+
+    return;
+  }
+
+
+  /* FIRE */
+
+  if (
+    text.includes("fire station") ||
+    text.includes("fire emergency")
+  ) {
+
+    showScreen("nearby");
+
+    findHelp("fire station");
+
+    return;
+  }
+
+
+  /* PHARMACY */
+
+  if (
+    text.includes("pharmacy") ||
+    text.includes("medicine") ||
+    text.includes("medical store")
+  ) {
+
+    showScreen("nearby");
+
+    findHelp("pharmacy");
+
+    return;
+  }
+
+
+  /* SOS */
+
+  if (
+    text.includes("sos") ||
+    text.includes("emergency") ||
+    text.includes("help me") ||
+    text.includes("i am in danger") ||
+    text.includes("danger")
+  ) {
+
+    showScreen("safety");
 
     startSOS();
 
     return;
-
   }
 
 
-  if(
-    /i am safe|i'm safe|i am okay|i'm okay|cancel emergency|stop emergency|cancel sos/.test(text)
-  ){
+  /* CANCEL SOS */
+
+  if (
+    text.includes("cancel") ||
+    text.includes("i am safe") ||
+    text.includes("i'm safe") ||
+    text.includes("im safe") ||
+    text.includes("stop emergency")
+  ) {
 
     cancelSOS();
 
-    return;
-
-  }
-
-
-  if(
-    /where am i|my location|locate me|what is my location/.test(text)
-  ){
-
-    locate();
-
-    return;
-
-  }
-
-
-  if(
-    /hospital|doctor|medical|emergency department/.test(text)
-  ){
-
-    findServices(
-      "hospital"
+    respond(
+      "Okay. The emergency countdown has been cancelled. I'm glad you're safe."
     );
 
     return;
-
   }
 
 
-  if(
-    /ambulance/.test(text)
-  ){
+  /* FALL */
 
-    findServices(
-      "ambulance"
+  if (
+    text.includes("fall") ||
+    text.includes("fallen")
+  ) {
+
+    respond(
+      "If you have fallen, stay still if you may be injured. Check your surroundings and breathing. If you need medical help, say find a hospital and I can open nearby hospital results."
     );
 
     return;
-
   }
 
 
-  if(
-    /police/.test(text)
-  ){
+  /* SAFETY */
 
-    findServices(
-      "police"
+  if (
+    text.includes("safety") ||
+    text.includes("safe") ||
+    text.includes("protect me")
+  ) {
+
+    respond(
+      "Stay in a populated safe place, keep your phone charged, tell someone you trust where you are, and use SOS if you are in immediate danger."
     );
 
     return;
-
   }
 
 
-  if(
-    /fire station|fire brigade|fire service/.test(text)
-  ){
+  /* HEALTH */
 
-    findServices(
-      "fire station"
+  if (
+    text.includes("health") ||
+    text.includes("heart rate") ||
+    text.includes("pulse") ||
+    text.includes("wellness")
+  ) {
+
+    showScreen("health");
+
+    respond(
+      "Your health dashboard is open. The displayed measurements are demonstration values until real RESQ sensors are connected.",
+      false
     );
 
     return;
-
   }
 
 
-  if(
-    /pharmacy|medical shop|medicine/.test(text)
-  ){
+  /* BATTERY */
 
-    findServices(
-      "pharmacy"
+  if (
+    text.includes("battery") ||
+    text.includes("charge")
+  ) {
+
+    updateBattery();
+
+    respond(
+      "I will check your phone battery if your browser provides battery information."
     );
 
     return;
-
   }
 
 
-  if(
-    /map|directions|navigate|take me/.test(text)
-  ){
+  /* MAP */
 
-    mapsSearch(
-      "hospital"
+  if (
+    text.includes("map") ||
+    text.includes("google maps")
+  ) {
+
+    if (latitude !== null) {
+
+      openMap();
+
+    } else {
+
+      showScreen("nearby");
+
+      respond(
+        "I need your location first. I will request it now.",
+        false
+      );
+
+      getLocation();
+
+    }
+
+    return;
+  }
+
+
+  /* GREETING */
+
+  if (
+    text.includes("hello") ||
+    text.includes("hi") ||
+    text.includes("hey") ||
+    text.includes("namaste")
+  ) {
+
+    respond(
+      "Hello! I'm RESQ AI. Tell me what you need and I will guide you."
     );
 
     return;
-
   }
 
 
-  if(
-    /dizzy|faint|fainting|breathing|can't breathe|cannot breathe|chest pain|bleeding|injury|fell|fall/.test(text)
-  ){
+  /* UNKNOWN */
 
-    ai(
-      "I’m sorry you’re feeling unwell. Please get somewhere safe and avoid driving yourself. I can locate nearby medical help. If this is severe or life-threatening, contact your local emergency service now. Would you like me to find the nearest hospital?"
-    );
-
-    return;
-
-  }
-
-
-  if(
-    /battery|device status/.test(text)
-  ){
-
-    ai(
-      "Your current battery is " +
-      $("batHome").textContent +
-      "."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    /hello|hi|hey|namaste/.test(text)
-  ){
-
-    ai(
-      "Hello. I’m RESQ. I’m here to help with safety, location, nearby emergency services and your device status."
-    );
-
-    return;
-
-  }
-
-
-  ai(
-    "I’m not sure I understood that yet. Try speaking naturally, for example: “find the nearest hospital”, “where am I?”, “I need an ambulance”, or “start emergency”."
+  respond(
+    "I can help with location, hospitals, ambulances, police, fire stations, pharmacies, SOS, falls, health, battery and safety guidance. Try asking me one of these."
   );
 
 }
 
 
+/* =========================================
+   LOCATION
+========================================= */
 
-/* LOCATION */
+function getLocation() {
 
-function locate(){
+  if (!navigator.geolocation) {
 
-  if(!navigator.geolocation){
-
-    ai(
-      "This browser does not provide location access."
+    respond(
+      "Your browser does not support location services. Please use Chrome on Android.",
+      false
     );
 
     return;
@@ -1300,49 +1326,127 @@ function locate(){
   }
 
 
+  document.getElementById("topStatus")
+    .textContent = "● Locating…";
+
+
+  document.getElementById("nearText")
+    .textContent =
+    "Requesting your high-accuracy location…";
+
+
   navigator.geolocation.getCurrentPosition(
 
-    position => {
+    function(position) {
 
-      lat =
+      latitude =
         position.coords.latitude;
 
-      lon =
+      longitude =
         position.coords.longitude;
 
-
-      $("locHome").textContent =
-        "Location ready";
-
-
-      $("nearLoc").textContent =
-        lat.toFixed(5) +
-        ", " +
-        lon.toFixed(5) +
-        " • ±" +
+      accuracy =
         Math.round(
           position.coords.accuracy
-        ) +
-        " m";
+        );
 
 
-      renderServices();
+      document.getElementById(
+        "topStatus"
+      ).textContent =
+        "● Location ready";
 
-    },
+
+      document.getElementById(
+        "locationStatus"
+      ).textContent =
+        "Connected";
 
 
-    () => {
+      document.getElementById(
+        "locationBox"
+      ).innerHTML =
+        "Latitude: " +
+        latitude.toFixed(5) +
+        "<br>" +
+        "Longitude: " +
+        longitude.toFixed(5) +
+        "<br>" +
+        "Accuracy: about " +
+        accuracy +
+        " metres";
 
-      ai(
-        "I could not access your location. Please allow location permission in your browser."
+
+      document.getElementById(
+        "nearText"
+      ).textContent =
+        "Location ready. Choose the help you need.";
+
+
+      document.getElementById(
+        "mapButton"
+      ).classList.remove(
+        "hidden"
+      );
+
+
+      respond(
+        "I have your location. Accuracy is about " +
+        accuracy +
+        " metres. You can now find nearby help.",
+        false
       );
 
     },
 
+
+    function(error) {
+
+      document.getElementById(
+        "topStatus"
+      ).textContent =
+        "● Location unavailable";
+
+
+      let message;
+
+
+      if (error.code === 1) {
+
+        message =
+          "Location permission was denied. Open your browser site settings and allow Location for RESQ ONE.";
+
+      } else if (error.code === 2) {
+
+        message =
+          "Your location could not be determined. Turn on your phone Location or GPS and try again.";
+
+      } else {
+
+        message =
+          "Location timed out. Make sure GPS is enabled and try again.";
+
+      }
+
+
+      document.getElementById(
+        "nearText"
+      ).textContent =
+        message;
+
+
+      respond(
+        message,
+        false
+      );
+
+    },
+
+
     {
-      enableHighAccuracy:true,
-      timeout:10000,
-      maximumAge:10000
+      enableHighAccuracy: true,
+      timeout: 20000,
+      maximumAge: 0
     }
 
   );
@@ -1350,14 +1454,85 @@ function locate(){
 }
 
 
+/* =========================================
+   FIND NEARBY HELP
+========================================= */
 
-/* MAPS */
+function findHelp(service) {
 
-function mapsSearch(query){
+  if (
+    latitude === null ||
+    longitude === null
+  ) {
 
-  if(lat === null){
+    respond(
+      "I need your location first. Please allow location access and try again.",
+      false
+    );
 
-    locate();
+    getLocation();
+
+    return;
+
+  }
+
+
+  const mapsURL =
+    "https://www.google.com/maps/search/" +
+    encodeURIComponent(
+      service + " near me"
+    ) +
+    "/@" +
+    latitude +
+    "," +
+    longitude +
+    ",14z";
+
+
+  document.getElementById(
+    "mapButton"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  respond(
+    "Opening nearby " +
+    service +
+    " results in Google Maps."
+  );
+
+
+  /*
+     Using location.href instead of window.open()
+     avoids Android popup blocking.
+  */
+
+  setTimeout(
+    function() {
+
+      window.location.href =
+        mapsURL;
+
+    },
+    700
+  );
+
+}
+
+
+/* =========================================
+   OPEN MAP
+========================================= */
+
+function openMap() {
+
+  if (
+    latitude === null ||
+    longitude === null
+  ) {
+
+    getLocation();
 
     return;
 
@@ -1365,325 +1540,211 @@ function mapsSearch(query){
 
 
   const url =
-    "https://www.google.com/maps/search/" +
-    encodeURIComponent(query) +
-    "/@" +
-    lat +
-    "," +
-    lon +
-    ",14z";
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(
+      latitude + "," + longitude
+    );
 
 
-  window.open(
-    url,
-    "_blank"
-  );
+  window.location.href =
+    url;
 
 }
 
 
+/* =========================================
+   SOS
+========================================= */
 
-/* NEARBY */
+function startSOS() {
 
-function findServices(query){
-
-  if(lat === null){
-
-    locate();
+  if (sosTimer !== null) {
 
     return;
 
   }
 
 
-  show(
-    "nearby"
+  sosSeconds = 10;
+
+
+  const countdown =
+    document.getElementById(
+      "countdown"
+    );
+
+
+  countdown.classList.remove(
+    "hidden"
   );
 
-  renderServices();
 
-  ai(
-    "I have your location. I’m opening nearby " +
-    query +
-    " options."
-  );
-
-  mapsSearch(
-    query
-  );
-
-}
+  countdown.textContent =
+    sosSeconds;
 
 
-function renderServices(){
-
-  const services = [
-
-    ["🏥","Hospitals","hospital"],
-
-    ["🚑","Ambulance services","ambulance"],
-
-    ["👮","Police stations","police"],
-
-    ["🚒","Fire stations","fire station"],
-
-    ["💊","Pharmacies","pharmacy"]
-
-  ];
+  document.getElementById(
+    "safeTitle"
+  ).textContent =
+    "Emergency countdown active";
 
 
-  $("services").innerHTML =
-    "<b>Emergency & safety services near you</b>" +
-
-    services.map(
-
-      service => `
-
-        <div class="service">
-
-          <div>
-
-            <span style="font-size:22px">
-              ${service[0]}
-            </span>
-
-            ${service[1]}
-
-            <div class="tag">
-              OPEN MAP SEARCH
-            </div>
-
-          </div>
-
-          <button
-            class="ghost"
-            onclick='mapsSearch(${JSON.stringify(service[2])})'>
-            View
-          </button>
-
-        </div>
-
-      `
-
-    ).join("");
-
-}
-
-
-
-/* SOS */
-
-function startSOS(){
-
-  if(timer){
-    return;
-  }
-
-
-  count =
-    10;
-
-
-  $("safeStatus").textContent =
-    "SOS ACTIVE";
-
-
-  $("safetyTitle").textContent =
-    "SOS countdown: " +
-    count;
-
-
-  $("safetyText").textContent =
-    "Stay still if possible. Say “I’m safe” to cancel.";
-
-
-  log(
-    "SOS countdown started"
-  );
+  document.getElementById(
+    "safeText"
+  ).textContent =
+    "Press I'M SAFE if this was accidental.";
 
 
   speak(
-    "Emergency mode started. You have ten seconds to cancel."
+    "Emergency countdown started. Press I am safe if this was accidental."
   );
 
 
-  timer =
+  sosTimer =
     setInterval(
+      function() {
 
-      () => {
+        sosSeconds--;
 
-        count--;
-
-        $("safetyTitle").textContent =
-          "SOS countdown: " +
-          count;
+        countdown.textContent =
+          sosSeconds;
 
 
-        if(count <= 0){
+        if (sosSeconds <= 0) {
 
           clearInterval(
-            timer
+            sosTimer
           );
 
-          timer =
-            null;
+          sosTimer = null;
 
 
-          $("safetyTitle").textContent =
-            "EMERGENCY READY";
+          countdown.textContent =
+            "SOS READY";
 
 
-          $("safetyText").textContent =
-            "Your location is ready. Use the nearby options to contact the appropriate emergency service.";
-
-
-          log(
-            "SOS reached emergency-ready state"
+          respond(
+            "The SOS countdown has finished. This web prototype cannot automatically dispatch emergency services. Please call 112 now."
           );
-
-
-          show(
-            "nearby"
-          );
-
-
-          locate();
 
         }
 
       },
-
       1000
-
     );
 
 }
 
 
+/* =========================================
+   CANCEL SOS
+========================================= */
 
-/* CANCEL SOS */
+function cancelSOS() {
 
-function cancelSOS(){
-
-  if(timer){
+  if (sosTimer !== null) {
 
     clearInterval(
-      timer
+      sosTimer
     );
 
-    timer =
-      null;
+    sosTimer = null;
 
   }
 
 
-  $("safeStatus").textContent =
-    "YOU'RE SAFE";
+  document
+    .getElementById("countdown")
+    .classList.add(
+      "hidden"
+    );
 
 
-  $("safetyTitle").textContent =
-    "Ready";
+  document.getElementById(
+    "safeTitle"
+  ).textContent =
+    "You're in control.";
 
 
-  $("safetyText").textContent =
-    "Emergency cancelled. I’m here if you need help.";
-
-
-  log(
-    "Emergency cancelled — user safe"
-  );
-
-
-  speak(
-    "Okay. Emergency mode cancelled. I’m here if you need me."
-  );
+  document.getElementById(
+    "safeText"
+  ).textContent =
+    "RESQ is ready. Ask me anything about your safety.";
 
 }
 
 
+/* =========================================
+   EMERGENCY CALL
+========================================= */
 
-/* BATTERY */
+function callEmergency() {
 
-async function battery(){
+  window.location.href =
+    "tel:112";
 
-  if(
-    "getBattery" in navigator
-  ){
-
-    try{
-
-      const battery =
-        await navigator.getBattery();
+}
 
 
-      const update =
-        () => {
+/* =========================================
+   BATTERY
+========================================= */
 
-          $("batHome").textContent =
-            Math.round(
-              battery.level * 100
-            ) +
-            "%";
+function updateBattery() {
 
-        };
+  if (!navigator.getBattery) {
 
+    document.getElementById(
+      "battery"
+    ).textContent =
+      "Unavailable";
 
-      update();
-
-      battery.addEventListener(
-        "levelchange",
-        update
-      );
-
-      return;
-
-    }catch(error){}
+    return;
 
   }
 
 
-  $("batHome").textContent =
-    "Unavailable";
+  navigator.getBattery()
+    .then(
+      function(battery) {
+
+        document.getElementById(
+          "battery"
+        ).textContent =
+          Math.round(
+            battery.level * 100
+          ) + "%";
+
+      }
+    )
+    .catch(
+      function() {
+
+        document.getElementById(
+          "battery"
+        ).textContent =
+          "Unavailable";
+
+      }
+    );
 
 }
 
 
+/* =========================================
+   HEALTH REPORT
+========================================= */
 
-/* HEALTH REPORT */
+function generateReport() {
 
-function report(){
-
-  const reportText =
-
-`RESQ ONE HEALTH REPORT
-
-Generated:
-${new Date().toLocaleString()}
-
-Wellness:
-${$("wellness").textContent}
-
-Activity:
-${$("activity").textContent}
-
-Rest:
-${$("rest").textContent}
-
-Location:
-${lat !== null ? lat.toFixed(5)+", "+lon.toFixed(5) : "Unavailable"}
-
-NOTE:
-This report contains prototype/device information.
-It is not a medical diagnosis.`;
-
-  const windowReport =
+  const report =
     window.open(
       "",
       "_blank"
     );
 
 
-  if(!windowReport){
+  if (!report) {
 
     alert(
       "Please allow pop-ups to generate the report."
@@ -1694,165 +1755,350 @@ It is not a medical diagnosis.`;
   }
 
 
-  windowReport.document.write(
-    "<pre style='font:16px system-ui;white-space:pre-wrap;padding:30px'>" +
-    escapeHTML(reportText) +
-    "</pre>"
+  report.document.write(`
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>RESQ ONE Health Report</title>
+
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+  line-height: 1.6;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+.box {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>RESQ ONE</h1>
+
+<h2>Health Report</h2>
+
+<p>
+Generated:
+${new Date().toLocaleString()}
+</p>
+
+<div class="box">
+
+<b>Heart Rate:</b> 72 BPM<br>
+
+<b>Activity:</b> 6,240 steps<br>
+
+<b>Rest:</b> 7h 18m<br>
+
+<b>Wellness:</b> Good
+
+</div>
+
+<div class="box">
+
+<b>Important:</b>
+
+These measurements are demonstration
+values for the RESQ ONE prototype.
+They are not medical measurements
+and should not be used for diagnosis.
+
+</div>
+
+</body>
+
+</html>
+
+  `);
+
+
+  report.document.close();
+
+  setTimeout(
+    function() {
+
+      report.print();
+
+    },
+    500
   );
-
-
-  windowReport.print();
 
 }
 
 
+/* =========================================
+   VOICE RECOGNITION
+========================================= */
 
-/* STARTUP */
-
-renderEvents();
-
-battery();
-
-locate();
-
-
-setInterval(
-
-  () => {
-
-    const activity = [
-      "Low",
-      "Moderate",
-      "Active"
-    ];
-
-    const wellness = [
-      "Stable",
-      "Good",
-      "Needs attention"
-    ];
+const SpeechRecognition =
+  window.SpeechRecognition ||
+  window.webkitSpeechRecognition;
 
 
-    $("activity").textContent =
-      activity[
-        Math.floor(
-          Math.random() *
-          activity.length
-        )
-      ];
+let recognition = null;
+
+let listening = false;
 
 
-    $("wellness").textContent =
-      wellness[
-        Math.floor(
-          Math.random() *
-          wellness.length
-        )
-      ];
+if (SpeechRecognition) {
 
-  },
-
-  12000
-
-);
+  recognition =
+    new SpeechRecognition();
 
 
-addMessage(
-  "ai",
-  "Hello. I’m RESQ AI. I can help with your location, nearby safety services, emergency mode and device status."
-);
+  recognition.lang =
+    "en-IN";
+
+
+  recognition.continuous =
+    false;
+
+
+  recognition.interimResults =
+    false;
+
+
+  recognition.onstart =
+    function() {
+
+      listening = true;
+
+
+      document.getElementById(
+        "mic"
+      ).classList.add(
+        "listening"
+      );
+
+
+      document.getElementById(
+        "voiceStatus"
+      ).textContent =
+        "Listening…";
+
+
+      document.getElementById(
+        "topStatus"
+      ).textContent =
+        "● Listening";
+
+    };
+
+
+  recognition.onresult =
+    function(event) {
+
+      const text =
+        event.results[0][0]
+          .transcript;
+
+
+      document.getElementById(
+        "command"
+      ).value =
+        text;
+
+
+      processCommand(
+        text
+      );
+
+    };
+
+
+  recognition.onerror =
+    function(event) {
+
+      listening = false;
+
+
+      document.getElementById(
+        "mic"
+      ).classList.remove(
+        "listening"
+      );
+
+
+      document.getElementById(
+        "topStatus"
+      ).textContent =
+        "● Ready";
+
+
+      if (
+        event.error ===
+        "not-allowed"
+      ) {
+
+        document.getElementById(
+          "voiceStatus"
+        ).textContent =
+          "Microphone blocked";
+
+
+        respond(
+          "Microphone permission is blocked. Allow microphone access for RESQ ONE in your browser settings, or type your message instead.",
+          false
+        );
+
+      } else {
+
+        document.getElementById(
+          "voiceStatus"
+        ).textContent =
+          "Voice ready";
+
+      }
+
+    };
+
+
+  recognition.onend =
+    function() {
+
+      listening = false;
+
+
+      document.getElementById(
+        "mic"
+      ).classList.remove(
+        "listening"
+      );
+
+
+      document.getElementById(
+        "voiceStatus"
+      ).textContent =
+        "Voice ready";
+
+
+      document.getElementById(
+        "topStatus"
+      ).textContent =
+        "● Ready";
+
+    };
+
+
+  document.getElementById(
+    "mic"
+  ).onclick =
+    function() {
+
+      if (listening) {
+
+        recognition.stop();
+
+        return;
+
+      }
+
+
+      try {
+
+        recognition.start();
+
+      } catch (error) {
+
+        /*
+          Prevents the common
+          "already started" error.
+        */
+
+      }
+
+    };
+
+
+} else {
+
+
+  document.getElementById(
+    "voiceStatus"
+  ).textContent =
+    "Type mode";
+
+
+  document.getElementById(
+    "mic"
+  ).onclick =
+    function() {
+
+      respond(
+        "Voice recognition is not supported by this browser. Please use Chrome on Android or type your message.",
+        true
+      );
+
+    };
+
+}
+
+
+/* =========================================
+   STARTUP
+========================================= */
+
+updateBattery();
+
+
+/*
+  If location permission was already granted,
+  request location automatically.
+*/
+
+if (
+  navigator.permissions &&
+  navigator.permissions.query
+) {
+
+  navigator.permissions
+    .query({
+      name: "geolocation"
+    })
+    .then(
+      function(permission) {
+
+        if (
+          permission.state ===
+          "granted"
+        ) {
+
+          getLocation();
+
+        }
+
+      }
+    )
+    .catch(
+      function() {
+
+        /*
+          Some browsers do not support
+          querying geolocation permission.
+        */
+
+      }
+    );
+
+}
 
 </script>
 
 </body>
 </html>
-'''
-
-(root/"web/index.html").write_text(html,encoding="utf-8")
-
-(root/"README.md").write_text("""# RESQ ONE V4 — Consumer Safety Companion
-
-This is the next consumer-facing prototype.
-
-## Included
-- Mobile-first RESQ interface
-- Voice recognition where supported by the browser
-- Spoken AI responses
-- Multilingual voice selection
-- Natural-language local safety intent routing
-- Real browser GPS
-- Nearby hospital / ambulance / police / fire / pharmacy map searches
-- SOS countdown and cancellation
-- Battery status where supported
-- Local safety event history
-- Printable health report
-
-## Important
-This is not yet a certified emergency-response system. The browser cannot guarantee background monitoring, emergency dispatch, or phone calls/SMS without appropriate native permissions/integrations.
-
-The health values are demonstration values until a validated wearable/medical sensor is connected.
-
-## Real AI
-For open-ended AI conversation, add a secure backend. Never put a private AI API key into public GitHub Pages JavaScript.
-""",encoding="utf-8")
-
-(root/"backend/README.md").write_text("""# Secure RESQ AI Backend
-
-Recommended architecture:
-
-RESQ Web / Android
-        |
-        v
-   HTTPS Backend
-        |
-   +----+----+
-   |         |
-   LLM     Safety Tools
-             |
-     +-------+---------+
-     |       |         |
- location  places   device/health
-
-Future controlled tools:
-- get_location
-- find_nearby_places
-- get_device_status
-- get_health_summary
-- prepare_sos
-- cancel_sos
-- create_emergency_message
-
-Critical actions such as calling, texting, or dispatching emergency services require explicit authorization and verified integrations.
-""",encoding="utf-8")
-
-(root/"android/README.md").write_text("""# RESQ ONE Android Integration
-
-The native Android app should become the reliable sensor/background layer.
-
-Next:
-1. Android SpeechRecognizer
-2. TextToSpeech
-3. Foreground monitoring
-4. Better fall detection
-5. Persistent event database
-6. Emergency contacts
-7. Authorized SMS/call workflow
-8. Location/maps
-9. BLE RESQ wearable
-10. PPG sensor
-11. Secure AI backend
-""",encoding="utf-8")
-
-zip_path=Path("/mnt/data/RESQ_ONE_V4_Consumer_AI_Prototype.zip")
-with zipfile.ZipFile(zip_path,"w",zipfile.ZIP_DEFLATED) as z:
-    for p in root.rglob("*"):
-        if p.is_file():
-            z.write(p,p.relative_to(root))
-
-print("READY:", zip_path)
-print("WEB CODE:", root/"web/index.html")
-print("Lines:", len(html.splitlines()))
-print("Bytes:", len(html.encode("utf-8")))
-print("The complete index.html is in web/index.html and the ZIP contains the project.")
-print(html)
-   
